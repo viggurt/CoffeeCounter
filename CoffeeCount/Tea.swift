@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import UIKit
+
+class Tea{
+    static var sharedInstance = Tea()
+
+    var timer = Timer()
+
+    var counter = 0
+
+    var cupCounter = 0
+
+}

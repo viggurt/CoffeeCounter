@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import UIKit
+
+class CoffeeCreator{
+    static var sharedInstance = CoffeeCreator()
+    
+    var timer = Timer()
+
+    var counter = 0
+    
+    var cupCounter = 0
+
+}
