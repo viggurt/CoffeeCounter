@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -25,6 +26,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //MARK: Variables
     var cameraCount = 3
     var imagePicker = UIImagePickerController()
+
+    
+    var getCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffe-count/12h?forceUpdate=true"
+    var getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/12h?forceUpdate=true"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,20 +42,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
          self.coffeeCreator.layer.cornerRadius = self.teaButton.frame.height/2
          self.coffeeCreator.clipsToBounds = true
          */
+/*
+ let myImage = UIImage(data: try! Data(contentsOf: URL(string:"https://i.stack.imgur.com/Xs4RX.jpg")!))!
+ UserDefaults.standard.set(image: myImage, forKey: "anyKey")
+ if let myLoadedImage = UserDefaults.standard.image(forKey:"anyKey") {
+ print(myLoadedImage.size)  // "(719.0, 808.0)"
+ }
+ 
+ let myImagesArray = [myImage, myImage]
+ UserDefaults.standard.set(imageArray: myImagesArray, forKey: "imageArrayKey")
+ if let myLoadedImages = UserDefaults.standard.imageArray(forKey:"imageArrayKey") {
+ print(myLoadedImages.count)  // 2
+ }*/
+        callCoffeeAlamo(url: getCoffeeURL)
+        callTeaAlamo(url: getTeaURL)
         
-        let myImage = UIImage(data: try! Data(contentsOf: URL(string:"https://i.stack.imgur.com/Xs4RX.jpg")!))!
-        UserDefaults.standard.set(image: myImage, forKey: "anyKey")
-        if let myLoadedImage = UserDefaults.standard.image(forKey:"anyKey") {
-            print(myLoadedImage.size)  // "(719.0, 808.0)"
-        }
         
-        let myImagesArray = [myImage, myImage]
-        UserDefaults.standard.set(imageArray: myImagesArray, forKey: "imageArrayKey")
-        if let myLoadedImages = UserDefaults.standard.imageArray(forKey:"imageArrayKey") {
-            print(myLoadedImages.count)  // 2
-        }
-        
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,6 +66,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     //MARK: Functions
+    func callCoffeeAlamo(url: String){
+        Alamofire.request(url).responseJSON(completionHandler: { response in
+            Coffee.parseData(JSONData: response.data!)
+            self.coffeeCounter.text = String(Coffee.sharedInstance.cupCounter)
+        
+        })
+    }
+    
+    func callTeaAlamo(url: String){
+        Alamofire.request(url).responseJSON(completionHandler: { response in
+            Tea.parseData(JSONData: response.data!)
+            self.teaCountLabel.text = String(Tea.sharedInstance.cupCounter)
+            
+        })
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
         
@@ -170,9 +193,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 }
 
 extension UserDefaults {
-    func set(image: UIImage?, forKey key: String) {
+    func set(_ image: UIImage?, forKey key: String) {
         guard let image = image else {
-            set(nil, forKey: key)
             return
         }
         set(UIImageJPEGRepresentation(image, 1.0), forKey: key)
@@ -184,7 +206,6 @@ extension UserDefaults {
     }
     func set(imageArray value: [UIImage]?, forKey key: String) {
         guard let value = value else {
-            set(nil, forKey: key)
             return
         }
         set(NSKeyedArchiver.archivedData(withRootObject: value), forKey: key)

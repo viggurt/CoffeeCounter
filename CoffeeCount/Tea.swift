@@ -18,4 +18,23 @@ class Tea{
 
     var cupCounter = 0
 
+    static func parseData(JSONData: Data){
+        do{
+            let readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! [[String: AnyObject]]
+            
+            for dict in readableJSON{
+                let sum = dict["sum"] as? Int
+                
+                //For the tea
+                Tea.sharedInstance.cupCounter = sum!
+                
+            }
+            
+        } catch{
+            print(error)
+        }
+        
+        
+    }
+
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E386FB5B21F156DDFFC70A0 /* Pods_CoffeeCount.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49156E3CDCC67D2184197552 /* Pods_CoffeeCount.framework */; };
 		935C67701DAF7E32009F77E8 /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C676F1DAF7E32009F77E8 /* Coffee.swift */; };
 		935C67721DAF7E3A009F77E8 /* Tea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C67711DAF7E3A009F77E8 /* Tea.swift */; };
 		935C67741DAF7E47009F77E8 /* CoffeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C67731DAF7E47009F77E8 /* CoffeCreator.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		49156E3CDCC67D2184197552 /* Pods_CoffeeCount.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoffeeCount.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		935C676F1DAF7E32009F77E8 /* Coffee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
 		935C67711DAF7E3A009F77E8 /* Tea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tea.swift; sourceTree = "<group>"; };
 		935C67731DAF7E47009F77E8 /* CoffeCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeCreator.swift; sourceTree = "<group>"; };
@@ -28,6 +30,8 @@
 		93EE9A521DA7C40B00C2D605 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93EE9A551DA7C40B00C2D605 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93EE9A571DA7C40B00C2D605 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97DA986C3BAC2F62FB91184A /* Pods-CoffeeCount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeCount.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeeCount/Pods-CoffeeCount.release.xcconfig"; sourceTree = "<group>"; };
+		F9AE46EE6CE694B08AC9895B /* Pods-CoffeeCount.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeCount.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeeCount/Pods-CoffeeCount.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E386FB5B21F156DDFFC70A0 /* Pods_CoffeeCount.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		366483F307A66F8118288B69 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F9AE46EE6CE694B08AC9895B /* Pods-CoffeeCount.debug.xcconfig */,
+				97DA986C3BAC2F62FB91184A /* Pods-CoffeeCount.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		93EE9A3F1DA7C40B00C2D605 = {
 			isa = PBXGroup;
 			children = (
 				93EE9A4A1DA7C40B00C2D605 /* CoffeeCount */,
 				93EE9A491DA7C40B00C2D605 /* Products */,
+				366483F307A66F8118288B69 /* Pods */,
+				FC3D0390544353FD915E3FC2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +89,14 @@
 			path = CoffeeCount;
 			sourceTree = "<group>";
 		};
+		FC3D0390544353FD915E3FC2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49156E3CDCC67D2184197552 /* Pods_CoffeeCount.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -80,9 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93EE9A5A1DA7C40B00C2D605 /* Build configuration list for PBXNativeTarget "CoffeeCount" */;
 			buildPhases = (
+				21D5078D32FE4EC99D0F0267 /* 📦 Check Pods Manifest.lock */,
 				93EE9A441DA7C40B00C2D605 /* Sources */,
 				93EE9A451DA7C40B00C2D605 /* Frameworks */,
 				93EE9A461DA7C40B00C2D605 /* Resources */,
+				2BC75E45D8DF50F25E56EB1D /* 📦 Embed Pods Frameworks */,
+				F90C35D6D4AF10BEC0233CFB /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -106,6 +133,7 @@
 					93EE9A471DA7C40B00C2D605 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = UC677ZFV39;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -140,6 +168,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21D5078D32FE4EC99D0F0267 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2BC75E45D8DF50F25E56EB1D /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoffeeCount/Pods-CoffeeCount-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F90C35D6D4AF10BEC0233CFB /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoffeeCount/Pods-CoffeeCount-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		93EE9A441DA7C40B00C2D605 /* Sources */ = {
@@ -271,6 +347,7 @@
 		};
 		93EE9A5B1DA7C40B00C2D605 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9AE46EE6CE694B08AC9895B /* Pods-CoffeeCount.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UC677ZFV39;
@@ -284,6 +361,7 @@
 		};
 		93EE9A5C1DA7C40B00C2D605 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97DA986C3BAC2F62FB91184A /* Pods-CoffeeCount.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UC677ZFV39;
