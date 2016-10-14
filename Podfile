@@ -4,4 +4,5 @@ use_frameworks!
 
 target 'CoffeeCount' do
 pod 'Alamofire', '~> 4.0'
+pod 'Canvas'
 end
