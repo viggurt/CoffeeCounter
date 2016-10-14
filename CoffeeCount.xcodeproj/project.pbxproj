@@ -276,7 +276,7 @@
 				DEVELOPMENT_TEAM = UC677ZFV39;
 				INFOPLIST_FILE = CoffeeCount/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = se.viggurt.CoffeeCount;
+				PRODUCT_BUNDLE_IDENTIFIER = se.viggurt.CoffeeCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -289,7 +289,7 @@
 				DEVELOPMENT_TEAM = UC677ZFV39;
 				INFOPLIST_FILE = CoffeeCount/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = se.viggurt.CoffeeCount;
+				PRODUCT_BUNDLE_IDENTIFIER = se.viggurt.CoffeeCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

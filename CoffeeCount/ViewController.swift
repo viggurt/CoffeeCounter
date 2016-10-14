@@ -20,8 +20,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var teaTimerLabel: UILabel!
     @IBOutlet weak var coffeeCreatorTimer: UILabel!
     
+    @IBOutlet weak var pictureImageView: UIImageView!
+    
     //MARK: Variables
     var cameraCount = 3
+    var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +37,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
          self.coffeeCreator.layer.cornerRadius = self.teaButton.frame.height/2
          self.coffeeCreator.clipsToBounds = true
          */
+        
+        let myImage = UIImage(data: try! Data(contentsOf: URL(string:"https://i.stack.imgur.com/Xs4RX.jpg")!))!
+        UserDefaults.standard.set(image: myImage, forKey: "anyKey")
+        if let myLoadedImage = UserDefaults.standard.image(forKey:"anyKey") {
+            print(myLoadedImage.size)  // "(719.0, 808.0)"
+        }
+        
+        let myImagesArray = [myImage, myImage]
+        UserDefaults.standard.set(imageArray: myImagesArray, forKey: "imageArrayKey")
+        if let myLoadedImages = UserDefaults.standard.imageArray(forKey:"imageArrayKey") {
+            print(myLoadedImages.count)  // 2
+        }
+        
 
     }
 
@@ -43,10 +59,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     //MARK: Functions
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        
+        pictureImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
+    }
+    
     func updateTeaTimer(){
         Tea.sharedInstance.counter += 1
         teaTimerLabel.text = "\(Tea.sharedInstance.counter) seconds"
-        
+        //Realm.io
+        //Alamofire <- HTTP
         if Tea.sharedInstance.counter == 60 {
             Tea.sharedInstance.counter = 1
             Tea.sharedInstance.timer.invalidate()
@@ -102,19 +126,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     }
     
-    func updateCameraCountdown(){
-        cameraCount = 3
-        
-        if cameraCount > 0 {
-            cameraCount -= 1
-            print(cameraCount)
-        }
-        
-        
-        
-        
-    }
-    
     //MARK: Actions
     @IBAction func teaButtonPressed(_ sender: AnyObject) {
         Tea.sharedInstance.counter = 0
@@ -129,7 +140,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func coffeeButtonPressed(_ sender: AnyObject) {
         Coffee.sharedInstance.counter = 0
         Coffee.sharedInstance.timer.invalidate()
-        coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter) min"
+        coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter) seconds"
         Coffee.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateCoffeeTimer), userInfo: nil, repeats: true)
         
         Coffee.sharedInstance.cupCounter += 1
@@ -139,22 +150,50 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func coffeeCreatorButtonPressed(_ sender: AnyObject) {
         CoffeeCreator.sharedInstance.counter = 0
         CoffeeCreator.sharedInstance.timer.invalidate()
-        coffeeCreatorTimer.text = "\(CoffeeCreator.sharedInstance.counter) min"
+        coffeeCreatorTimer.text = "\(CoffeeCreator.sharedInstance.counter) seconds"
         CoffeeCreator.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateCoffeeCreatorTimer), userInfo: nil, repeats: true)
         
         //Access camera on press
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-            var imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.front
             imagePicker.allowsEditing = false
             self.present(imagePicker, animated: true, completion: nil)
-            var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCameraCountdown), userInfo: nil, repeats: true)
+           
         }
-        
         //Start countdown
         
         //Store picture backend
+        
+    }
+}
+
+extension UserDefaults {
+    func set(image: UIImage?, forKey key: String) {
+        guard let image = image else {
+            set(nil, forKey: key)
+            return
+        }
+        set(UIImageJPEGRepresentation(image, 1.0), forKey: key)
+    }
+    func image(forKey key:String) -> UIImage? {
+        guard let data = data(forKey: key), let image = UIImage(data: data )
+            else  { return nil }
+        return image
+    }
+    func set(imageArray value: [UIImage]?, forKey key: String) {
+        guard let value = value else {
+            set(nil, forKey: key)
+            return
+        }
+        set(NSKeyedArchiver.archivedData(withRootObject: value), forKey: key)
+    }
+    func imageArray(forKey key:String) -> [UIImage]? {
+        guard  let data = data(forKey: key),
+            let imageArray = NSKeyedUnarchiver.unarchiveObject(with: data) as? [UIImage]
+            else { return nil }
+        return imageArray
     }
 }
 
