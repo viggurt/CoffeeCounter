@@ -32,8 +32,6 @@ class Coffee {
         } catch{
             print(error)
         }
-        
-        
     }
 
 }

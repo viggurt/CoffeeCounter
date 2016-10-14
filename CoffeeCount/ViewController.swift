@@ -31,6 +31,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var getCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffe-count/12h?forceUpdate=true"
     var getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/12h?forceUpdate=true"
     
+    var putCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffe-count/1"
+    var putTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/1"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -67,7 +70,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //MARK: Functions
     func callCoffeeAlamo(url: String){
-        Alamofire.request(url).responseJSON(completionHandler: { response in
+        Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
             Coffee.parseData(JSONData: response.data!)
             self.coffeeCounter.text = String(Coffee.sharedInstance.cupCounter)
         
@@ -75,11 +78,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func callTeaAlamo(url: String){
-        Alamofire.request(url).responseJSON(completionHandler: { response in
+        Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
             Tea.parseData(JSONData: response.data!)
             self.teaCountLabel.text = String(Tea.sharedInstance.cupCounter)
             
         })
+    }
+    
+    func putAlamo(url: String){
+        Alamofire.request(url, method: .put)
+
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -158,6 +166,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         Tea.sharedInstance.cupCounter += 1
         teaCountLabel.text = "\(Tea.sharedInstance.cupCounter)"
+        
+        //Add data
+        putAlamo(url: putTeaURL)
     }
     
     @IBAction func coffeeButtonPressed(_ sender: AnyObject) {
@@ -168,6 +179,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         Coffee.sharedInstance.cupCounter += 1
         coffeeCounter.text = "\(Coffee.sharedInstance.cupCounter)"
+        
+        //Add data
+        putAlamo(url: putCoffeeURL)
     }
     
     @IBAction func coffeeCreatorButtonPressed(_ sender: AnyObject) {
