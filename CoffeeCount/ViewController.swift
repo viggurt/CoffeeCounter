@@ -8,10 +8,15 @@
 
 import UIKit
 import Alamofire
+import Canvas
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
     //MARK: Outlets
+    
+    @IBOutlet weak var coffeeButtonAnimationView: CSAnimationView!
+    @IBOutlet weak var teaButtonAnimationView: CSAnimationView!
+    
+    
     @IBOutlet weak var teaButton: UIButton!
     @IBOutlet weak var coffeeButton: UIButton!
     @IBOutlet weak var coffeeCreator: UIButton!
@@ -42,9 +47,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
          self.teaButton.clipsToBounds = true
          self.coffeeButton.layer.cornerRadius = self.teaButton.frame.height/2
          self.coffeeButton.clipsToBounds = true
-         self.coffeeCreator.layer.cornerRadius = self.teaButton.frame.height/2
-         self.coffeeCreator.clipsToBounds = true
-         */
+ 
+ */
+ 
 /*
  let myImage = UIImage(data: try! Data(contentsOf: URL(string:"https://i.stack.imgur.com/Xs4RX.jpg")!))!
  UserDefaults.standard.set(image: myImage, forKey: "anyKey")
@@ -169,6 +174,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         //Add data
         putAlamo(url: putTeaURL)
+        teaButtonAnimationView.startCanvasAnimation()
     }
     
     @IBAction func coffeeButtonPressed(_ sender: AnyObject) {
@@ -182,14 +188,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         //Add data
         putAlamo(url: putCoffeeURL)
+        coffeeButtonAnimationView.startCanvasAnimation()
+        
     }
     
     @IBAction func coffeeCreatorButtonPressed(_ sender: AnyObject) {
-        CoffeeCreator.sharedInstance.counter = 0
+       /* CoffeeCreator.sharedInstance.counter = 0
         CoffeeCreator.sharedInstance.timer.invalidate()
         coffeeCreatorTimer.text = "\(CoffeeCreator.sharedInstance.counter) seconds"
         CoffeeCreator.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateCoffeeCreatorTimer), userInfo: nil, repeats: true)
-        
+        */
         //Access camera on press
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             imagePicker.delegate = self
