@@ -16,6 +16,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var coffeeButtonAnimationView: CSAnimationView!
     @IBOutlet weak var teaButtonAnimationView: CSAnimationView!
     
+    @IBOutlet var myView: UIView!
     
     @IBOutlet weak var teaButton: UIButton!
     @IBOutlet weak var coffeeButton: UIButton!
@@ -66,11 +67,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         callTeaAlamo(url: getTeaURL)
         
         
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: Layout Functions
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+
+        
     }
     
     //MARK: Functions
@@ -95,6 +103,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     }
     
+    func dismissFullscreenImage(sender: UITapGestureRecognizer) {
+        sender.view?.removeFromSuperview()
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
         
@@ -104,19 +116,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func updateTeaTimer(){
         Tea.sharedInstance.counter += 1
-        teaTimerLabel.text = "\(Tea.sharedInstance.counter) seconds"
+        teaTimerLabel.text = "\(Tea.sharedInstance.counter) seconds ago"
         //Realm.io
         //Alamofire <- HTTP
         if Tea.sharedInstance.counter == 60 {
             Tea.sharedInstance.counter = 1
             Tea.sharedInstance.timer.invalidate()
-            teaTimerLabel.text = "\(Tea.sharedInstance.counter) min"
+            teaTimerLabel.text = "\(Tea.sharedInstance.counter) min ago"
             Tea.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 60, target:self, selector: #selector(updateTeaTimer), userInfo: nil, repeats: true)
             
             if Tea.sharedInstance.counter == 60 {
                 Tea.sharedInstance.counter = 1
                 Tea.sharedInstance.timer.invalidate()
-                teaTimerLabel.text = "\(Tea.sharedInstance.counter)h"
+                teaTimerLabel.text = "\(Tea.sharedInstance.counter)h ago"
                 Tea.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 3600, target:self, selector: #selector(updateTeaTimer), userInfo: nil, repeats: true)
             }
         }
@@ -124,49 +136,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func updateCoffeeTimer(){
         Coffee.sharedInstance.counter += 1
-        coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter) seconds"
+        coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter) seconds ago"
        
         if Coffee.sharedInstance.counter == 60 {
             Coffee.sharedInstance.counter = 1
-            Coffee.sharedInstance.timer.invalidate()
-            coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter) min"
+            coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter) min ago"
             Coffee.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 60, target:self, selector: #selector(updateTeaTimer), userInfo: nil, repeats: true)
             
             if Coffee.sharedInstance.counter == 60 {
                 Coffee.sharedInstance.counter = 1
                 Coffee.sharedInstance.timer.invalidate()
-                coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter)h"
+                coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter)h ago"
                 Coffee.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 3600, target:self, selector: #selector(updateCoffeeTimer), userInfo: nil, repeats: true)
             }
         }
 
     }
     
-    func updateCoffeeCreatorTimer(){
-        CoffeeCreator.sharedInstance.counter += 1
-        coffeeCreatorTimer.text = "\(CoffeeCreator.sharedInstance.counter) seconds"
-        
-        if CoffeeCreator.sharedInstance.counter == 60 {
-            CoffeeCreator.sharedInstance.counter = 1
-            CoffeeCreator.sharedInstance.timer.invalidate()
-            coffeeCreatorTimer.text = "\(CoffeeCreator.sharedInstance.counter) min"
-            CoffeeCreator.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 60, target:self, selector: #selector(updateTeaTimer), userInfo: nil, repeats: true)
-            
-            if CoffeeCreator.sharedInstance.counter == 60 {
-                CoffeeCreator.sharedInstance.counter = 1
-                CoffeeCreator.sharedInstance.timer.invalidate()
-                coffeeCreatorTimer.text = "\(CoffeeCreator.sharedInstance.counter)h"
-                CoffeeCreator.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 3600, target:self, selector: #selector(updateCoffeeCreatorTimer), userInfo: nil, repeats: true)
-            }
-        }
-
-    }
     
     //MARK: Actions
     @IBAction func teaButtonPressed(_ sender: AnyObject) {
         Tea.sharedInstance.counter = 0
         Tea.sharedInstance.timer.invalidate()
-        teaTimerLabel.text = "\(Tea.sharedInstance.counter) seconds"
+        teaTimerLabel.text = "\(Tea.sharedInstance.counter) seconds ago"
         Tea.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateTeaTimer), userInfo: nil, repeats: true)
         
         Tea.sharedInstance.cupCounter += 1
@@ -180,7 +172,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func coffeeButtonPressed(_ sender: AnyObject) {
         Coffee.sharedInstance.counter = 0
         Coffee.sharedInstance.timer.invalidate()
-        coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter) seconds"
+        coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter) seconds ago"
         Coffee.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateCoffeeTimer), userInfo: nil, repeats: true)
         
         Coffee.sharedInstance.cupCounter += 1
@@ -193,11 +185,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func coffeeCreatorButtonPressed(_ sender: AnyObject) {
-       /* CoffeeCreator.sharedInstance.counter = 0
-        CoffeeCreator.sharedInstance.timer.invalidate()
-        coffeeCreatorTimer.text = "\(CoffeeCreator.sharedInstance.counter) seconds"
-        CoffeeCreator.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateCoffeeCreatorTimer), userInfo: nil, repeats: true)
-        */
         //Access camera on press
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             imagePicker.delegate = self
@@ -212,8 +199,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Store picture backend
         
     }
+
+    //http://stackoverflow.com/questions/34694377/swift-how-can-i-make-an-image-full-screen-when-clicked-and-then-original-size
+    @IBAction func imageTapped(sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = self.view.frame
+        newImageView.backgroundColor = .white
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(sender:)) )
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+    }
 }
 
+//Extension for the camera
 extension UserDefaults {
     func set(_ image: UIImage?, forKey key: String) {
         guard let image = image else {
