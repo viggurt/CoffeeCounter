@@ -13,9 +13,7 @@ class Tea{
     static var sharedInstance = Tea()
 
     var timer = Timer()
-
     var counter = 0
-
     var cupCounter = 0
 
     static func parseData(JSONData: Data){

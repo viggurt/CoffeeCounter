@@ -32,7 +32,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //MARK: Variables
     var cameraCount = 3
     var imagePicker = UIImagePickerController()
-
     
     var getCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffe-count/12h?forceUpdate=true"
     var getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/12h?forceUpdate=true"
@@ -77,7 +76,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //MARK: Layout Functions
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-
+        
         
     }
     
@@ -116,51 +115,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func updateTeaTimer(){
         Tea.sharedInstance.counter += 1
-        teaTimerLabel.text = "\(Tea.sharedInstance.counter) seconds ago"
+        teaTimerLabel.text = timeString(time: Tea.sharedInstance.counter)
         //Realm.io
         //Alamofire <- HTTP
-        if Tea.sharedInstance.counter == 60 {
-            Tea.sharedInstance.counter = 1
-            Tea.sharedInstance.timer.invalidate()
-            teaTimerLabel.text = "\(Tea.sharedInstance.counter) min ago"
-            Tea.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 60, target:self, selector: #selector(updateTeaTimer), userInfo: nil, repeats: true)
-            
-            if Tea.sharedInstance.counter == 60 {
-                Tea.sharedInstance.counter = 1
-                Tea.sharedInstance.timer.invalidate()
-                teaTimerLabel.text = "\(Tea.sharedInstance.counter)h ago"
-                Tea.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 3600, target:self, selector: #selector(updateTeaTimer), userInfo: nil, repeats: true)
-            }
-        }
     }
     
     func updateCoffeeTimer(){
         Coffee.sharedInstance.counter += 1
-        coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter) seconds ago"
-       
-        if Coffee.sharedInstance.counter == 60 {
-            Coffee.sharedInstance.counter = 1
-            coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter) min ago"
-            Coffee.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 60, target:self, selector: #selector(updateTeaTimer), userInfo: nil, repeats: true)
-            
-            if Coffee.sharedInstance.counter == 60 {
-                Coffee.sharedInstance.counter = 1
-                Coffee.sharedInstance.timer.invalidate()
-                coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter)h ago"
-                Coffee.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 3600, target:self, selector: #selector(updateCoffeeTimer), userInfo: nil, repeats: true)
-            }
-        }
+        coffeeTimerLabel.text = timeString(time: Coffee.sharedInstance.counter)
 
     }
     
+    //http://stackoverflow.com/questions/35215694/format-timer-label-to-hoursminutesseconds-in-swift
+    func timeString(time: Int) -> String {
+        let hours = time / 3600
+        let minutes = time / 60 % 60
+        return String(format:"%02i:%02i", hours, minutes)
+    }
+   
     
     //MARK: Actions
     @IBAction func teaButtonPressed(_ sender: AnyObject) {
         Tea.sharedInstance.counter = 0
         Tea.sharedInstance.timer.invalidate()
-        teaTimerLabel.text = "\(Tea.sharedInstance.counter) seconds ago"
         Tea.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateTeaTimer), userInfo: nil, repeats: true)
-        
+        teaTimerLabel.text = timeString(time: Tea.sharedInstance.counter)
         Tea.sharedInstance.cupCounter += 1
         teaCountLabel.text = "\(Tea.sharedInstance.cupCounter)"
         
@@ -172,9 +151,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func coffeeButtonPressed(_ sender: AnyObject) {
         Coffee.sharedInstance.counter = 0
         Coffee.sharedInstance.timer.invalidate()
-        coffeeTimerLabel.text = "\(Coffee.sharedInstance.counter) seconds ago"
         Coffee.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateCoffeeTimer), userInfo: nil, repeats: true)
-        
+        coffeeTimerLabel.text = timeString(time: Coffee.sharedInstance.counter)
         Coffee.sharedInstance.cupCounter += 1
         coffeeCounter.text = "\(Coffee.sharedInstance.cupCounter)"
         
@@ -203,14 +181,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //http://stackoverflow.com/questions/34694377/swift-how-can-i-make-an-image-full-screen-when-clicked-and-then-original-size
     @IBAction func imageTapped(sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
-        let newImageView = UIImageView(image: imageView.image)
-        newImageView.frame = self.view.frame
-        newImageView.backgroundColor = .white
-        newImageView.contentMode = .scaleAspectFit
-        newImageView.isUserInteractionEnabled = true
+        /* let newImageView = UIImageView(image: imageView.image)
+         newImageView.frame = self.view.frame
+         newImageView.backgroundColor = .white*/
+        let fullscreenPhoto = UIImageView(image: imageView.image)
+        fullscreenPhoto.backgroundColor = .white
+        fullscreenPhoto.frame = self.pictureImageView.frame
+        fullscreenPhoto.contentMode = .scaleAspectFit
+        self.view.addSubview(fullscreenPhoto)
+
+        fullscreenPhoto.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(sender:)) )
-        newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
+        
+        //Auto resizes when the screen is rotated!
+        fullscreenPhoto.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        let windowFrame = self.view.frame
+        UIView.animate(withDuration: 0.4, delay: 0.0, options: .beginFromCurrentState, animations: {
+            
+            fullscreenPhoto.frame = windowFrame
+            fullscreenPhoto.alpha = 1
+            
+            }, completion: { _ in
+        })
+        
+        fullscreenPhoto.addGestureRecognizer(tap)
+        
     }
 }
 
@@ -239,5 +235,22 @@ extension UserDefaults {
             else { return nil }
         return imageArray
     }
+}
+
+extension UIImage {
+
+    class func scaleImageToSize(img: UIImage, size: CGSize) -> UIImage{
+        
+        UIGraphicsBeginImageContext(size)
+        
+        img.draw(in: CGRect(origin: CGPoint.zero, size: size))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return scaledImage!
+    }
+    
 }
 
