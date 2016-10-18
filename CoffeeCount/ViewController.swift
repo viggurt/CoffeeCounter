@@ -77,7 +77,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //MARK: Layout Functions
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         
-        
+        if UIDevice.current.orientation.isLandscape{
+            coffeeCreator.isHidden = false
+        }
     }
     
     //MARK: Functions
