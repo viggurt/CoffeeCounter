@@ -12,12 +12,14 @@ import Canvas
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //MARK: Outlets
+    @IBOutlet weak var quoteLabel: UILabel!
     
     @IBOutlet weak var coffeeButtonAnimationView: CSAnimationView!
     @IBOutlet weak var teaButtonAnimationView: CSAnimationView!
-    
+    @IBOutlet weak var plusOneAnimationView: CSAnimationView!
     @IBOutlet var myView: UIView!
     
+    @IBOutlet weak var plusOneImage: UIImageView!
     @IBOutlet weak var teaButton: UIButton!
     @IBOutlet weak var coffeeButton: UIButton!
     @IBOutlet weak var coffeeCreator: UIButton!
@@ -39,33 +41,41 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var putCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffe-count/1"
     var putTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/1"
     
+    var teaImage = UIImage(named: "teaImage")
+    var coffeeImage = UIImage(named: "coffeeImage")
+    var quoteList: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        /*
-         self.teaButton.layer.cornerRadius = self.teaButton.frame.height/2
-         self.teaButton.clipsToBounds = true
-         self.coffeeButton.layer.cornerRadius = self.teaButton.frame.height/2
-         self.coffeeButton.clipsToBounds = true
- 
- */
- 
-/*
- let myImage = UIImage(data: try! Data(contentsOf: URL(string:"https://i.stack.imgur.com/Xs4RX.jpg")!))!
- UserDefaults.standard.set(image: myImage, forKey: "anyKey")
- if let myLoadedImage = UserDefaults.standard.image(forKey:"anyKey") {
- print(myLoadedImage.size)  // "(719.0, 808.0)"
- }
- 
- let myImagesArray = [myImage, myImage]
- UserDefaults.standard.set(imageArray: myImagesArray, forKey: "imageArrayKey")
- if let myLoadedImages = UserDefaults.standard.imageArray(forKey:"imageArrayKey") {
- print(myLoadedImages.count)  // 2
- }*/
+        quoteList = ["Wanna hear a joke? Decaf.",
+                     "What goes best with a cup of coffee? Another cup.",
+                     "Coffee should be black as hell, strong as death and sweet as love.",
+                     "Coffee! The most important meal of the day."]
+        
         callCoffeeAlamo(url: getCoffeeURL)
         callTeaAlamo(url: getTeaURL)
         
+        //Buttondesigns
+        teaButton.layer.cornerRadius = 5
+        coffeeButton.layer.cornerRadius = 10
+        coffeeCreator.layer.cornerRadius = coffeeCreator.bounds.size.width * 0.5
+
         
+        teaButton.layer.shadowColor = UIColor.lightGray.cgColor
+        teaButton.layer.shadowOffset = CGSize(width: 5, height: 5)
+        teaButton.layer.shadowRadius = 5
+        teaButton.layer.shadowOpacity = 1
+        
+        coffeeButton.layer.shadowColor = UIColor.lightGray.cgColor
+        coffeeButton.layer.shadowOffset = CGSize(width: 5, height: 5)
+        coffeeButton.layer.shadowRadius = 5
+        coffeeButton.layer.shadowOpacity = 1
+        
+        coffeeCreator.layer.shadowColor = UIColor.lightGray.cgColor
+        coffeeCreator.layer.shadowOffset = CGSize(width: 5, height: 5)
+        coffeeCreator.layer.shadowRadius = 5
+        coffeeCreator.layer.shadowOpacity = 1
         
     }
 
@@ -132,7 +142,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func timeString(time: Int) -> String {
         let hours = time / 3600
         let minutes = time / 60 % 60
-        return String(format:"%02i:%02i", hours, minutes)
+        let seconds = time % 60
+        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
    
     
@@ -148,6 +159,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Add data
         putAlamo(url: putTeaURL)
         teaButtonAnimationView.startCanvasAnimation()
+        plusOneImage.image = teaImage
+        myView.bringSubview(toFront: plusOneAnimationView)
+        plusOneAnimationView.startCanvasAnimation()
     }
     
     @IBAction func coffeeButtonPressed(_ sender: AnyObject) {
@@ -161,7 +175,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Add data
         putAlamo(url: putCoffeeURL)
         coffeeButtonAnimationView.startCanvasAnimation()
-        
+        plusOneImage.image = coffeeImage
+        myView.bringSubview(toFront: plusOneAnimationView)
+        plusOneAnimationView.startCanvasAnimation()
     }
     
     @IBAction func coffeeCreatorButtonPressed(_ sender: AnyObject) {
@@ -171,9 +187,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             imagePicker.sourceType = UIImagePickerControllerSourceType.camera
             imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.front
             imagePicker.allowsEditing = false
-            self.present(imagePicker, animated: true, completion: nil)
+            self.present(imagePicker, animated: true, completion: {
+                self.quoteLabel.text = ""
+                
+                let randomNum = Int(arc4random_uniform(UInt32(self.quoteList.count)))
+                
+                let result = self.quoteList[randomNum]
+                
+                self.quoteLabel.text = result
+            })
             
-           
         }
         //Start countdown
         
