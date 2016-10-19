@@ -78,7 +78,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         
         if UIDevice.current.orientation.isLandscape{
-            coffeeCreator.isHidden = false
+            
         }
     }
     
@@ -172,6 +172,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.front
             imagePicker.allowsEditing = false
             self.present(imagePicker, animated: true, completion: nil)
+            
            
         }
         //Start countdown
