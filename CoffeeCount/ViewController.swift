@@ -44,6 +44,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var teaImage = UIImage(named: "teaImage")
     var coffeeImage = UIImage(named: "coffeeImage")
     var quoteList: [String] = []
+    var failedPutURLStrings: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,8 +96,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //MARK: Functions
     func callCoffeeAlamo(url: String){
         Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
-            Coffee.parseData(JSONData: response.data!)
-            self.coffeeCounter.text = String(Coffee.sharedInstance.cupCounter)
+            switch response.result{
+            case .success(let data):
+                Coffee.parseData(JSONData: response.data!)
+                self.coffeeCounter.text = String(Coffee.sharedInstance.cupCounter)
+            case .failure(let error):
+                print("Request failed with error: \(error)")
+            }
         
         })
     }
@@ -110,7 +116,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func putAlamo(url: String){
-        Alamofire.request(url, method: .put)
+        print("putAlamo START")
+
+        let putRequest = Alamofire.request(url, method: .put).validate().responseJSON(completionHandler: { response in
+            
+            switch response.result {
+            case .success:
+                print("Validation Successful")
+                
+                for putUrl in 0..<self.failedPutURLStrings.count{
+                    self.putAlamo(url: self.failedPutURLStrings[putUrl])
+                }
+                print("removeAll")
+                self.failedPutURLStrings.removeAll()
+            case .failure:
+                print("putAlamo failure, adding url: \(url)")
+                self.failedPutURLStrings.append(url)
+            }
+        })
+        
 
     }
     
@@ -262,21 +286,3 @@ extension UserDefaults {
         return imageArray
     }
 }
-
-extension UIImage {
-
-    class func scaleImageToSize(img: UIImage, size: CGSize) -> UIImage{
-        
-        UIGraphicsBeginImageContext(size)
-        
-        img.draw(in: CGRect(origin: CGPoint.zero, size: size))
-        
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-        UIGraphicsEndImageContext()
-        
-        return scaledImage!
-    }
-    
-}
-
