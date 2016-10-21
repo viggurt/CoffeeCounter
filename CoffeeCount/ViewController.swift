@@ -10,21 +10,30 @@ import UIKit
 import Alamofire
 import Canvas
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
     //MARK: Outlets
     @IBOutlet weak var quoteLabel: UILabel!
     
     @IBOutlet weak var coffeeButtonAnimationView: CSAnimationView!
     @IBOutlet weak var teaButtonAnimationView: CSAnimationView!
     @IBOutlet weak var plusOneAnimationView: CSAnimationView!
+    @IBOutlet weak var teaTotalNumberAnimationView: CSAnimationView!
+    @IBOutlet weak var coffeeTotalNumberAnimationView: CSAnimationView!
+    
+    
     @IBOutlet var myView: UIView!
     
     @IBOutlet weak var plusOneImage: UIImageView!
     @IBOutlet weak var teaButton: UIButton!
     @IBOutlet weak var coffeeButton: UIButton!
     @IBOutlet weak var coffeeCreator: UIButton!
+    @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var coffeeCounter: UILabel!
     @IBOutlet weak var teaCountLabel: UILabel!
+    
+    @IBOutlet weak var coffeeOverTimeLabel: UILabel!
+    
+    @IBOutlet weak var teaOverTimeLabel: UILabel!
     @IBOutlet weak var coffeeTimerLabel: UILabel!
     @IBOutlet weak var teaTimerLabel: UILabel!
     @IBOutlet weak var coffeeCreatorTimer: UILabel!
@@ -35,8 +44,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var cameraCount = 3
     var imagePicker = UIImagePickerController()
     
-    var getCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffe-count/12h?forceUpdate=true"
-    var getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/12h?forceUpdate=true"
+    
     
     var putCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffe-count/1"
     var putTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/1"
@@ -54,14 +62,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                      "Coffee should be black as hell, strong as death and sweet as love.",
                      "Coffee! The most important meal of the day."]
         
-        callCoffeeAlamo(url: getCoffeeURL)
-        callTeaAlamo(url: getTeaURL)
+        callCoffeeAlamo(url: Coffee.sharedInstance.getCoffeeURL)
+        callTeaAlamo(url: Tea.sharedInstance.getTeaURL)
         
         //Buttondesigns
         teaButton.layer.cornerRadius = 5
         coffeeButton.layer.cornerRadius = 10
         coffeeCreator.layer.cornerRadius = coffeeCreator.bounds.size.width * 0.5
-
+        filterButton.layer.cornerRadius = coffeeCreator.bounds.size.width * 0.5
         
         teaButton.layer.shadowColor = UIColor.lightGray.cgColor
         teaButton.layer.shadowOffset = CGSize(width: 5, height: 5)
@@ -77,6 +85,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         coffeeCreator.layer.shadowOffset = CGSize(width: 5, height: 5)
         coffeeCreator.layer.shadowRadius = 5
         coffeeCreator.layer.shadowOpacity = 1
+        
+        filterButton.layer.shadowColor = UIColor.lightGray.cgColor
+        filterButton.layer.shadowOffset = CGSize(width: 5, height: 5)
+        filterButton.layer.shadowRadius = 5
+        filterButton.layer.shadowOpacity = 1
         
     }
 
@@ -115,6 +128,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
     }
     
+    func callCoffeeTotalAlamo(url: String){
+        Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
+            Coffee.parseTotalData(JSONData: response.data!)
+            self.coffeeOverTimeLabel.text = String(Coffee.sharedInstance.cupsOverTimeCounter)
+        })
+    }
+    
+    func callTeaTotalAlamo(url: String){
+        Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
+            Tea.parseTotalData(JSONData: response.data!)
+            self.teaOverTimeLabel.text = String(Tea.sharedInstance.cupsOverTimeCounter)
+        })
+    }
+    
     func putAlamo(url: String){
         print("putAlamo START")
 
@@ -149,19 +176,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
-    func updateTeaTimer(){
-        Tea.sharedInstance.counter += 1
-        teaTimerLabel.text = timeString(time: Tea.sharedInstance.counter)
-        //Realm.io
-        //Alamofire <- HTTP
-    }
-    
-    func updateCoffeeTimer(){
-        Coffee.sharedInstance.counter += 1
-        coffeeTimerLabel.text = timeString(time: Coffee.sharedInstance.counter)
-
-    }
-    
     //http://stackoverflow.com/questions/35215694/format-timer-label-to-hoursminutesseconds-in-swift
     func timeString(time: Int) -> String {
         let hours = time / 3600
@@ -180,12 +194,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         Tea.sharedInstance.cupCounter += 1
         teaCountLabel.text = "\(Tea.sharedInstance.cupCounter)"
         
+        if Tea.sharedInstance.cupsOverTimeCounter != 0{
+        Tea.sharedInstance.cupsOverTimeCounter += 1
+        teaOverTimeLabel.text = "\(Tea.sharedInstance.cupsOverTimeCounter)"
+        }
         //Add data
         putAlamo(url: putTeaURL)
         teaButtonAnimationView.startCanvasAnimation()
         plusOneImage.image = teaImage
         myView.bringSubview(toFront: plusOneAnimationView)
         plusOneAnimationView.startCanvasAnimation()
+        teaTotalNumberAnimationView.startCanvasAnimation()
     }
     
     @IBAction func coffeeButtonPressed(_ sender: AnyObject) {
@@ -196,12 +215,20 @@ Coffee.sharedInstance.timer.invalidate()
         Coffee.sharedInstance.cupCounter += 1
         coffeeCounter.text = "\(Coffee.sharedInstance.cupCounter)"
         
+        if Coffee.sharedInstance.cupsOverTimeCounter != 0{
+        Coffee.sharedInstance.cupsOverTimeCounter += 1
+        coffeeOverTimeLabel.text = "\(Coffee.sharedInstance.cupsOverTimeCounter)"
+        }
+        
         //Add data
         putAlamo(url: putCoffeeURL)
+        print(Coffee.sharedInstance.cupCounter)
+        print(Tea.sharedInstance.cupCounter)
         coffeeButtonAnimationView.startCanvasAnimation()
         plusOneImage.image = coffeeImage
         myView.bringSubview(toFront: plusOneAnimationView)
         plusOneAnimationView.startCanvasAnimation()
+        coffeeTotalNumberAnimationView.startCanvasAnimation()
     }
     
     @IBAction func coffeeCreatorButtonPressed(_ sender: AnyObject) {
@@ -224,10 +251,38 @@ Coffee.sharedInstance.timer.invalidate()
             })
             
         }
-        //Start countdown
         
-        //Store picture backend
+    }
+    
+    
+    @IBAction func filterButtonPressed(_ sender: AnyObject) {
         
+        let popoverContent = self.storyboard?.instantiateViewController(withIdentifier: "popOver") as? PopOverViewController
+        
+        popoverContent?.modalPresentationStyle = .popover
+        var popover = popoverContent?.popoverPresentationController
+        
+        if let popover = popoverContent?.popoverPresentationController {
+            
+            let viewForSource = sender as! UIView
+            popover.sourceView = viewForSource
+            
+            // the position of the popover where it's showed
+            popover.sourceRect = viewForSource.bounds
+            
+            // the size you want to display
+            popoverContent?.preferredContentSize = CGSize(width: 200,height: 150)
+            popover.delegate = self
+        }
+        
+        self.present(popoverContent!, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 
     //http://stackoverflow.com/questions/34694377/swift-how-can-i-make-an-image-full-screen-when-clicked-and-then-original-size
@@ -237,7 +292,6 @@ Coffee.sharedInstance.timer.invalidate()
          newImageView.frame = self.view.frame
          newImageView.backgroundColor = .white*/
         let fullscreenPhoto = UIImageView(image: imageView.image)
-        fullscreenPhoto.backgroundColor = .white
         fullscreenPhoto.frame = self.pictureImageView.frame
         fullscreenPhoto.contentMode = .scaleAspectFit
         self.view.addSubview(fullscreenPhoto)
@@ -253,12 +307,17 @@ Coffee.sharedInstance.timer.invalidate()
             
             fullscreenPhoto.frame = windowFrame
             fullscreenPhoto.alpha = 1
-            
+            fullscreenPhoto.backgroundColor = .white
             }, completion: { _ in
         })
         
         fullscreenPhoto.addGestureRecognizer(tap)
         
+    }
+    
+    @IBAction func unwindToMain(segue: UIStoryboardSegue){
+        callCoffeeTotalAlamo(url: Coffee.sharedInstance.getLatestURL)
+        callTeaTotalAlamo(url: Tea.sharedInstance.getLatestURL)
     }
 }
 

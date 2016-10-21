@@ -11,6 +11,8 @@
 		935C67701DAF7E32009F77E8 /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C676F1DAF7E32009F77E8 /* Coffee.swift */; };
 		935C67721DAF7E3A009F77E8 /* Tea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C67711DAF7E3A009F77E8 /* Tea.swift */; };
 		935C67741DAF7E47009F77E8 /* CoffeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C67731DAF7E47009F77E8 /* CoffeCreator.swift */; };
+		93954D2E1DBA087C0074D63C /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93954D2D1DBA087C0074D63C /* PopOverViewController.swift */; };
+		93954D301DBA3E570074D63C /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93954D2F1DBA3E560074D63C /* Singleton.swift */; };
 		93EE9A4C1DA7C40B00C2D605 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */; };
 		93EE9A4E1DA7C40B00C2D605 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4D1DA7C40B00C2D605 /* ViewController.swift */; };
 		93EE9A511DA7C40B00C2D605 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93EE9A4F1DA7C40B00C2D605 /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 		935C676F1DAF7E32009F77E8 /* Coffee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
 		935C67711DAF7E3A009F77E8 /* Tea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tea.swift; sourceTree = "<group>"; };
 		935C67731DAF7E47009F77E8 /* CoffeCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeCreator.swift; sourceTree = "<group>"; };
+		93954D2D1DBA087C0074D63C /* PopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
+		93954D2F1DBA3E560074D63C /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		93EE9A481DA7C40B00C2D605 /* CoffeeCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93EE9A4D1DA7C40B00C2D605 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +85,9 @@
 				935C676F1DAF7E32009F77E8 /* Coffee.swift */,
 				935C67711DAF7E3A009F77E8 /* Tea.swift */,
 				935C67731DAF7E47009F77E8 /* CoffeCreator.swift */,
+				93954D2F1DBA3E560074D63C /* Singleton.swift */,
 				93EE9A4F1DA7C40B00C2D605 /* Main.storyboard */,
+				93954D2D1DBA087C0074D63C /* PopOverViewController.swift */,
 				93EE9A521DA7C40B00C2D605 /* Assets.xcassets */,
 				93EE9A541DA7C40B00C2D605 /* LaunchScreen.storyboard */,
 				93EE9A571DA7C40B00C2D605 /* Info.plist */,
@@ -223,7 +229,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				935C67741DAF7E47009F77E8 /* CoffeCreator.swift in Sources */,
+				93954D301DBA3E570074D63C /* Singleton.swift in Sources */,
 				93EE9A4E1DA7C40B00C2D605 /* ViewController.swift in Sources */,
+				93954D2E1DBA087C0074D63C /* PopOverViewController.swift in Sources */,
 				93EE9A4C1DA7C40B00C2D605 /* AppDelegate.swift in Sources */,
 				935C67721DAF7E3A009F77E8 /* Tea.swift in Sources */,
 				935C67701DAF7E32009F77E8 /* Coffee.swift in Sources */,
