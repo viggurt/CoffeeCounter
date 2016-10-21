@@ -219,6 +219,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 let result = self.quoteList[randomNum]
                 
                 self.quoteLabel.text = result
+                
+                self.pictureImageView.isHidden = false
             })
             
         }
