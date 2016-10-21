@@ -173,10 +173,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //MARK: Actions
     @IBAction func teaButtonPressed(_ sender: AnyObject) {
-        Tea.sharedInstance.counter = 0
-        Tea.sharedInstance.timer.invalidate()
-        Tea.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateTeaTimer), userInfo: nil, repeats: true)
-        teaTimerLabel.text = timeString(time: Tea.sharedInstance.counter)
+/*Tea.sharedInstance.counter = 0
+ Tea.sharedInstance.timer.invalidate()
+ Tea.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateTeaTimer), userInfo: nil, repeats: true)
+ teaTimerLabel.text = timeString(time: Tea.sharedInstance.counter)*/
         Tea.sharedInstance.cupCounter += 1
         teaCountLabel.text = "\(Tea.sharedInstance.cupCounter)"
         
@@ -189,10 +189,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func coffeeButtonPressed(_ sender: AnyObject) {
-        Coffee.sharedInstance.counter = 0
-        Coffee.sharedInstance.timer.invalidate()
-        Coffee.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateCoffeeTimer), userInfo: nil, repeats: true)
-        coffeeTimerLabel.text = timeString(time: Coffee.sharedInstance.counter)
+/*Coffee.sharedInstance.counter = 0
+Coffee.sharedInstance.timer.invalidate()
+ Coffee.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateCoffeeTimer), userInfo: nil, repeats: true)
+ coffeeTimerLabel.text = timeString(time: Coffee.sharedInstance.counter)*/
         Coffee.sharedInstance.cupCounter += 1
         coffeeCounter.text = "\(Coffee.sharedInstance.cupCounter)"
         
@@ -249,7 +249,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         fullscreenPhoto.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         let windowFrame = self.view.frame
-        UIView.animate(withDuration: 0.4, delay: 0.0, options: .beginFromCurrentState, animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveLinear, animations: {
             
             fullscreenPhoto.frame = windowFrame
             fullscreenPhoto.alpha = 1
