@@ -17,8 +17,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var coffeeButtonAnimationView: CSAnimationView!
     @IBOutlet weak var teaButtonAnimationView: CSAnimationView!
     @IBOutlet weak var plusOneAnimationView: CSAnimationView!
-    @IBOutlet weak var teaTotalNumberAnimationView: CSAnimationView!
-    @IBOutlet weak var coffeeTotalNumberAnimationView: CSAnimationView!
+    
     
     
     @IBOutlet var myView: UIView!
@@ -27,24 +26,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var teaButton: UIButton!
     @IBOutlet weak var coffeeButton: UIButton!
     @IBOutlet weak var coffeeCreator: UIButton!
-    @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var coffeeCounter: UILabel!
     @IBOutlet weak var teaCountLabel: UILabel!
-    
-    @IBOutlet weak var coffeeOverTimeLabel: UILabel!
-    
-    @IBOutlet weak var teaOverTimeLabel: UILabel!
-    @IBOutlet weak var coffeeTimerLabel: UILabel!
-    @IBOutlet weak var teaTimerLabel: UILabel!
-    @IBOutlet weak var coffeeCreatorTimer: UILabel!
     
     @IBOutlet weak var pictureImageView: UIImageView!
     
     //MARK: Variables
     var cameraCount = 3
     var imagePicker = UIImagePickerController()
-    
-    
     
     var putCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffe-count/1"
     var putTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/1"
@@ -69,7 +58,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         teaButton.layer.cornerRadius = 5
         coffeeButton.layer.cornerRadius = 10
         coffeeCreator.layer.cornerRadius = coffeeCreator.bounds.size.width * 0.5
-        filterButton.layer.cornerRadius = coffeeCreator.bounds.size.width * 0.5
         
         teaButton.layer.shadowColor = UIColor.lightGray.cgColor
         teaButton.layer.shadowOffset = CGSize(width: 5, height: 5)
@@ -85,12 +73,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         coffeeCreator.layer.shadowOffset = CGSize(width: 5, height: 5)
         coffeeCreator.layer.shadowRadius = 5
         coffeeCreator.layer.shadowOpacity = 1
-        
-        filterButton.layer.shadowColor = UIColor.lightGray.cgColor
-        filterButton.layer.shadowOffset = CGSize(width: 5, height: 5)
-        filterButton.layer.shadowRadius = 5
-        filterButton.layer.shadowOpacity = 1
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,20 +110,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
     }
     
-    func callCoffeeTotalAlamo(url: String){
-        Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
-            Coffee.parseTotalData(JSONData: response.data!)
-            self.coffeeOverTimeLabel.text = String(Coffee.sharedInstance.cupsOverTimeCounter)
-        })
-    }
-    
-    func callTeaTotalAlamo(url: String){
-        Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
-            Tea.parseTotalData(JSONData: response.data!)
-            self.teaOverTimeLabel.text = String(Tea.sharedInstance.cupsOverTimeCounter)
-        })
-    }
-    
+/* func callCoffeeTotalAlamo(url: String){
+ Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
+ Coffee.parseTotalData(JSONData: response.data!)
+ self.coffeeOverTimeLabel.text = String(Coffee.sharedInstance.cupsOverTimeCounter)
+ })
+ }
+ 
+ func callTeaTotalAlamo(url: String){
+ Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
+ Tea.parseTotalData(JSONData: response.data!)
+ self.teaOverTimeLabel.text = String(Tea.sharedInstance.cupsOverTimeCounter)
+ })
+ }*/
+ 
     func putAlamo(url: String){
         print("putAlamo START")
 
@@ -194,17 +176,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         Tea.sharedInstance.cupCounter += 1
         teaCountLabel.text = "\(Tea.sharedInstance.cupCounter)"
         
-        if Tea.sharedInstance.cupsOverTimeCounter != 0{
-        Tea.sharedInstance.cupsOverTimeCounter += 1
-        teaOverTimeLabel.text = "\(Tea.sharedInstance.cupsOverTimeCounter)"
-        }
         //Add data
         putAlamo(url: putTeaURL)
         teaButtonAnimationView.startCanvasAnimation()
         plusOneImage.image = teaImage
         myView.bringSubview(toFront: plusOneAnimationView)
         plusOneAnimationView.startCanvasAnimation()
-        teaTotalNumberAnimationView.startCanvasAnimation()
     }
     
     @IBAction func coffeeButtonPressed(_ sender: AnyObject) {
@@ -215,10 +192,6 @@ Coffee.sharedInstance.timer.invalidate()
         Coffee.sharedInstance.cupCounter += 1
         coffeeCounter.text = "\(Coffee.sharedInstance.cupCounter)"
         
-        if Coffee.sharedInstance.cupsOverTimeCounter != 0{
-        Coffee.sharedInstance.cupsOverTimeCounter += 1
-        coffeeOverTimeLabel.text = "\(Coffee.sharedInstance.cupsOverTimeCounter)"
-        }
         
         //Add data
         putAlamo(url: putCoffeeURL)
@@ -228,7 +201,6 @@ Coffee.sharedInstance.timer.invalidate()
         plusOneImage.image = coffeeImage
         myView.bringSubview(toFront: plusOneAnimationView)
         plusOneAnimationView.startCanvasAnimation()
-        coffeeTotalNumberAnimationView.startCanvasAnimation()
     }
     
     @IBAction func coffeeCreatorButtonPressed(_ sender: AnyObject) {
@@ -253,33 +225,6 @@ Coffee.sharedInstance.timer.invalidate()
         }
         
     }
-    
-    
-    @IBAction func filterButtonPressed(_ sender: AnyObject) {
-        
-        let popoverContent = self.storyboard?.instantiateViewController(withIdentifier: "popOver") as? PopOverViewController
-        
-        popoverContent?.modalPresentationStyle = .popover
-        var popover = popoverContent?.popoverPresentationController
-        
-        if let popover = popoverContent?.popoverPresentationController {
-            
-            let viewForSource = sender as! UIView
-            popover.sourceView = viewForSource
-            
-            // the position of the popover where it's showed
-            popover.sourceRect = viewForSource.bounds
-            
-            // the size you want to display
-            popoverContent?.preferredContentSize = CGSize(width: 200,height: 150)
-            popover.delegate = self
-        }
-        
-        self.present(popoverContent!, animated: true, completion: nil)
-        
-    }
-    
-    
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
@@ -315,10 +260,6 @@ Coffee.sharedInstance.timer.invalidate()
         
     }
     
-    @IBAction func unwindToMain(segue: UIStoryboardSegue){
-        callCoffeeTotalAlamo(url: Coffee.sharedInstance.getLatestURL)
-        callTeaTotalAlamo(url: Tea.sharedInstance.getLatestURL)
-    }
 }
 
 //Extension for the camera

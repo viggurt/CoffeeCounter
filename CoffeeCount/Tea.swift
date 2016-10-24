@@ -15,7 +15,6 @@ class Tea{
     var timer = Timer()
     var counter = 0
     var cupCounter = 0
-    var cupsOverTimeCounter = 0
     var getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/12h?forceUpdate=true"
     var getLatestURL = ""
 
@@ -39,21 +38,23 @@ class Tea{
         
     }
     
-    static func parseTotalData(JSONData: Data){
+    static func parseTotalData(JSONData: Data) -> Int?{
         do{
             let readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! [[String: AnyObject]]
             
             for dict in readableJSON{
                 let sum = dict["sum"] as? Int
                 
-                //For the coffee
-                Tea.sharedInstance.cupsOverTimeCounter = sum!
+                return sum
                 
             }
             
         } catch{
             print(error)
+            return nil
         }
+        
+        return nil
     }
 
 }

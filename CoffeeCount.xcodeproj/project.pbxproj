@@ -11,11 +11,11 @@
 		935C67701DAF7E32009F77E8 /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C676F1DAF7E32009F77E8 /* Coffee.swift */; };
 		935C67721DAF7E3A009F77E8 /* Tea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C67711DAF7E3A009F77E8 /* Tea.swift */; };
 		935C67741DAF7E47009F77E8 /* CoffeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C67731DAF7E47009F77E8 /* CoffeCreator.swift */; };
-		93954D2E1DBA087C0074D63C /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93954D2D1DBA087C0074D63C /* PopOverViewController.swift */; };
 		93954D301DBA3E570074D63C /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93954D2F1DBA3E560074D63C /* Singleton.swift */; };
+		93954D331DBDE8440074D63C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93954D311DBDE8440074D63C /* Main.storyboard */; };
+		93954D351DBE00D70074D63C /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93954D341DBE00D70074D63C /* StatisticsViewController.swift */; };
 		93EE9A4C1DA7C40B00C2D605 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */; };
 		93EE9A4E1DA7C40B00C2D605 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4D1DA7C40B00C2D605 /* ViewController.swift */; };
-		93EE9A511DA7C40B00C2D605 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93EE9A4F1DA7C40B00C2D605 /* Main.storyboard */; };
 		93EE9A531DA7C40B00C2D605 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93EE9A521DA7C40B00C2D605 /* Assets.xcassets */; };
 		93EE9A561DA7C40B00C2D605 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93EE9A541DA7C40B00C2D605 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -25,12 +25,12 @@
 		935C676F1DAF7E32009F77E8 /* Coffee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
 		935C67711DAF7E3A009F77E8 /* Tea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tea.swift; sourceTree = "<group>"; };
 		935C67731DAF7E47009F77E8 /* CoffeCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeCreator.swift; sourceTree = "<group>"; };
-		93954D2D1DBA087C0074D63C /* PopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
 		93954D2F1DBA3E560074D63C /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		93954D321DBDE8440074D63C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		93954D341DBE00D70074D63C /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		93EE9A481DA7C40B00C2D605 /* CoffeeCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93EE9A4D1DA7C40B00C2D605 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		93EE9A501DA7C40B00C2D605 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93EE9A521DA7C40B00C2D605 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93EE9A551DA7C40B00C2D605 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93EE9A571DA7C40B00C2D605 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,9 +86,9 @@
 				935C67711DAF7E3A009F77E8 /* Tea.swift */,
 				935C67731DAF7E47009F77E8 /* CoffeCreator.swift */,
 				93954D2F1DBA3E560074D63C /* Singleton.swift */,
-				93EE9A4F1DA7C40B00C2D605 /* Main.storyboard */,
-				93954D2D1DBA087C0074D63C /* PopOverViewController.swift */,
+				93954D341DBE00D70074D63C /* StatisticsViewController.swift */,
 				93EE9A521DA7C40B00C2D605 /* Assets.xcassets */,
+				93954D311DBDE8440074D63C /* Main.storyboard */,
 				93EE9A541DA7C40B00C2D605 /* LaunchScreen.storyboard */,
 				93EE9A571DA7C40B00C2D605 /* Info.plist */,
 			);
@@ -167,9 +167,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93954D331DBDE8440074D63C /* Main.storyboard in Resources */,
 				93EE9A561DA7C40B00C2D605 /* LaunchScreen.storyboard in Resources */,
 				93EE9A531DA7C40B00C2D605 /* Assets.xcassets in Resources */,
-				93EE9A511DA7C40B00C2D605 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,20 +231,20 @@
 				935C67741DAF7E47009F77E8 /* CoffeCreator.swift in Sources */,
 				93954D301DBA3E570074D63C /* Singleton.swift in Sources */,
 				93EE9A4E1DA7C40B00C2D605 /* ViewController.swift in Sources */,
-				93954D2E1DBA087C0074D63C /* PopOverViewController.swift in Sources */,
 				93EE9A4C1DA7C40B00C2D605 /* AppDelegate.swift in Sources */,
 				935C67721DAF7E3A009F77E8 /* Tea.swift in Sources */,
 				935C67701DAF7E32009F77E8 /* Coffee.swift in Sources */,
+				93954D351DBE00D70074D63C /* StatisticsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		93EE9A4F1DA7C40B00C2D605 /* Main.storyboard */ = {
+		93954D311DBDE8440074D63C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				93EE9A501DA7C40B00C2D605 /* Base */,
+				93954D321DBDE8440074D63C /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

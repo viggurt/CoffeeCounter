@@ -12,4 +12,7 @@ class Singleton {
  static var sharedInstance = Singleton()
     
     var segmentState = 55
+    
+    
+    
 }
