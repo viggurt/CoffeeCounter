@@ -46,11 +46,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        quoteList = ["Wanna hear a joke? Decaf.",
-                     "What goes best with a cup of coffee? Another cup.",
-                     "Coffee should be black as hell, strong as death and sweet as love.",
-                     "Coffee! The most important meal of the day."]
-        
+/*quoteList = ["Wanna hear a joke? Decaf.",
+ "What goes best with a cup of coffee? Another cup.",
+ "Coffee should be black as hell, strong as death and sweet as love.",
+ "Coffee! The most important meal of the day."]*/
+ 
         callCoffeeAlamo(url: Coffee.sharedInstance.getCoffeeURL)
         callTeaAlamo(url: Tea.sharedInstance.getTeaURL)
         
@@ -211,14 +211,15 @@ Coffee.sharedInstance.timer.invalidate()
             imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.front
             imagePicker.allowsEditing = false
             self.present(imagePicker, animated: true, completion: {
-                self.quoteLabel.text = ""
+                //self.quoteLabel.text = ""
                 
-                let randomNum = Int(arc4random_uniform(UInt32(self.quoteList.count)))
-                
-                let result = self.quoteList[randomNum]
-                
-                self.quoteLabel.text = result
-                
+/*let randomNum = Int(arc4random_uniform(UInt32(self.quoteList.count)))
+ 
+ let result = self.quoteList[randomNum]
+ 
+ self.quoteLabel.text = result*/
+ 
+                self.quoteLabel.isHidden = false
                 self.pictureImageView.isHidden = false
             })
             
