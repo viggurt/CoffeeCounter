@@ -759,48 +759,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLj-lj-BzH">
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Zu-y9-yBe" customClass="CSAnimationView">
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be prepared!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4S-je-HNm">
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="N4S-je-HNm" firstAttribute="top" secondItem="7Zu-y9-yBe" secondAttribute="top" constant="41" id="ema-du-Ipf"/>
-                                            <constraint firstAttribute="height" constant="128" id="hsF-h7-vgz"/>
-                                            <constraint firstAttribute="bottom" secondItem="N4S-je-HNm" secondAttribute="bottom" constant="40" id="rCD-MD-JH7"/>
-                                            <constraint firstItem="N4S-je-HNm" firstAttribute="leading" secondItem="7Zu-y9-yBe" secondAttribute="leading" constant="4" id="tA1-Zc-WYF"/>
-                                            <constraint firstAttribute="trailing" secondItem="N4S-je-HNm" secondAttribute="trailing" constant="4" id="xYc-JH-yyk"/>
-                                            <constraint firstAttribute="width" constant="240" id="yen-nl-4TE"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="type" value="zoomIn"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="duration">
-                                                <real key="value" value="0.5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
-                                                <integer key="value" value="0"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Zu-y9-yBe" customClass="CSAnimationView">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be prepared!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4S-je-HNm">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                        <color key="textColor" red="0.82745098039999998" green="0.3294117647" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="7Zu-y9-yBe" secondAttribute="trailing" constant="68" id="dlu-HY-zyj"/>
-                                    <constraint firstItem="7Zu-y9-yBe" firstAttribute="leading" secondItem="xLj-lj-BzH" secondAttribute="leading" constant="67" id="rTO-FZ-HAL"/>
-                                    <constraint firstAttribute="bottom" secondItem="7Zu-y9-yBe" secondAttribute="bottom" constant="95" id="uuR-ZQ-raL"/>
+                                    <constraint firstItem="N4S-je-HNm" firstAttribute="top" secondItem="7Zu-y9-yBe" secondAttribute="top" id="RS0-QO-lKt"/>
+                                    <constraint firstItem="N4S-je-HNm" firstAttribute="leading" secondItem="7Zu-y9-yBe" secondAttribute="leading" id="eRZ-FC-mVD"/>
+                                    <constraint firstAttribute="trailing" secondItem="N4S-je-HNm" secondAttribute="trailing" id="qeP-pR-Yu3"/>
+                                    <constraint firstAttribute="bottom" secondItem="N4S-je-HNm" secondAttribute="bottom" id="xSu-5V-EVS"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="type" value="zoomIn"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xLj-lj-BzH" firstAttribute="leading" secondItem="8KA-u7-dcy" secondAttribute="leading" id="3ej-UG-sK5"/>
                             <constraint firstItem="3sw-gn-IWE" firstAttribute="top" secondItem="xLj-lj-BzH" secondAttribute="bottom" id="5AU-pf-3CP"/>
+                            <constraint firstItem="3sw-gn-IWE" firstAttribute="top" secondItem="7Zu-y9-yBe" secondAttribute="bottom" id="8Yh-8X-yh6"/>
                             <constraint firstAttribute="trailing" secondItem="xLj-lj-BzH" secondAttribute="trailing" id="QoL-jm-777"/>
+                            <constraint firstItem="7Zu-y9-yBe" firstAttribute="leading" secondItem="8KA-u7-dcy" secondAttribute="leadingMargin" constant="-16" id="crK-ij-x1y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Zu-y9-yBe" secondAttribute="trailing" constant="-18" id="jMO-7C-adk"/>
+                            <constraint firstItem="7Zu-y9-yBe" firstAttribute="top" secondItem="u9h-ap-hBZ" secondAttribute="bottom" constant="-64" id="qUN-Z1-nUA"/>
                             <constraint firstItem="xLj-lj-BzH" firstAttribute="top" secondItem="8KA-u7-dcy" secondAttribute="top" id="tU9-oj-dDE"/>
                         </constraints>
                     </view>

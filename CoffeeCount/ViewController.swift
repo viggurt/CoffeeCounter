@@ -37,6 +37,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var imagePicker = UIImagePickerController()
     
     var timer = Timer()
+    var getDataTimer = Timer()
     
     var putCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffe-count/1"
     var putTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/1"
@@ -99,10 +100,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         print("VIEW APPEARD")
         pictureImageView.image = Singleton.sharedInstance.myImage
+        updateGetData()
+        self.getDataTimer = Timer.scheduledTimer(timeInterval: 300, target:self, selector: #selector(self.updateGetData), userInfo: nil, repeats: true)
 
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        getDataTimer.invalidate()
+        print("VIEW DISSAPURRD")
+    }
+    
     //MARK: Functions
+    func updateGetData(){
+        print("updateGetData")
+        callCoffeeAlamo(url: Coffee.sharedInstance.getCoffeeURL)
+        callTeaAlamo(url: Tea.sharedInstance.getTeaURL)
+    }
+    
     func callCoffeeAlamo(url: String){
         Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
             switch response.result{
@@ -162,6 +177,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func dismissFullscreenImage(sender: UITapGestureRecognizer) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         sender.view?.removeFromSuperview()
     }
     
@@ -171,6 +187,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         pictureImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
     }
+    
     
     //http://stackoverflow.com/questions/35215694/format-timer-label-to-hoursminutesseconds-in-swift
     func timeString(time: Int) -> String {
@@ -245,6 +262,7 @@ Coffee.sharedInstance.timer.invalidate()
         }*/
  
         self.pictureImageView.isHidden = false
+        self.quoteLabel.isHidden = false
     }
  
     func updateTimer(){
@@ -260,7 +278,7 @@ Coffee.sharedInstance.timer.invalidate()
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
-
+    
     //http://stackoverflow.com/questions/34694377/swift-how-can-i-make-an-image-full-screen-when-clicked-and-then-original-size
     @IBAction func imageTapped(sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
@@ -284,8 +302,12 @@ Coffee.sharedInstance.timer.invalidate()
             fullscreenPhoto.frame = windowFrame
             fullscreenPhoto.alpha = 1
             fullscreenPhoto.backgroundColor = .white
+            
+            //
+        
             }, completion: { _ in
         })
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         fullscreenPhoto.addGestureRecognizer(tap)
         

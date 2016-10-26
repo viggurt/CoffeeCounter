@@ -15,8 +15,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet var myView: UIView!
     var captureSession: AVCaptureSession! = nil
     var stillImageOutput: AVCaptureStillImageOutput?
+    var cameraPosition: AVCaptureDevicePosition?
     var previewLayer: AVCaptureVideoPreviewLayer?
-    var cameraCount = 3
+    var cameraCount = 4
     var timer = Timer()
     @IBOutlet weak var countDownAnimationView: CSAnimationView!
     @IBOutlet weak var countDownLabel: UILabel!
@@ -48,15 +49,15 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         captureSession = AVCaptureSession()
         captureSession?.sessionPreset = AVCaptureSessionPreset1920x1080
-        
-        let backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-       
+        //let cameraDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        let cameraDevice = AVCaptureDevice.defaultDevice(withDeviceType: AVCaptureDeviceType.builtInWideAngleCamera , mediaType: AVMediaTypeVideo, position: AVCaptureDevicePosition.back)
+       print(cameraDevice!)
         
         
         let error: NSError? = nil
         
         do{
-        let input = try AVCaptureDeviceInput(device: backCamera)
+        let input = try AVCaptureDeviceInput(device: cameraDevice)
             
             print(captureSession.canAddInput(input))
             
@@ -64,23 +65,27 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                 captureSession?.addInput(input)
                 
                 stillImageOutput = AVCaptureStillImageOutput()
-                if captureSession?.addOutput(stillImageOutput) != nil{
-                    
+                if captureSession.canAddOutput(stillImageOutput){
+                    captureSession.addOutput(stillImageOutput)
                     previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
                     previewLayer?.videoGravity = AVLayerVideoGravityResizeAspect
                     previewLayer?.connection.videoOrientation = AVCaptureVideoOrientation.portrait
                     cameraView.layer.addSublayer(previewLayer!)
-                    captureSession?.startRunning()
                     stillImageOutput?.outputSettings = [AVVideoCodecKey:AVVideoCodecJPEG]
                     
                     timer.invalidate()
                     timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+                    
+                    captureSession?.startRunning()
+                    
+                    
+
                 }
-                   
+                
             }
             
         } catch{
-            print(error)
+            print("YOU GOT THIS ERROR \(error)")
         }
         
         
@@ -104,9 +109,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         countDownLabel.text = String(cameraCount)
         countDownAnimationView.startCanvasAnimation()
         if self.cameraCount == 0{
+            countDownLabel.text = "Snap!"
             self.timer.invalidate()
             capture()
-            self.cameraCount = 3
         }
     }
 
