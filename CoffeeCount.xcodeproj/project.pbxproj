@@ -14,6 +14,7 @@
 		93954D301DBA3E570074D63C /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93954D2F1DBA3E560074D63C /* Singleton.swift */; };
 		93954D331DBDE8440074D63C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93954D311DBDE8440074D63C /* Main.storyboard */; };
 		93954D351DBE00D70074D63C /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93954D341DBE00D70074D63C /* StatisticsViewController.swift */; };
+		93EE35BF1DBF7CC700C9B380 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE35BE1DBF7CC700C9B380 /* CameraViewController.swift */; };
 		93EE9A4C1DA7C40B00C2D605 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */; };
 		93EE9A4E1DA7C40B00C2D605 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4D1DA7C40B00C2D605 /* ViewController.swift */; };
 		93EE9A531DA7C40B00C2D605 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93EE9A521DA7C40B00C2D605 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		93954D2F1DBA3E560074D63C /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		93954D321DBDE8440074D63C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93954D341DBE00D70074D63C /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		93EE35BE1DBF7CC700C9B380 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		93EE9A481DA7C40B00C2D605 /* CoffeeCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93EE9A4D1DA7C40B00C2D605 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				935C67711DAF7E3A009F77E8 /* Tea.swift */,
 				935C67731DAF7E47009F77E8 /* CoffeCreator.swift */,
 				93954D2F1DBA3E560074D63C /* Singleton.swift */,
+				93EE35BE1DBF7CC700C9B380 /* CameraViewController.swift */,
 				93954D341DBE00D70074D63C /* StatisticsViewController.swift */,
 				93EE9A521DA7C40B00C2D605 /* Assets.xcassets */,
 				93954D311DBDE8440074D63C /* Main.storyboard */,
@@ -233,6 +236,7 @@
 				93EE9A4E1DA7C40B00C2D605 /* ViewController.swift in Sources */,
 				93EE9A4C1DA7C40B00C2D605 /* AppDelegate.swift in Sources */,
 				935C67721DAF7E3A009F77E8 /* Tea.swift in Sources */,
+				93EE35BF1DBF7CC700C9B380 /* CameraViewController.swift in Sources */,
 				935C67701DAF7E32009F77E8 /* Coffee.swift in Sources */,
 				93954D351DBE00D70074D63C /* StatisticsViewController.swift in Sources */,
 			);

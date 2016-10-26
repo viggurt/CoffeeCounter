@@ -67,7 +67,7 @@ class StatisticsViewController: UIViewController {
         
         for i in 0..<timeIntervalString.count{
             let getCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffe-count/\(timeIntervalString[i])?forceUpdate=true"
-            let getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/\(timeIntervalString[i])?forceUpdae=true"
+            let getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/\(timeIntervalString[i])?forceUpdate=true"
         
             callCoffeeTotalAlamo(url: getCoffeeURL, labelToSet: coffeeLabelArray[i])
             callTeaTotalAlamo(url: getTeaURL, labelToSet: teaLabelArray[i])

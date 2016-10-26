@@ -44,8 +44,6 @@ class Coffee {
                 let sum = dict["sum"] as? Int
                 
                 return sum
-                //For the coffee
-                //Coffee.sharedInstance.cupsOverTimeCounter = sum!
                 
             }
             

@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 class Singleton {
  static var sharedInstance = Singleton()
     
     var segmentState = 55
     
-    
+    var myImage = UIImage()
     
 }

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Canvas
+import AVFoundation
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
     //MARK: Outlets
@@ -35,6 +36,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var cameraCount = 3
     var imagePicker = UIImagePickerController()
     
+    var timer = Timer()
+    
     var putCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffe-count/1"
     var putTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/1"
     
@@ -42,6 +45,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var coffeeImage = UIImage(named: "coffeeImage")
     var quoteList: [String] = []
     var failedPutURLStrings: [String] = []
+    let session = AVCaptureSession()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +77,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         coffeeCreator.layer.shadowOffset = CGSize(width: 5, height: 5)
         coffeeCreator.layer.shadowRadius = 5
         coffeeCreator.layer.shadowOpacity = 1
+        
+      print("VIEW LOADED")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,6 +93,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if UIDevice.current.orientation.isLandscape{
             
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("VIEW APPEARD")
+        pictureImageView.image = Singleton.sharedInstance.myImage
+
     }
     
     //MARK: Functions
@@ -205,26 +219,42 @@ Coffee.sharedInstance.timer.invalidate()
     
     @IBAction func coffeeCreatorButtonPressed(_ sender: AnyObject) {
         //Access camera on press
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-            imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.front
-            imagePicker.allowsEditing = false
-            self.present(imagePicker, animated: true, completion: {
-                //self.quoteLabel.text = ""
-                
-/*let randomNum = Int(arc4random_uniform(UInt32(self.quoteList.count)))
+/*  if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+ imagePicker.delegate = self
+ imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+ imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.front
+ imagePicker.allowsEditing = false
+ self.present(imagePicker, animated: true, completion: {
+ //self.quoteLabel.text = ""
+ 
+ /*let randomNum = Int(arc4random_uniform(UInt32(self.quoteList.count)))
  
  let result = self.quoteList[randomNum]
  
  self.quoteLabel.text = result*/
+ self.timer.invalidate()
+ self.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+ self.quoteLabel.isHidden = false
  
-                self.quoteLabel.isHidden = false
-                self.pictureImageView.isHidden = false
             })
-            
+         
+         
+ 
+ 
+ 
+        }*/
+ 
+        self.pictureImageView.isHidden = false
+    }
+ 
+    func updateTimer(){
+        print(self.cameraCount)
+        cameraCount -= 1
+        if self.cameraCount == 0{
+            self.timer.invalidate()
+            self.imagePicker.takePicture()
+            self.cameraCount = 3
         }
-        
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
