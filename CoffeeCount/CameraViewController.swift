@@ -17,8 +17,10 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     var stillImageOutput: AVCaptureStillImageOutput?
     var cameraPosition: AVCaptureDevicePosition?
     var previewLayer: AVCaptureVideoPreviewLayer?
-    var cameraCount = 2
+    var cameraCount: Int!
     var timer = Timer()
+    let VC = ViewController()
+    let creatorVC = CreatorTableViewController()
     @IBOutlet weak var countDownAnimationView: CSAnimationView!
     @IBOutlet weak var countDownLabel: UILabel!
     
@@ -40,6 +42,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        cameraCount = 2
         previewLayer?.frame = cameraView.bounds
     }
     
@@ -99,14 +102,18 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                     let finalImage = UIImage(data: imageData!)
                     let thaImage = UIImage(cgImage: (finalImage?.cgImage)!, scale: 1.0, orientation: UIImageOrientation.leftMirrored)
                     Singleton.sharedInstance.myImage = thaImage
+                    print("CAPTURUD")
                     self.navigationController?.popToRootViewController(animated: true)
+                    self.dismiss(animated: true, completion: { _ in
+                    })
+                    //self.creatorVC.dismiss(animated: true, completion: {_ in})
                 }
         }
     }
     
     func updateTimer(){
+        cameraCount! -= 1
         print(self.cameraCount)
-        cameraCount -= 1
         if self.cameraCount == 1{
             countDownLabel.text = "Smile!"
         }

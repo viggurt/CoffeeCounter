@@ -16,4 +16,6 @@ class Singleton {
     
     var myImage = UIImage()
     
+    var nameOnCreator = ""
+    
 }

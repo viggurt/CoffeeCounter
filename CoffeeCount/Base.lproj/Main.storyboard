@@ -161,7 +161,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="coffeeCreatorButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kds-D5-zbj"/>
-                                    <segue destination="pLq-5b-3G8" kind="show" id="hRS-rj-Wg2"/>
+                                    <segue destination="v9Y-LR-Fg4" kind="show" id="Gru-sw-O7t"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latest 12 hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUH-2A-LeR">
@@ -418,7 +418,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRS-wf-nQX">
-                                <frame key="frameInset" minX="-1" minY="20" height="44" maxX="1"/>
+                                <frame key="frameInset" minX="-2" minY="20" height="44" maxX="1.5"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Statistics" id="TSx-EI-XJN"/>
@@ -745,6 +745,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hqV-VU-Kka" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="755.46875" y="29.882812499999996"/>
+        </scene>
+        <!--Creator Table View Controller-->
+        <scene sceneID="pzn-PK-BfL">
+            <objects>
+                <tableViewController id="v9Y-LR-Fg4" customClass="CreatorTableViewController" customModule="CoffeeCount" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="105" sectionHeaderHeight="28" sectionFooterHeight="28" id="sK3-bI-4v5">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="employeeCell" rowHeight="105" id="GPE-D0-bo4" customClass="EmployeeCell" customModule="CoffeeCount" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="768" height="105"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GPE-D0-bo4" id="VrE-xM-n4d">
+                                    <frame key="frameInset" width="768" height="104"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQd-eP-ffs">
+                                            <frame key="frameInset" minX="8" minY="32" width="752" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="eQd-eP-ffs" id="NDC-Sc-Jkm"/>
+                                    <segue destination="pLq-5b-3G8" kind="presentation" id="vw9-Uf-es7"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="v9Y-LR-Fg4" id="0bE-Op-wve"/>
+                            <outlet property="delegate" destination="v9Y-LR-Fg4" id="5TY-G1-SFE"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GSL-pW-5QJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-361.71875" y="706.640625"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="8M2-5T-6x1">

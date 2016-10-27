@@ -46,15 +46,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var coffeeImage = UIImage(named: "coffeeImage")
     var quoteList: [String] = []
     var failedPutURLStrings: [String] = []
-    let session = AVCaptureSession()
+    //let session = AVCaptureSession()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-/*quoteList = ["Wanna hear a joke? Decaf.",
- "What goes best with a cup of coffee? Another cup.",
- "Coffee should be black as hell, strong as death and sweet as love.",
- "Coffee! The most important meal of the day."]*/
  
         callCoffeeAlamo(url: Coffee.sharedInstance.getCoffeeURL)
         callTeaAlamo(url: Tea.sharedInstance.getTeaURL)
@@ -100,6 +95,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         print("VIEW APPEARD")
         pictureImageView.image = Singleton.sharedInstance.myImage
+        quoteLabel.text = "\(Singleton.sharedInstance.nameOnCreator)! Making coffee-lovers day a little bit better."
         updateGetData()
         self.getDataTimer = Timer.scheduledTimer(timeInterval: 300, target:self, selector: #selector(self.updateGetData), userInfo: nil, repeats: true)
 
@@ -138,20 +134,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
         })
     }
-    
-/* func callCoffeeTotalAlamo(url: String){
- Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
- Coffee.parseTotalData(JSONData: response.data!)
- self.coffeeOverTimeLabel.text = String(Coffee.sharedInstance.cupsOverTimeCounter)
- })
- }
- 
- func callTeaTotalAlamo(url: String){
- Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
- Tea.parseTotalData(JSONData: response.data!)
- self.teaOverTimeLabel.text = String(Tea.sharedInstance.cupsOverTimeCounter)
- })
- }*/
  
     func putAlamo(url: String){
         print("putAlamo START")
@@ -200,10 +182,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //MARK: Actions
     @IBAction func teaButtonPressed(_ sender: AnyObject) {
-/*Tea.sharedInstance.counter = 0
- Tea.sharedInstance.timer.invalidate()
- Tea.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateTeaTimer), userInfo: nil, repeats: true)
- teaTimerLabel.text = timeString(time: Tea.sharedInstance.counter)*/
         Tea.sharedInstance.cupCounter += 1
         teaCountLabel.text = "\(Tea.sharedInstance.cupCounter)"
         
@@ -216,10 +194,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func coffeeButtonPressed(_ sender: AnyObject) {
-/*Coffee.sharedInstance.counter = 0
-Coffee.sharedInstance.timer.invalidate()
- Coffee.sharedInstance.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateCoffeeTimer), userInfo: nil, repeats: true)
- coffeeTimerLabel.text = timeString(time: Coffee.sharedInstance.counter)*/
         Coffee.sharedInstance.cupCounter += 1
         coffeeCounter.text = "\(Coffee.sharedInstance.cupCounter)"
         
@@ -235,31 +209,6 @@ Coffee.sharedInstance.timer.invalidate()
     }
     
     @IBAction func coffeeCreatorButtonPressed(_ sender: AnyObject) {
-        //Access camera on press
-/*  if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
- imagePicker.delegate = self
- imagePicker.sourceType = UIImagePickerControllerSourceType.camera
- imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.front
- imagePicker.allowsEditing = false
- self.present(imagePicker, animated: true, completion: {
- //self.quoteLabel.text = ""
- 
- /*let randomNum = Int(arc4random_uniform(UInt32(self.quoteList.count)))
- 
- let result = self.quoteList[randomNum]
- 
- self.quoteLabel.text = result*/
- self.timer.invalidate()
- self.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
- self.quoteLabel.isHidden = false
- 
-            })
-         
-         
- 
- 
- 
-        }*/
  
         self.pictureImageView.isHidden = false
         self.quoteLabel.isHidden = false
@@ -282,9 +231,6 @@ Coffee.sharedInstance.timer.invalidate()
     //http://stackoverflow.com/questions/34694377/swift-how-can-i-make-an-image-full-screen-when-clicked-and-then-original-size
     @IBAction func imageTapped(sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
-        /* let newImageView = UIImageView(image: imageView.image)
-         newImageView.frame = self.view.frame
-         newImageView.backgroundColor = .white*/
         let fullscreenPhoto = UIImageView(image: imageView.image)
         fullscreenPhoto.frame = self.pictureImageView.frame
         fullscreenPhoto.contentMode = .scaleAspectFit
@@ -293,7 +239,6 @@ Coffee.sharedInstance.timer.invalidate()
         fullscreenPhoto.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(sender:)) )
         
-        //Auto resizes when the screen is rotated!
         fullscreenPhoto.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         let windowFrame = self.view.frame
@@ -302,9 +247,7 @@ Coffee.sharedInstance.timer.invalidate()
             fullscreenPhoto.frame = windowFrame
             fullscreenPhoto.alpha = 1
             fullscreenPhoto.backgroundColor = .white
-            
-            //
-        
+
             }, completion: { _ in
         })
         self.navigationController?.setNavigationBarHidden(true, animated: true)
