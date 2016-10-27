@@ -17,7 +17,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     var stillImageOutput: AVCaptureStillImageOutput?
     var cameraPosition: AVCaptureDevicePosition?
     var previewLayer: AVCaptureVideoPreviewLayer?
-    var cameraCount = 4
+    var cameraCount = 2
     var timer = Timer()
     @IBOutlet weak var countDownAnimationView: CSAnimationView!
     @IBOutlet weak var countDownLabel: UILabel!
@@ -97,7 +97,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                     (imageDataSampleBuffer, error) -> Void in
                     let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer)
                     let finalImage = UIImage(data: imageData!)
-                    Singleton.sharedInstance.myImage = finalImage!
+                    let thaImage = UIImage(cgImage: (finalImage?.cgImage)!, scale: 1.0, orientation: UIImageOrientation.leftMirrored)
+                    Singleton.sharedInstance.myImage = thaImage
                     self.navigationController?.popToRootViewController(animated: true)
                 }
         }
@@ -106,10 +107,13 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     func updateTimer(){
         print(self.cameraCount)
         cameraCount -= 1
-        countDownLabel.text = String(cameraCount)
+        if self.cameraCount == 1{
+            countDownLabel.text = "Smile!"
+        }
+        
         countDownAnimationView.startCanvasAnimation()
         if self.cameraCount == 0{
-            countDownLabel.text = "Snap!"
+            countDownLabel.text = "Snap"
             self.timer.invalidate()
             capture()
         }

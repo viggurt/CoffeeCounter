@@ -33,7 +33,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axM-82-aHU">
@@ -228,7 +228,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="axM-82-aHU" secondAttribute="bottom" constant="8" id="5f5-vA-tEC"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2HP-rv-0Fz" secondAttribute="bottom" constant="9" id="5wJ-ar-q7s"/>
                             <constraint firstItem="91W-0m-Rgk" firstAttribute="leading" secondItem="axM-82-aHU" secondAttribute="trailing" constant="3" id="79K-7T-lMk"/>
-                            <constraint firstItem="2HP-rv-0Fz" firstAttribute="top" secondItem="axM-82-aHU" secondAttribute="bottom" constant="115" id="7W0-q8-Hge"/>
+                            <constraint firstItem="2HP-rv-0Fz" firstAttribute="top" secondItem="axM-82-aHU" secondAttribute="bottom" constant="71" id="7W0-q8-Hge"/>
                             <constraint firstAttribute="trailing" secondItem="e77-Sz-QY8" secondAttribute="trailing" id="7af-bz-RlI"/>
                             <constraint firstItem="axM-82-aHU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="8FU-3y-SyE"/>
                             <constraint firstItem="5Wn-rv-bbO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8ST-PD-YMh"/>
@@ -270,7 +270,7 @@
                             <constraint firstItem="e77-Sz-QY8" firstAttribute="top" secondItem="91W-0m-Rgk" secondAttribute="bottom" constant="-25" id="vUH-ru-Pt8"/>
                             <constraint firstItem="KUH-2A-LeR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vZc-TG-6Aw"/>
                             <constraint firstItem="2HP-rv-0Fz" firstAttribute="top" secondItem="0ua-Cr-A0y" secondAttribute="bottom" constant="40" id="xJQ-H9-ayo"/>
-                            <constraint firstItem="0ua-Cr-A0y" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="254" id="yHL-JQ-iey"/>
+                            <constraint firstItem="0ua-Cr-A0y" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="241" id="yHL-JQ-iey"/>
                             <constraint firstAttribute="trailing" secondItem="2HP-rv-0Fz" secondAttribute="trailing" constant="5" id="ykF-rA-kGZ"/>
                             <constraint firstItem="e77-Sz-QY8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="165" id="zw7-uM-HvD"/>
                         </constraints>
@@ -403,7 +403,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-75.112443778110944" y="31.199999999999999"/>
+            <point key="canvasLocation" x="-76" y="31.03448275862069"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="ROr-K5-kpc">
@@ -414,7 +414,7 @@
                         <viewControllerLayoutGuide type="bottom" id="X2i-S1-cgZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3GV-DA-VVb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRS-wf-nQX">
@@ -755,7 +755,7 @@
                         <viewControllerLayoutGuide type="bottom" id="3sw-gn-IWE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8KA-u7-dcy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLj-lj-BzH">
