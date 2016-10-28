@@ -26,8 +26,6 @@ class Singleton {
     
     var tieList = [Employee]()
     
-    var currentName: String = ""
-    
     var highestPoint: [Int] = []
     
     func sort(){

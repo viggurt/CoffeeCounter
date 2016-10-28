@@ -52,32 +52,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //let session = AVCaptureSession()
     var employee: Employee!
     
+    var buttonDesignArray: [UIButton] = []
+    var circleButtons: [UIButton] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
  
         callCoffeeAlamo(url: Coffee.sharedInstance.getCoffeeURL)
         callTeaAlamo(url: Tea.sharedInstance.getTeaURL)
         
+        buttonDesignArray = [teaButton,coffeeButton,coffeeCreator,minusOne,plusOne,plusTwo]
+        circleButtons = [coffeeCreator, minusOne, plusOne, plusTwo]
+        
         //MARK: Buttondesigns
+        for button in buttonDesignArray{
+            button.layer.shadowColor = UIColor.lightGray.cgColor
+            button.layer.shadowOffset = CGSize(width: 5, height: 5)
+            button.layer.shadowRadius = 5
+            button.layer.shadowOpacity = 1
+        }
+        
+        for button in circleButtons{
+            button.layer.cornerRadius = button.bounds.size.width * 0.5
+        }
+        
         teaButton.layer.cornerRadius = 5
         coffeeButton.layer.cornerRadius = 10
-        coffeeCreator.layer.cornerRadius = coffeeCreator.bounds.size.width * 0.5
         
-        teaButton.layer.shadowColor = UIColor.lightGray.cgColor
-        teaButton.layer.shadowOffset = CGSize(width: 5, height: 5)
-        teaButton.layer.shadowRadius = 5
-        teaButton.layer.shadowOpacity = 1
-        
-        coffeeButton.layer.shadowColor = UIColor.lightGray.cgColor
-        coffeeButton.layer.shadowOffset = CGSize(width: 5, height: 5)
-        coffeeButton.layer.shadowRadius = 5
-        coffeeButton.layer.shadowOpacity = 1
-        
-        coffeeCreator.layer.shadowColor = UIColor.lightGray.cgColor
-        coffeeCreator.layer.shadowOffset = CGSize(width: 5, height: 5)
-        coffeeCreator.layer.shadowRadius = 5
-        coffeeCreator.layer.shadowOpacity = 1
-        
+       
         
         
         
@@ -115,7 +117,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         if Singleton.sharedInstance.nameOnCreator != ""{
         quoteLabel.text = "\(Singleton.sharedInstance.nameOnCreator)! Making coffee-lovers day a little bit better."
-            
+            minusOne.isHidden = false
+            plusOne.isHidden = false
+            plusTwo.isHidden = false
             
         }
         updateGetData()

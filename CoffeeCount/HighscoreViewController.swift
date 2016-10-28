@@ -15,6 +15,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var topScorePoint: UILabel!
     //@IBOutlet weak var tieScoreBoard: UITableView!
     @IBOutlet weak var tieScoreBoard: UITableView!
+    @IBOutlet weak var coffeebrewersLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -35,6 +36,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
         if Singleton.sharedInstance.tieList.count > 1{
             print("number in tie list \(Singleton.sharedInstance.tieList.count)")
             self.tieScoreBoard.isHidden = false
+            coffeebrewersLabel.text = "The best coffeebrewers!"
         }else{
             self.topScoreName.text = Singleton.sharedInstance.employees[0].name
         }
