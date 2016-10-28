@@ -47,6 +47,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var quoteList: [String] = []
     var failedPutURLStrings: [String] = []
     //let session = AVCaptureSession()
+    var employee: Employee!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +55,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         callCoffeeAlamo(url: Coffee.sharedInstance.getCoffeeURL)
         callTeaAlamo(url: Tea.sharedInstance.getTeaURL)
         
-        //Buttondesigns
+        //MARK: Buttondesigns
         teaButton.layer.cornerRadius = 5
         coffeeButton.layer.cornerRadius = 10
         coffeeCreator.layer.cornerRadius = coffeeCreator.bounds.size.width * 0.5
@@ -73,6 +74,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         coffeeCreator.layer.shadowOffset = CGSize(width: 5, height: 5)
         coffeeCreator.layer.shadowRadius = 5
         coffeeCreator.layer.shadowOpacity = 1
+        
+        //MARK: Employees
+        for name in Singleton.sharedInstance.employeeNames{
+            employee = Employee(name: name)
+            Singleton.sharedInstance.employees.append(employee)
+        }
+        Singleton.sharedInstance.sort()
+        Singleton.sharedInstance.compareIfMultipleStudentHaveTheHighestScore()
+        print(Singleton.sharedInstance.employees)
         
       print("VIEW LOADED")
         
@@ -95,7 +105,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         print("VIEW APPEARD")
         pictureImageView.image = Singleton.sharedInstance.myImage
+        
+        if Singleton.sharedInstance.nameOnCreator != ""{
         quoteLabel.text = "\(Singleton.sharedInstance.nameOnCreator)! Making coffee-lovers day a little bit better."
+            
+            
+        }
         updateGetData()
         self.getDataTimer = Timer.scheduledTimer(timeInterval: 300, target:self, selector: #selector(self.updateGetData), userInfo: nil, repeats: true)
 
@@ -212,6 +227,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
  
         self.pictureImageView.isHidden = false
         self.quoteLabel.isHidden = false
+    }
+    
+    @IBAction func minusOneButton(_ sender: AnyObject) {
+        for employee in Singleton.sharedInstance.employees{
+            if employee.name == Singleton.sharedInstance.nameOnCreator{
+                employee.totalPoints = employee.totalPoints - 1
+            }
+        }
+    }
+    
+    @IBAction func plusOneButton(_ sender: AnyObject) {
+        for employee in Singleton.sharedInstance.employees{
+            if employee.name == Singleton.sharedInstance.nameOnCreator{
+                employee.totalPoints = employee.totalPoints + 1
+            }
+        }
     }
  
     func updateTimer(){

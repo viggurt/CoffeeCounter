@@ -10,13 +10,13 @@ import UIKit
 
 class CreatorTableViewController: UITableViewController {
 
-    var employee: [String] = []
     //let vc = CameraViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        employee = ["Viktor", "Någon annan"]
+        
+        print(Singleton.sharedInstance.employees)
+        
         tableView.reloadData()
     }
    
@@ -29,19 +29,25 @@ class CreatorTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return employee.count
+        return Singleton.sharedInstance.employees.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "employeeCell", for: indexPath) as! EmployeeCell
         
-        cell.nameLabel.text = employee[indexPath.row]
+        let cellName = Singleton.sharedInstance.employees[indexPath.row]
+        
+        cell.nameLabel.text = cellName.name
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Singleton.sharedInstance.nameOnCreator = employee[indexPath.row]
+        
+        let cellName = Singleton.sharedInstance.employees[indexPath.row]
+
+        
+        Singleton.sharedInstance.nameOnCreator = cellName.name
         print(Singleton.sharedInstance.nameOnCreator)
         //present(vc, animated: true, completion: { _ in })
     }
