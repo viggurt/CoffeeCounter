@@ -13,6 +13,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var scoreBoard: UITableView!
     @IBOutlet weak var topScoreName: UILabel!
     @IBOutlet weak var topScorePoint: UILabel!
+    //@IBOutlet weak var tieScoreBoard: UITableView!
     @IBOutlet weak var tieScoreBoard: UITableView!
     
     
@@ -21,7 +22,8 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
 
         // Do any additional setup after loading the view.
         
-        //Singleton.sharedInstance.sort()
+        Singleton.sharedInstance.sort()
+        Singleton.sharedInstance.compareIfMultipleStudentHaveTheHighestScore()
         
         scoreBoard.dataSource = self
         scoreBoard.delegate = self
@@ -37,8 +39,12 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
             self.topScoreName.text = Singleton.sharedInstance.employees[0].name
         }
         
+        self.topScoreName.text = Singleton.sharedInstance.employees[0].name
+        
         self.topScorePoint.text = "With \(Singleton.sharedInstance.employees[0].totalPoints) points!"
         
+        self.scoreBoard.reloadData()
+        self.tieScoreBoard.reloadData()
     
     }
 
@@ -52,13 +58,13 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
         
         var cellCount: Int!
         
-        
-        cellCount = Singleton.sharedInstance.employees.count
+        if tableView == scoreBoard{
+            cellCount = Singleton.sharedInstance.employees.count
+        }
         
         if tableView == tieScoreBoard{
-            if Singleton.sharedInstance.tieList.count > 1{
                 cellCount = Singleton.sharedInstance.tieList.count
-            }
+            
         }
         
         return cellCount
@@ -68,7 +74,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
         var cell: UITableViewCell!
         
         if tableView == scoreBoard{
-            let mCell = tableView.dequeueReusableCell(withIdentifier: "highscoreCell", for: indexPath) as! HighscoreCell
+            let mCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HighscoreCell
             cell = mCell
             
             let content = Singleton.sharedInstance.employees[indexPath.row]
@@ -76,8 +82,9 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
             
             mCell.pointLabel.text = String(content.totalPoints)
             
-        }else if tableView == tieScoreBoard{
-            if Singleton.sharedInstance.tieList.count > 1{
+        }
+        
+        if tableView == tieScoreBoard{
                 let tCell = tableView.dequeueReusableCell(withIdentifier: "tieCell", for: indexPath) as! TieCell
                 cell = tCell
                 
@@ -85,7 +92,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 tCell.nameLabel.text = content.name
                 
-            }
+            
         }
         return cell
 }

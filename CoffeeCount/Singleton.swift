@@ -22,8 +22,9 @@ class Singleton {
     
     var employees = [Employee]()
     
-    var tieList = [Employee]()
+    var point = 0
     
+    var tieList = [Employee]()
     
     var currentName: String = ""
     
@@ -31,27 +32,33 @@ class Singleton {
     
     func sort(){
         for employee in employees{
-
+            point = 0
             
-            if !highestPoint.contains(employee.totalPoints){
-                self.highestPoint.append(employee.totalPoints)
+            point = point + employee.totalPoints
+            
+            if !highestPoint.contains(point){
+                self.highestPoint.append(point)
             }
         }
         
+        if highestPoint.count > 1{
         let sortedPoints = self.highestPoint.sorted(by: { (num1, num2) -> Bool in
             return num1 > num2
         })
         highestPoint = sortedPoints
+        }
         
-        
+        print(employees[0].name)
         let sortedStudents = self.employees.sorted(by: { (stud1, stud2) -> Bool in
             return stud1.totalPoints > stud2.totalPoints
         })
         employees = sortedStudents
-        
+        print(employees[0].name)
+        tieList.removeAll()
         if !employees.isEmpty{
             tieList.append(employees[0])
         }
+        
     }
     
     func compareIfMultipleStudentHaveTheHighestScore(){

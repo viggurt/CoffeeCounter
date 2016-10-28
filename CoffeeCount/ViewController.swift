@@ -18,9 +18,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var coffeeButtonAnimationView: CSAnimationView!
     @IBOutlet weak var teaButtonAnimationView: CSAnimationView!
     @IBOutlet weak var plusOneAnimationView: CSAnimationView!
-    
-    
-    
+  
     @IBOutlet var myView: UIView!
     
     @IBOutlet weak var plusOneImage: UIImageView!
@@ -31,6 +29,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var teaCountLabel: UILabel!
     
     @IBOutlet weak var pictureImageView: UIImageView!
+    
+    @IBOutlet weak var minusOne: UIButton!
+    @IBOutlet weak var plusOne: UIButton!
+    @IBOutlet weak var plusTwo: UIButton!
+    
     
     //MARK: Variables
     var cameraCount = 3
@@ -74,6 +77,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         coffeeCreator.layer.shadowOffset = CGSize(width: 5, height: 5)
         coffeeCreator.layer.shadowRadius = 5
         coffeeCreator.layer.shadowOpacity = 1
+        
+        
+        
+        
         
         //MARK: Employees
         for name in Singleton.sharedInstance.employeeNames{
@@ -244,6 +251,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
     }
+    
+    @IBAction func plusTwoButton(_ sender: AnyObject) {
+        for employee in Singleton.sharedInstance.employees{
+            if employee.name == Singleton.sharedInstance.nameOnCreator{
+                employee.totalPoints = employee.totalPoints + 2
+            }
+        }
+        
+    }
+    
  
     func updateTimer(){
         print(self.cameraCount)
