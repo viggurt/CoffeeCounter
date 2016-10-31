@@ -16,15 +16,21 @@ class Singleton {
     
     var myImage = UIImage()
     
+    var imageSet = false
+    
     var nameOnCreator = ""
     
-    var employeeNames = ["Viktor", "Någon annan","Kalle","Krister","Nog"]
+    var employeeNames = ["Fredrik","Erik","Jonas","Petrus","Andreas","Wille","Zintis","Christine","Victor","Martin","Viggurt","Virro","Emilia","Activade"]
     
     var employees = [Employee]()
     
     var point = 0
     
     var tieList = [Employee]()
+    
+    var coffeeURLSwitch: [String] = ["coffee-count","viggurt-coffe-count"]
+    
+    var teaURLSwitch: [String] = ["tea-count","viggurt-tea-count"]
     
     var highestPoint: [Int] = []
     

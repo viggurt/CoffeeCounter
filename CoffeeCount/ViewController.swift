@@ -42,11 +42,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var timer = Timer()
     var getDataTimer = Timer()
     
-    var putCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffe-count/1"
-    var putTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-tea-count/1"
+    var putCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.coffeeURLSwitch[0])/1"
+    var putTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.teaURLSwitch[0])/1"
     
     var teaImage = UIImage(named: "teaImage")
     var coffeeImage = UIImage(named: "coffeeImage")
+    var unhappy = UIImage(named: "unhappy")
+    var happy = UIImage(named: "happy")
+    var inLove = UIImage(named: "in-love")
     var quoteList: [String] = []
     var failedPutURLStrings: [String] = []
     //let session = AVCaptureSession()
@@ -116,7 +119,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         pictureImageView.image = Singleton.sharedInstance.myImage
         
         if Singleton.sharedInstance.nameOnCreator != ""{
-        quoteLabel.text = "\(Singleton.sharedInstance.nameOnCreator)! Making coffee-lovers day a little bit better."
+        quoteLabel.text = "\(Singleton.sharedInstance.nameOnCreator)! Making coffee-lovers day better. Rate the coffee!"
             minusOne.isHidden = false
             plusOne.isHidden = false
             plusTwo.isHidden = false
@@ -246,6 +249,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 employee.totalPoints = employee.totalPoints - 1
             }
         }
+        plusOneImage.image = unhappy
+        myView.bringSubview(toFront: plusOneAnimationView)
+        plusOneAnimationView.startCanvasAnimation()
     }
     
     @IBAction func plusOneButton(_ sender: AnyObject) {
@@ -254,6 +260,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 employee.totalPoints = employee.totalPoints + 1
             }
         }
+        plusOneImage.image = happy
+        myView.bringSubview(toFront: plusOneAnimationView)
+        plusOneAnimationView.startCanvasAnimation()
     }
     
     @IBAction func plusTwoButton(_ sender: AnyObject) {
@@ -262,6 +271,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 employee.totalPoints = employee.totalPoints + 2
             }
         }
+        plusOneImage.image = inLove
+        myView.bringSubview(toFront: plusOneAnimationView)
+        plusOneAnimationView.startCanvasAnimation()
         
     }
     

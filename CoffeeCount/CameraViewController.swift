@@ -103,10 +103,10 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                     let thaImage = UIImage(cgImage: (finalImage?.cgImage)!, scale: 1.0, orientation: UIImageOrientation.leftMirrored)
                     Singleton.sharedInstance.myImage = thaImage
                     print("CAPTURUD")
-                    self.navigationController?.popToRootViewController(animated: true)
+                    Singleton.sharedInstance.imageSet = true
+                    //self.navigationController?.popToRootViewController(animated: true)
                     self.dismiss(animated: true, completion: { _ in
                     })
-                    //self.creatorVC.dismiss(animated: true, completion: {_ in})
                 }
         }
     }

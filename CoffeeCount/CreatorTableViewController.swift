@@ -19,6 +19,18 @@ class CreatorTableViewController: UITableViewController {
         
         tableView.reloadData()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("Creator Did Appur")
+        
+        print(Singleton.sharedInstance.imageSet)
+        
+        if Singleton.sharedInstance.imageSet == true{
+            self.navigationController?.popViewController(animated: true)
+            Singleton.sharedInstance.imageSet = false
+        }
+    }
    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
