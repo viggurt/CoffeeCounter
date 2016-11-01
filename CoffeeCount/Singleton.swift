@@ -19,14 +19,15 @@ class Singleton {
     var imageSet = false
     
     var nameOnCreator = ""
-    
-    var employeeNames = ["Fredrik","Erik","Jonas","Petrus","Andreas","Wille","Zintis","Christine","Victor","Martin","Viggurt","Virro","Emilia","Activade"]
-    
+        
     var employees = [Employee]()
     
     var point = 0
     
     var tieList = [Employee]()
+    
+    //if urlState == "1" it gets data from my personal json. else if urlState is "0" it is from the main json
+    var urlState: Int = 1
     
     var coffeeURLSwitch: [String] = ["coffee-count","viggurt-coffe-count"]
     

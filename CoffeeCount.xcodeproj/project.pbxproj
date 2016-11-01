@@ -21,6 +21,14 @@
 		93954D331DBDE8440074D63C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93954D311DBDE8440074D63C /* Main.storyboard */; };
 		93954D351DBE00D70074D63C /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93954D341DBE00D70074D63C /* StatisticsViewController.swift */; };
 		939768631DC23DD800E3EAD1 /* TieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939768621DC23DD800E3EAD1 /* TieCell.swift */; };
+		93A2162A1DC8A8D100844CFC /* kenyan coffee bd it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216221DC8A8D100844CFC /* kenyan coffee bd it.otf */; };
+		93A2162B1DC8A8D100844CFC /* kenyan coffee bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216231DC8A8D100844CFC /* kenyan coffee bd.otf */; };
+		93A2162C1DC8A8D100844CFC /* kenyan coffee rg it.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216241DC8A8D100844CFC /* kenyan coffee rg it.otf */; };
+		93A2162D1DC8A8D100844CFC /* kenyan coffee rg.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216251DC8A8D100844CFC /* kenyan coffee rg.otf */; };
+		93A2162E1DC8A8D100844CFC /* KenyanCoffeeRg-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216261DC8A8D100844CFC /* KenyanCoffeeRg-Bold.ttf */; };
+		93A2162F1DC8A8D100844CFC /* KenyanCoffeeRg-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216271DC8A8D100844CFC /* KenyanCoffeeRg-BoldItalic.ttf */; };
+		93A216301DC8A8D100844CFC /* KenyanCoffeeRg-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216281DC8A8D100844CFC /* KenyanCoffeeRg-Italic.ttf */; };
+		93A216311DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216291DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf */; };
 		93EE35BF1DBF7CC700C9B380 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE35BE1DBF7CC700C9B380 /* CameraViewController.swift */; };
 		93EE9A4C1DA7C40B00C2D605 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */; };
 		93EE9A4E1DA7C40B00C2D605 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4D1DA7C40B00C2D605 /* ViewController.swift */; };
@@ -43,6 +51,14 @@
 		93954D321DBDE8440074D63C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93954D341DBE00D70074D63C /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		939768621DC23DD800E3EAD1 /* TieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TieCell.swift; sourceTree = "<group>"; };
+		93A216221DC8A8D100844CFC /* kenyan coffee bd it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "kenyan coffee bd it.otf"; sourceTree = "<group>"; };
+		93A216231DC8A8D100844CFC /* kenyan coffee bd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "kenyan coffee bd.otf"; sourceTree = "<group>"; };
+		93A216241DC8A8D100844CFC /* kenyan coffee rg it.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "kenyan coffee rg it.otf"; sourceTree = "<group>"; };
+		93A216251DC8A8D100844CFC /* kenyan coffee rg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "kenyan coffee rg.otf"; sourceTree = "<group>"; };
+		93A216261DC8A8D100844CFC /* KenyanCoffeeRg-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KenyanCoffeeRg-Bold.ttf"; sourceTree = "<group>"; };
+		93A216271DC8A8D100844CFC /* KenyanCoffeeRg-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KenyanCoffeeRg-BoldItalic.ttf"; sourceTree = "<group>"; };
+		93A216281DC8A8D100844CFC /* KenyanCoffeeRg-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KenyanCoffeeRg-Italic.ttf"; sourceTree = "<group>"; };
+		93A216291DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KenyanCoffeeRg-Regular.ttf"; sourceTree = "<group>"; };
 		93EE35BE1DBF7CC700C9B380 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		93EE9A481DA7C40B00C2D605 /* CoffeeCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +113,21 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		93A216211DC8A8B100844CFC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				93A216221DC8A8D100844CFC /* kenyan coffee bd it.otf */,
+				93A216231DC8A8D100844CFC /* kenyan coffee bd.otf */,
+				93A216241DC8A8D100844CFC /* kenyan coffee rg it.otf */,
+				93A216251DC8A8D100844CFC /* kenyan coffee rg.otf */,
+				93A216261DC8A8D100844CFC /* KenyanCoffeeRg-Bold.ttf */,
+				93A216271DC8A8D100844CFC /* KenyanCoffeeRg-BoldItalic.ttf */,
+				93A216281DC8A8D100844CFC /* KenyanCoffeeRg-Italic.ttf */,
+				93A216291DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		93EE9A3F1DA7C40B00C2D605 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +149,7 @@
 		93EE9A4A1DA7C40B00C2D605 /* CoffeeCount */ = {
 			isa = PBXGroup;
 			children = (
+				93A216211DC8A8B100844CFC /* Resources */,
 				9315439A1DC88B8E00E5E750 /* Cells */,
 				934179EA1DC22678003BA784 /* ViewControllers */,
 				93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */,
@@ -207,10 +239,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93A216311DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf in Resources */,
+				93A2162E1DC8A8D100844CFC /* KenyanCoffeeRg-Bold.ttf in Resources */,
+				93A2162C1DC8A8D100844CFC /* kenyan coffee rg it.otf in Resources */,
 				93954D331DBDE8440074D63C /* Main.storyboard in Resources */,
+				93A2162D1DC8A8D100844CFC /* kenyan coffee rg.otf in Resources */,
+				93A2162F1DC8A8D100844CFC /* KenyanCoffeeRg-BoldItalic.ttf in Resources */,
 				9315439C1DC88ED600E5E750 /* Employees.json in Resources */,
 				93EE9A561DA7C40B00C2D605 /* LaunchScreen.storyboard in Resources */,
+				93A216301DC8A8D100844CFC /* KenyanCoffeeRg-Italic.ttf in Resources */,
+				93A2162A1DC8A8D100844CFC /* kenyan coffee bd it.otf in Resources */,
 				93EE9A531DA7C40B00C2D605 /* Assets.xcassets in Resources */,
+				93A2162B1DC8A8D100844CFC /* kenyan coffee bd.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

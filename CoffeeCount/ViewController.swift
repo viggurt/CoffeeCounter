@@ -35,20 +35,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var plusOne: UIButton!
     @IBOutlet weak var plusTwo: UIButton!
     
+    @IBOutlet weak var statisticBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var highscoreBarButtonItem: UIBarButtonItem!
+    
+    
     
     //MARK: Variables
     var cameraCount = 3
     var imagePicker = UIImagePickerController()
     var getDataTimer = Timer()
     
-    var putCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.coffeeURLSwitch[0])/1"
-    var putTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.teaURLSwitch[0])/1"
+    var putCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.coffeeURLSwitch[Singleton.sharedInstance.urlState])/1"
+    var putTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.teaURLSwitch[Singleton.sharedInstance.urlState])/1"
     
-    var teaImage = UIImage(named: "teaImage")
-    var coffeeImage = UIImage(named: "coffeeImage")
-    var unhappy = UIImage(named: "unhappy")
-    var happy = UIImage(named: "happy")
-    var inLove = UIImage(named: "in-love")
+    var teaImage = UIImage(named: "group-4")
+    var coffeeImage = UIImage(named: "group-5")
+    var unhappy = UIImage(named: "group-2")
+    var happy = UIImage(named: "group")
+    var inLove = UIImage(named: "group-1")
+    var stats = UIImage(named: "group-12")
     var failedPutURLStrings: [String] = []
     var employee: Employee!
     
@@ -61,8 +66,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         callCoffeeAlamo(url: Coffee.sharedInstance.getCoffeeURL)
         callTeaAlamo(url: Tea.sharedInstance.getTeaURL)
         
-        buttonDesignArray = [teaButton,coffeeButton,coffeeCreator,minusOne,plusOne,plusTwo]
+        buttonDesignArray = [coffeeCreator,minusOne,plusOne,plusTwo]
         circleButtons = [coffeeCreator, minusOne, plusOne, plusTwo]
+   
         
         //MARK: Buttondesigns
         for button in buttonDesignArray{
@@ -76,18 +82,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             button.layer.cornerRadius = button.bounds.size.width * 0.5
         }
         
-        teaButton.layer.cornerRadius = 5
-        coffeeButton.layer.cornerRadius = 10
+        coffeeButtonAnimationView.layer.cornerRadius = coffeeButtonAnimationView.bounds.size.width * 0.5
+        teaButtonAnimationView.layer.cornerRadius = teaButtonAnimationView.bounds.size.width * 0.5
+        
         
        
         //MARK: Employees
-        for name in Singleton.sharedInstance.employeeNames{
+        
+        DataFile.getData(completion: { (employeeData) in
+            Singleton.sharedInstance.employees = employeeData
+            
+            Singleton.sharedInstance.sort()
+            Singleton.sharedInstance.compareIfMultipleStudentHaveTheHighestScore()
+        
+        
+        
+        
+        })
+        
+        /*for name in Singleton.sharedInstance.employeeNames{
             employee = Employee(name: name)
             Singleton.sharedInstance.employees.append(employee)
         }
         Singleton.sharedInstance.sort()
         Singleton.sharedInstance.compareIfMultipleStudentHaveTheHighestScore()
-        print(Singleton.sharedInstance.employees)
+        print(Singleton.sharedInstance.employees)*/
         
       print("VIEW LOADED")
         
@@ -112,10 +131,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         pictureImageView.image = Singleton.sharedInstance.myImage
         
         if Singleton.sharedInstance.nameOnCreator != ""{
-        quoteLabel.text = "\(Singleton.sharedInstance.nameOnCreator)! Making coffee-lovers day better. Rate the coffee!"
+        quoteLabel.text = "\(Singleton.sharedInstance.nameOnCreator) - latest hero, making Coffee."
             minusOne.isHidden = false
             plusOne.isHidden = false
             plusTwo.isHidden = false
+            self.pictureImageView.isHidden = false
+            self.quoteLabel.isHidden = false
+            pictureImageView.layer.cornerRadius = pictureImageView.bounds.size.width * 0.5
+            pictureImageView.clipsToBounds = true
             
         }
         updateGetData()
@@ -200,9 +223,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Add data
         putAlamo(url: putTeaURL)
         teaButtonAnimationView.startCanvasAnimation()
+        plusOneAnimationView.backgroundColor = UIColor.init(red: 170/255, green: 143/255, blue: 121/255
+            , alpha: 1)
         plusOneImage.image = teaImage
         myView.bringSubview(toFront: plusOneAnimationView)
         plusOneAnimationView.startCanvasAnimation()
+
     }
     
     @IBAction func coffeeButtonPressed(_ sender: AnyObject) {
@@ -214,6 +240,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         print(Coffee.sharedInstance.cupCounter)
         print(Tea.sharedInstance.cupCounter)
         coffeeButtonAnimationView.startCanvasAnimation()
+        plusOneAnimationView.backgroundColor = UIColor.init(red: 116/255, green: 76/255, blue: 40/255, alpha: 1)
         plusOneImage.image = coffeeImage
         myView.bringSubview(toFront: plusOneAnimationView)
         plusOneAnimationView.startCanvasAnimation()
@@ -221,8 +248,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func coffeeCreatorButtonPressed(_ sender: AnyObject) {
  
-        self.pictureImageView.isHidden = false
-        self.quoteLabel.isHidden = false
+        
     }
     
     @IBAction func minusOneButton(_ sender: AnyObject) {
@@ -230,7 +256,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if employee.name == Singleton.sharedInstance.nameOnCreator{
                 employee.totalPoints = employee.totalPoints - 1
             }
+            
         }
+        plusOneAnimationView.backgroundColor = nil
+
         plusOneImage.image = unhappy
         myView.bringSubview(toFront: plusOneAnimationView)
         plusOneAnimationView.startCanvasAnimation()
@@ -242,6 +271,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 employee.totalPoints = employee.totalPoints + 1
             }
         }
+        plusOneAnimationView.backgroundColor = nil
+
         plusOneImage.image = happy
         myView.bringSubview(toFront: plusOneAnimationView)
         plusOneAnimationView.startCanvasAnimation()
@@ -253,6 +284,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 employee.totalPoints = employee.totalPoints + 2
             }
         }
+        plusOneAnimationView.backgroundColor = nil
+
         plusOneImage.image = inLove
         myView.bringSubview(toFront: plusOneAnimationView)
         plusOneAnimationView.startCanvasAnimation()

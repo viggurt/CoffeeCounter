@@ -44,8 +44,8 @@ class StatisticsViewController: UIViewController {
 
         
         for i in 0..<timeIntervalString.count{
-            let getCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.coffeeURLSwitch[0])/\(timeIntervalString[i])?forceUpdate=true"
-            let getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.teaURLSwitch[0])/\(timeIntervalString[i])?forceUpdate=true"
+            let getCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.coffeeURLSwitch[Singleton.sharedInstance.urlState])/\(timeIntervalString[i])?forceUpdate=true"
+            let getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.teaURLSwitch[Singleton.sharedInstance.urlState])/\(timeIntervalString[i])?forceUpdate=true"
         
             callCoffeeTotalAlamo(url: getCoffeeURL, labelToSet: coffeeLabelArray[i])
             callTeaTotalAlamo(url: getTeaURL, labelToSet: teaLabelArray[i])

@@ -16,7 +16,7 @@ class Coffee {
     var counter = 0
     var cupCounter = 0
     //var cupsOverTimeCounter = 0
-    var getCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.coffeeURLSwitch[0])/12h?forceUpdate=true"
+    var getCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.coffeeURLSwitch[Singleton.sharedInstance.urlState])/12h?forceUpdate=true"
     var getLatestURL = ""
     
     static func parseData(JSONData: Data){

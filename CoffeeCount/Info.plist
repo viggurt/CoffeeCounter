@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>kenyan coffee bd it.otf</string>
+		<string>kenyan coffee bd.otf</string>
+		<string>kenyan coffee bd rg.otf</string>
+		<string>kenyan coffee bd rg it.otf</string>
+		<string>KenyanCoffeeRg-Bold.ttf</string>
+		<string>KenyanCoffeeRg-BoldItalic.ttf</string>
+		<string>KenyanCoffeeRg-Italic.ttf</string>
+		<string>KenyanCoffeeRg-Regular.ttf</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

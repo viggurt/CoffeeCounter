@@ -15,7 +15,7 @@ class Tea{
     var timer = Timer()
     var counter = 0
     var cupCounter = 0
-    var getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.teaURLSwitch[0])/12h?forceUpdate=true"
+    var getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.teaURLSwitch[Singleton.sharedInstance.urlState])/12h?forceUpdate=true"
     var getLatestURL = ""
 
 

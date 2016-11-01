@@ -42,7 +42,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        cameraCount = 2
+        cameraCount = 3
         previewLayer?.frame = cameraView.bounds
     }
     

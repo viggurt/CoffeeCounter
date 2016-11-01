@@ -18,25 +18,27 @@ class DataFile{
         let session = URLSession.shared
         var employeeArr = [Employee]()
         
-        session.dataTask(with: (url as URL?)!, completionHandler: { ( data: Data?, response: URLResponse?, error: Error? ) -> Void in
-            
-            guard let realResponse = response as? HTTPURLResponse ,
-                realResponse.statusCode == 200 else {
-                    print("Not a 200 response")
-                    return
-            }
-            
+/*session.dataTask(with: (url as URL?)!, completionHandler: { ( data: Data?, response: URLResponse?, error: Error? ) -> Void in
+ 
+ guard let realResponse = response as? HTTPURLResponse ,
+ realResponse.statusCode == 200 else {
+ print("Not a 200 response")
+ return
+ }*/
+        
+            let jsonFile = Bundle.main.path(forResource: "Employees", ofType: "json")
+        let jsonData = NSData(contentsOfFile: jsonFile!)
             // Parse the JSON to get the IP
-            if let jsonDictionary = parseJSONFromData(jsonData: data as NSData?){
+            if let jsonDictionary = parseJSONFromData(jsonData: jsonData as NSData?){
                 
-               /* //studentFiles is an array with dictionaries
-                let studentFiles = jsonDictionary["students"] as! [[String: AnyObject]]
+               //studentFiles is an array with dictionaries
+                let employeeFiles = jsonDictionary["employees"] as! [[String: AnyObject]]
                 //Looping through to get every key and value
-                for file in studentFiles{
-                    let student = Students(dictionary: file)
-                    print(student)
-                    studentArr.append(student)
-                }*/
+                for file in employeeFiles{
+                    let employee = Employee(dictionary: file)
+                    print(employee)
+                    employeeArr.append(employee)
+                }
         
                 
                 DispatchQueue.main.async {
@@ -44,7 +46,7 @@ class DataFile{
                 }
             }
             
-        }).resume()
+        //}).resume()
         
         
     }
