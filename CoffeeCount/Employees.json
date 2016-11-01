@@ -1,0 +1,74 @@
+{
+    "employees": [
+                  {
+                  "name": "Fredrik",
+                  "idField": 1,
+                  "point": 0
+                  },
+                  {
+                  "name": "Jonas",
+                  "idField": 2,
+                  "point": 0
+                  },
+                  {
+                  "name": "Erik",
+                  "idField": 3,
+                  "point": 0
+                  },
+                  {
+                  "name": "Petrus",
+                  "idField": 4,
+                  "point": 0
+                  },
+                  {
+                  "name": "Andreas",
+                  "idField": 5,
+                  "point": 0
+                  },
+                  {
+                  "name": "Wille",
+                  "idField": 6,
+                  "point": 0
+                  },
+                  {
+                  "name": "Zintis",
+                  "idField": 7,
+                  "point": 0
+                  },
+                  {
+                  "name": "Victor",
+                  "idField": 8,
+                  "point": 0
+                  },
+                  {
+                  "name": "Christine",
+                  "idField": 9,
+                  "point": 0
+                  },
+                  {
+                  "name": "Martin",
+                  "idField": 10,
+                  "point": 0
+                  },
+                  {
+                  "name": "Virro",
+                  "idField": 11,
+                  "point": 0
+                  },
+                  {
+                  "name": "Viggurt",
+                  "idField": 12,
+                  "point": 0
+                  },
+                  {
+                  "name": "Emilia",
+                  "idField": 13,
+                  "point": 0
+                  },
+                  {
+                  "name": "Activade",
+                  "idField": 14,
+                  "point": 0
+                  }
+                ]
+}

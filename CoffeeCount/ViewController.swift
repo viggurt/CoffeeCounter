@@ -12,6 +12,7 @@ import Canvas
 import AVFoundation
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
+    
     //MARK: Outlets
     @IBOutlet weak var quoteLabel: UILabel!
     
@@ -38,8 +39,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //MARK: Variables
     var cameraCount = 3
     var imagePicker = UIImagePickerController()
-    
-    var timer = Timer()
     var getDataTimer = Timer()
     
     var putCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.coffeeURLSwitch[0])/1"
@@ -50,9 +49,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var unhappy = UIImage(named: "unhappy")
     var happy = UIImage(named: "happy")
     var inLove = UIImage(named: "in-love")
-    var quoteList: [String] = []
     var failedPutURLStrings: [String] = []
-    //let session = AVCaptureSession()
     var employee: Employee!
     
     var buttonDesignArray: [UIButton] = []
@@ -83,10 +80,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         coffeeButton.layer.cornerRadius = 10
         
        
-        
-        
-        
-        
         //MARK: Employees
         for name in Singleton.sharedInstance.employeeNames{
             employee = Employee(name: name)
@@ -126,7 +119,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
         }
         updateGetData()
-        self.getDataTimer = Timer.scheduledTimer(timeInterval: 300, target:self, selector: #selector(self.updateGetData), userInfo: nil, repeats: true)
+        self.getDataTimer = Timer.scheduledTimer(timeInterval: 60, target:self, selector: #selector(self.updateGetData), userInfo: nil, repeats: true)
 
     }
     
@@ -198,17 +191,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         pictureImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
     }
-    
-    
-    //http://stackoverflow.com/questions/35215694/format-timer-label-to-hoursminutesseconds-in-swift
-    func timeString(time: Int) -> String {
-        let hours = time / 3600
-        let minutes = time / 60 % 60
-        let seconds = time % 60
-        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
-    }
    
-    
     //MARK: Actions
     @IBAction func teaButtonPressed(_ sender: AnyObject) {
         Tea.sharedInstance.cupCounter += 1
@@ -225,7 +208,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func coffeeButtonPressed(_ sender: AnyObject) {
         Coffee.sharedInstance.cupCounter += 1
         coffeeCounter.text = "\(Coffee.sharedInstance.cupCounter)"
-        
         
         //Add data
         putAlamo(url: putCoffeeURL)
@@ -275,17 +257,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         myView.bringSubview(toFront: plusOneAnimationView)
         plusOneAnimationView.startCanvasAnimation()
         
-    }
-    
- 
-    func updateTimer(){
-        print(self.cameraCount)
-        cameraCount -= 1
-        if self.cameraCount == 0{
-            self.timer.invalidate()
-            self.imagePicker.takePicture()
-            self.cameraCount = 3
-        }
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {

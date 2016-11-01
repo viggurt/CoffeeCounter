@@ -26,39 +26,17 @@ class StatisticsViewController: UIViewController {
     @IBOutlet weak var yearTeaLabel: UILabel!
     
     //MARK: Variables
-    //Days
-    var dayCoffeeCups = 0
-    var dayTeaCups = 0
-
-    //Weeks
-    var weekCoffeeCups = 0
-    var weekTeaCups = 0
-
-    //Month
-    var monthCoffeeCups = 0
-    var monthTeaCups = 0
-
-    //Year
-    var yearCoffeeCups = 0
-    var yearTeaCups = 0
     
-    var coffeeCups: [Int] = []
-    var teaCups: [Int] = []
     var timeIntervalString: [String] = []
     
     var coffeeLabelArray: [UILabel] = []
     var teaLabelArray: [UILabel] = []
 
     
-    var theCoffeePosition = 0
-    var theTeaPosition = 0
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        coffeeCups = [dayCoffeeCups, weekCoffeeCups, monthCoffeeCups, yearCoffeeCups]
-        teaCups = [dayTeaCups, weekTeaCups, monthTeaCups, yearTeaCups]
         timeIntervalString = ["24h","1w","4w","52w"]
         
         coffeeLabelArray = [dayCoffeeLabel, weekCoffeeLabel, monthCoffeeLabel, yearCoffeeLabel]

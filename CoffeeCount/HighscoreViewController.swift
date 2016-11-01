@@ -13,7 +13,6 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var scoreBoard: UITableView!
     @IBOutlet weak var topScoreName: UILabel!
     @IBOutlet weak var topScorePoint: UILabel!
-    //@IBOutlet weak var tieScoreBoard: UITableView!
     @IBOutlet weak var tieScoreBoard: UITableView!
     @IBOutlet weak var coffeebrewersLabel: UILabel!
     
@@ -43,7 +42,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.topScoreName.text = Singleton.sharedInstance.employees[0].name
         
-        self.topScorePoint.text = "With \(Singleton.sharedInstance.employees[0].totalPoints) points!"
+        self.topScorePoint.text = "\(Singleton.sharedInstance.employees[0].totalPoints) points!"
         
         self.scoreBoard.reloadData()
         self.tieScoreBoard.reloadData()

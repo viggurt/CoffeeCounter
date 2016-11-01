@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E386FB5B21F156DDFFC70A0 /* Pods_CoffeeCount.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49156E3CDCC67D2184197552 /* Pods_CoffeeCount.framework */; };
+		9315439C1DC88ED600E5E750 /* Employees.json in Resources */ = {isa = PBXBuildFile; fileRef = 9315439B1DC88ED600E5E750 /* Employees.json */; };
 		9330DC421DC1F91700EB92AB /* CreatorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9330DC411DC1F91700EB92AB /* CreatorTableViewController.swift */; };
 		9330DC441DC1FDFF00EB92AB /* EmployeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9330DC431DC1FDFF00EB92AB /* EmployeeCell.swift */; };
 		934179EC1DC22725003BA784 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934179EB1DC22725003BA784 /* Employee.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		49156E3CDCC67D2184197552 /* Pods_CoffeeCount.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoffeeCount.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9315439B1DC88ED600E5E750 /* Employees.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Employees.json; sourceTree = "<group>"; };
 		9330DC411DC1F91700EB92AB /* CreatorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatorTableViewController.swift; sourceTree = "<group>"; };
 		9330DC431DC1FDFF00EB92AB /* EmployeeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeCell.swift; sourceTree = "<group>"; };
 		934179EB1DC22725003BA784 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
@@ -73,6 +75,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9315439A1DC88B8E00E5E750 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				939768621DC23DD800E3EAD1 /* TieCell.swift */,
+				934179EF1DC239EA003BA784 /* HighscoreCell.swift */,
+				9330DC431DC1FDFF00EB92AB /* EmployeeCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		934179EA1DC22678003BA784 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,16 +118,15 @@
 		93EE9A4A1DA7C40B00C2D605 /* CoffeeCount */ = {
 			isa = PBXGroup;
 			children = (
+				9315439A1DC88B8E00E5E750 /* Cells */,
 				934179EA1DC22678003BA784 /* ViewControllers */,
 				93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */,
 				935C676F1DAF7E32009F77E8 /* Coffee.swift */,
 				935C67711DAF7E3A009F77E8 /* Tea.swift */,
 				93954D2F1DBA3E560074D63C /* Singleton.swift */,
 				934179ED1DC22FC6003BA784 /* DataFile.swift */,
+				9315439B1DC88ED600E5E750 /* Employees.json */,
 				934179EB1DC22725003BA784 /* Employee.swift */,
-				939768621DC23DD800E3EAD1 /* TieCell.swift */,
-				934179EF1DC239EA003BA784 /* HighscoreCell.swift */,
-				9330DC431DC1FDFF00EB92AB /* EmployeeCell.swift */,
 				93EE9A521DA7C40B00C2D605 /* Assets.xcassets */,
 				93954D311DBDE8440074D63C /* Main.storyboard */,
 				93EE9A541DA7C40B00C2D605 /* LaunchScreen.storyboard */,
@@ -197,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93954D331DBDE8440074D63C /* Main.storyboard in Resources */,
+				9315439C1DC88ED600E5E750 /* Employees.json in Resources */,
 				93EE9A561DA7C40B00C2D605 /* LaunchScreen.storyboard in Resources */,
 				93EE9A531DA7C40B00C2D605 /* Assets.xcassets in Resources */,
 			);

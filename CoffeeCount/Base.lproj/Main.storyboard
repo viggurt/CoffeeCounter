@@ -150,6 +150,39 @@
             <point key="canvasLocation" x="-618.39999999999998" y="-645.42728635682158"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="ffc-xe-zap">
+            <objects>
+                <viewController id="ewe-A1-Zpx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kJe-Nh-AWz"/>
+                        <viewControllerLayoutGuide type="bottom" id="z3u-dY-kEL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nry-qx-Onf">
+                        <rect key="frame" x="0.0" y="0.0" width="700" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxt-Po-Jsz">
+                                <frame key="frameInset" height="659" maxX="302" maxY="8"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L1U-VF-fIv">
+                                <frame key="frameInset" minX="399" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="2hE-Cc-taK" kind="embed" id="Rae-j3-4lR"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="700" height="667"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DiK-gt-GST" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1108.8" y="-1101.4992503748126"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CoffeeCount" customModuleProvider="target" sceneMemberID="viewController">
@@ -1028,4 +1061,7 @@
         <image name="teaIcon" width="2042" height="2042"/>
         <image name="unhappy" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="aUB-bs-4NP"/>
+    </inferredMetricsTieBreakers>
 </document>
