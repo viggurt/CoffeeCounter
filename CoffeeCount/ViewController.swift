@@ -31,6 +31,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var pictureImageView: UIImageView!
     
+    @IBOutlet weak var rateTheCoffeLabel: UILabel!
     @IBOutlet weak var minusOne: UIButton!
     @IBOutlet weak var plusOne: UIButton!
     @IBOutlet weak var plusTwo: UIButton!
@@ -135,6 +136,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             minusOne.isHidden = false
             plusOne.isHidden = false
             plusTwo.isHidden = false
+            rateTheCoffeLabel.isHidden = false
             self.pictureImageView.isHidden = false
             self.quoteLabel.isHidden = false
             pictureImageView.layer.cornerRadius = pictureImageView.bounds.size.width * 0.5
