@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HighscoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -15,6 +16,9 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var topScorePoint: UILabel!
     @IBOutlet weak var tieScoreBoard: UITableView!
     @IBOutlet weak var coffeebrewersLabel: UILabel!
+    
+
+    var state = Singleton.sharedInstance.urlState
     
     
     override func viewDidLoad() {
@@ -53,6 +57,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 class Singleton {
  static var sharedInstance = Singleton()
@@ -33,13 +34,28 @@ class Singleton {
     
     var teaURLSwitch: [String] = ["tea-count","viggurt-tea-count"]
     
+    var statURLSwitch: [String] = ["coffee-count-stats","viggurt-coffee-count-stats"]
+    
+    let statURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffee-count-stats-%d/1200w?forceUpdate=true"
+    
+    func urlForEmployee(empl:Employee) -> String
+    {
+        let statURLFormatted = String(format: statURL, empl.id)
+      
+        return statURLFormatted
+    }
+    
     var highestPoint: [Int] = []
     
     func sort(){
         for employee in employees{
-            point = 0
+            let theurl = urlForEmployee(empl: employee)
             
-            point = point + employee.totalPoints
+            callScoreAlamo(url: theurl)
+            
+            employee.totalPoints = point
+            
+            //point = point + employee.totalPoints
             
             if !highestPoint.contains(point){
                 self.highestPoint.append(point)
@@ -81,6 +97,37 @@ class Singleton {
             }
         }
         
+    }
+    
+    func callScoreAlamo(url: String) {
+        Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
+            if let thetotalammount = Singleton.parseTotalData(JSONData: response.data!)
+                //self.coffeeOverTimeLabel.text = String(Coffee.sharedInstance.cupsOverTimeCounter)
+            {
+                self.point = thetotalammount
+            }
+            
+        })
+    }
+    
+    static func parseTotalData(JSONData: Data) -> Int?{
+        do{
+            let readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! [[String: AnyObject]]
+            
+            for dict in readableJSON{
+                let sum = dict["sum"] as? Int
+                
+                return sum
+                
+            }
+            
+        } catch{
+            print(error)
+            return nil
+        }
+        
+        
+        return nil
     }
 
     

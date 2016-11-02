@@ -31,11 +31,15 @@ class StatisticsViewController: UIViewController {
     
     var coffeeLabelArray: [UILabel] = []
     var teaLabelArray: [UILabel] = []
+    
+    var state = Singleton.sharedInstance.urlState
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         timeIntervalString = ["24h","1w","4w","52w"]
         
@@ -44,8 +48,8 @@ class StatisticsViewController: UIViewController {
 
         
         for i in 0..<timeIntervalString.count{
-            let getCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.coffeeURLSwitch[Singleton.sharedInstance.urlState])/\(timeIntervalString[i])?forceUpdate=true"
-            let getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.teaURLSwitch[Singleton.sharedInstance.urlState])/\(timeIntervalString[i])?forceUpdate=true"
+            let getCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.coffeeURLSwitch[state])/\(timeIntervalString[i])?forceUpdate=true"
+            let getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.teaURLSwitch[state])/\(timeIntervalString[i])?forceUpdate=true"
         
             callCoffeeTotalAlamo(url: getCoffeeURL, labelToSet: coffeeLabelArray[i])
             callTeaTotalAlamo(url: getTeaURL, labelToSet: teaLabelArray[i])
