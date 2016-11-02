@@ -58,7 +58,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var failedPutURLStrings: [String] = []
     var employee: Employee!
     
-    var buttonDesignArray: [UIButton] = []
     var circleButtons: [UIButton] = []
     
     override func viewDidLoad() {
@@ -67,21 +66,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         callCoffeeAlamo(url: Coffee.sharedInstance.getCoffeeURL)
         callTeaAlamo(url: Tea.sharedInstance.getTeaURL)
         
-        buttonDesignArray = [coffeeCreator,minusOne,plusOne,plusTwo]
+        
         circleButtons = [coffeeCreator, minusOne, plusOne, plusTwo]
    
         
         //MARK: Buttondesigns
-        for button in buttonDesignArray{
-            button.layer.shadowColor = UIColor.lightGray.cgColor
-            button.layer.shadowOffset = CGSize(width: 5, height: 5)
-            button.layer.shadowRadius = 5
-            button.layer.shadowOpacity = 1
-        }
-        
+      
+    
         for button in circleButtons{
             button.layer.cornerRadius = button.bounds.size.width * 0.5
         }
+        
         
         coffeeButtonAnimationView.layer.cornerRadius = coffeeButtonAnimationView.bounds.size.width * 0.5
         teaButtonAnimationView.layer.cornerRadius = teaButtonAnimationView.bounds.size.width * 0.5
