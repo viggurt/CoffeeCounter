@@ -60,6 +60,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var circleButtons: [UIButton] = []
     
+    var state = Singleton.sharedInstance.urlState
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
  
@@ -251,7 +254,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func minusOneButton(_ sender: AnyObject) {
         for employee in Singleton.sharedInstance.employees{
             if employee.name == Singleton.sharedInstance.nameOnCreator{
-                employee.totalPoints = employee.totalPoints - 1
+                Singleton.sharedInstance.putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.statURLSwitch[state])-\(employee.id)/-1"
+                putAlamo(url: Singleton.sharedInstance.putPointsURL)
+                //employee.totalPoints = employee.totalPoints - 1
             }
             
         }
@@ -265,7 +270,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func plusOneButton(_ sender: AnyObject) {
         for employee in Singleton.sharedInstance.employees{
             if employee.name == Singleton.sharedInstance.nameOnCreator{
-                employee.totalPoints = employee.totalPoints + 1
+                Singleton.sharedInstance.putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.statURLSwitch[state])-\(employee.id)/1"
+                putAlamo(url: Singleton.sharedInstance.putPointsURL)
+
+                //employee.totalPoints = employee.totalPoints + 1
             }
         }
         plusOneAnimationView.backgroundColor = nil
@@ -278,7 +286,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func plusTwoButton(_ sender: AnyObject) {
         for employee in Singleton.sharedInstance.employees{
             if employee.name == Singleton.sharedInstance.nameOnCreator{
-                employee.totalPoints = employee.totalPoints + 2
+                Singleton.sharedInstance.putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.statURLSwitch[state])-\(employee.id)/2"
+                putAlamo(url: Singleton.sharedInstance.putPointsURL)
+
+                //employee.totalPoints = employee.totalPoints + 2
             }
         }
         plusOneAnimationView.backgroundColor = nil

@@ -23,6 +23,8 @@ class Singleton {
         
     var employees = [Employee]()
     
+    var putPointsURL =  "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffee-count-stats-%d/%d"
+    
     var point = 0
     
     var tieList = [Employee]()
@@ -50,6 +52,7 @@ class Singleton {
     func sort(){
         for employee in employees{
             
+            highestPoint.removeAll()
             point = point + employee.totalPoints
             
             if !highestPoint.contains(point){

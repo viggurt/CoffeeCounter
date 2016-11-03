@@ -29,7 +29,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
         Singleton.sharedInstance.callScoreAlamo(completion: { (pointData) in
             
             
-            
+            self.tieScoreBoard.isHidden = true
             self.scoreBoard.dataSource = self
             self.scoreBoard.delegate = self
             
