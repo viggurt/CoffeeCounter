@@ -18,7 +18,7 @@
         <scene sceneID="vYM-7m-HTF">
             <objects>
                 <navigationController id="56b-MZ-5Ks" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RSZ-J8-Pxd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="RSZ-J8-Pxd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.4549019608" green="0.29803921570000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -351,7 +351,7 @@
                                             <constraint firstAttribute="width" secondItem="e77-Sz-QY8" secondAttribute="height" multiplier="113:112" id="cgT-o5-m7x"/>
                                         </constraints>
                                         <color key="tintColor" red="0.78035086389999997" green="0.78042083979999999" blue="0.78029239179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="group-160">
+                                        <state key="normal" image="base">
                                             <color key="titleShadowColor" red="0.78035086389999997" green="0.78042083979999999" blue="0.78029239179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -359,19 +359,24 @@
                                             <segue destination="v9Y-LR-Fg4" kind="show" id="Gru-sw-O7t"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kaffepanna" translatesAutoresizingMaskIntoConstraints="NO" id="hCY-Y5-ZIE"/>
                                 </subviews>
                                 <color key="backgroundColor" red="0.7803921568627451" green="0.7803921568627451" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Tam-Ql-hl4" secondAttribute="bottom" constant="7" id="0c3-Im-shG"/>
                                     <constraint firstItem="kar-1t-cP2" firstAttribute="leading" secondItem="vFT-hb-cdX" secondAttribute="leading" constant="51" id="0kK-3U-i9g"/>
                                     <constraint firstItem="ZRK-9g-KPE" firstAttribute="height" secondItem="vFT-hb-cdX" secondAttribute="height" multiplier="1.7" constant="-5.6999999999999318" id="8rW-Z2-esL"/>
+                                    <constraint firstItem="hCY-Y5-ZIE" firstAttribute="bottom" secondItem="e77-Sz-QY8" secondAttribute="bottom" constant="-30" id="ApA-6C-5gr"/>
                                     <constraint firstItem="e77-Sz-QY8" firstAttribute="height" secondItem="vFT-hb-cdX" secondAttribute="height" multiplier="0.373" id="D4A-oe-EbD"/>
                                     <constraint firstItem="Tam-Ql-hl4" firstAttribute="leading" secondItem="vFT-hb-cdX" secondAttribute="leading" constant="19" id="MIx-rJ-9mf"/>
+                                    <constraint firstItem="hCY-Y5-ZIE" firstAttribute="top" secondItem="e77-Sz-QY8" secondAttribute="top" constant="30" id="Mt4-Nd-oGV"/>
                                     <constraint firstAttribute="trailing" secondItem="Tam-Ql-hl4" secondAttribute="trailing" constant="19.5" id="PSc-ro-brm"/>
+                                    <constraint firstItem="hCY-Y5-ZIE" firstAttribute="trailing" secondItem="e77-Sz-QY8" secondAttribute="trailing" constant="-29" id="SgC-Fa-DPy"/>
                                     <constraint firstItem="kar-1t-cP2" firstAttribute="top" secondItem="vFT-hb-cdX" secondAttribute="top" constant="27" id="TTY-XS-67z"/>
                                     <constraint firstItem="e77-Sz-QY8" firstAttribute="centerX" secondItem="vFT-hb-cdX" secondAttribute="centerX" id="VFh-VJ-wZN"/>
                                     <constraint firstItem="a2F-s5-n4R" firstAttribute="leading" secondItem="vFT-hb-cdX" secondAttribute="leading" constant="24" id="VNO-Ol-zMj"/>
                                     <constraint firstAttribute="trailing" secondItem="kar-1t-cP2" secondAttribute="trailing" constant="51.5" id="YZh-OP-4Tr"/>
+                                    <constraint firstItem="hCY-Y5-ZIE" firstAttribute="leading" secondItem="e77-Sz-QY8" secondAttribute="leading" constant="35" id="aQi-fg-VCt"/>
                                     <constraint firstItem="ZRK-9g-KPE" firstAttribute="top" secondItem="e77-Sz-QY8" secondAttribute="top" constant="13.5" id="aVG-qr-Ao8"/>
                                     <constraint firstItem="a2F-s5-n4R" firstAttribute="top" secondItem="kar-1t-cP2" secondAttribute="bottom" constant="-4" id="d00-V8-0yL"/>
                                     <constraint firstItem="ZRK-9g-KPE" firstAttribute="leading" secondItem="e77-Sz-QY8" secondAttribute="leading" constant="13.5" id="lkE-Bd-jms"/>
@@ -853,6 +858,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="base" width="458" height="458"/>
         <image name="camera" width="512" height="512"/>
         <image name="coffeeStats2" width="2046" height="2046"/>
         <image name="filter" width="1571" height="2779"/>
@@ -861,10 +867,10 @@
         <image name="group-12" width="28" height="22"/>
         <image name="group-130" width="606" height="541"/>
         <image name="group-144" width="606" height="529"/>
-        <image name="group-160" width="458" height="458"/>
         <image name="group-2" width="42" height="42"/>
         <image name="group-4" width="114" height="72"/>
         <image name="group-5" width="80" height="117"/>
+        <image name="kaffepanna" width="49" height="52"/>
         <image name="path-23" width="19" height="22"/>
         <image name="shadow" width="2065" height="2065"/>
     </resources>

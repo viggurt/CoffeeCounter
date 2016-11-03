@@ -49,17 +49,13 @@ class Singleton {
     
     func sort(){
         for employee in employees{
-            let theurl = urlForEmployee(empl: employee)
             
-            callScoreAlamo(url: theurl)
-            
-            employee.totalPoints = point
-            
-            //point = point + employee.totalPoints
+            point = point + employee.totalPoints
             
             if !highestPoint.contains(point){
                 self.highestPoint.append(point)
             }
+            point = 0
         }
         
         if highestPoint.count > 1{
@@ -82,6 +78,7 @@ class Singleton {
         
     }
     
+        
     func compareIfMultipleStudentHaveTheHighestScore(){
         
         //If multiple students have the highest score, they all will be visable in the top
@@ -99,15 +96,24 @@ class Singleton {
         
     }
     
-    func callScoreAlamo(url: String) {
-        Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
+    func callScoreAlamo(completion: @escaping(_ pointFromData: Int) -> ()) -> Void {
+        
+        for employee in employees{
+            let theurl = urlForEmployee(empl: employee)
+        
+        Alamofire.request(theurl, method: .get).responseJSON(completionHandler: { response in
             if let thetotalammount = Singleton.parseTotalData(JSONData: response.data!)
-                //self.coffeeOverTimeLabel.text = String(Coffee.sharedInstance.cupsOverTimeCounter)
             {
-                self.point = thetotalammount
+                employee.totalPoints = thetotalammount
             }
             
+            DispatchQueue.main.async {
+                completion(employee.totalPoints)
+            }
         })
+            
+        }
+        
     }
     
     static func parseTotalData(JSONData: Data) -> Int?{

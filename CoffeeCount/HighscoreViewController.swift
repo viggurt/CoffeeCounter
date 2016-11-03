@@ -26,30 +26,43 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
 
         // Do any additional setup after loading the view.
         
-        Singleton.sharedInstance.sort()
-        Singleton.sharedInstance.compareIfMultipleStudentHaveTheHighestScore()
-        
-        scoreBoard.dataSource = self
-        scoreBoard.delegate = self
-        
-        tieScoreBoard.dataSource = self
-        tieScoreBoard.delegate = self
-        
-        
-        if Singleton.sharedInstance.tieList.count > 1{
-            print("number in tie list \(Singleton.sharedInstance.tieList.count)")
-            self.tieScoreBoard.isHidden = false
-            coffeebrewersLabel.text = "The best coffeebrewers!"
-        }else{
+        Singleton.sharedInstance.callScoreAlamo(completion: { (pointData) in
+            
+            
+            
+            self.scoreBoard.dataSource = self
+            self.scoreBoard.delegate = self
+            
+            self.tieScoreBoard.dataSource = self
+            self.tieScoreBoard.delegate = self
+            
+            Singleton.sharedInstance.sort()
+            Singleton.sharedInstance.compareIfMultipleStudentHaveTheHighestScore()
+            
+            print(Singleton.sharedInstance.highestPoint)
+            if Singleton.sharedInstance.tieList.count > 1{
+                print("number in tie list \(Singleton.sharedInstance.tieList.count)")
+                self.tieScoreBoard.isHidden = false
+                self.coffeebrewersLabel.text = "The best coffeebrewers!"
+            }else{
+                self.topScoreName.text = Singleton.sharedInstance.employees[0].name
+            }
+            
             self.topScoreName.text = Singleton.sharedInstance.employees[0].name
-        }
+            
+            self.topScorePoint.text = "\(Singleton.sharedInstance.employees[0].totalPoints) points!"
+            
+            self.scoreBoard.reloadData()
+            self.tieScoreBoard.reloadData()
+            
+            
+            
+            
+        })
         
-        self.topScoreName.text = Singleton.sharedInstance.employees[0].name
-        
-        self.topScorePoint.text = "\(Singleton.sharedInstance.employees[0].totalPoints) points!"
-        
-        self.scoreBoard.reloadData()
-        self.tieScoreBoard.reloadData()
+            //Singleton.sharedInstance.sort()
+            //Singleton.sharedInstance.compareIfMultipleStudentHaveTheHighestScore()
+    
     
     }
 
