@@ -34,25 +34,20 @@ class StatisticsViewController: UIViewController {
     
     var state = Singleton.sharedInstance.urlState
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+    
         timeIntervalString = ["24h","1w","4w","52w"]
         
         coffeeLabelArray = [dayCoffeeLabel, weekCoffeeLabel, monthCoffeeLabel, yearCoffeeLabel]
         teaLabelArray = [dayTeaLabel, weekTeaLabel, monthTeaLabel, yearTeaLabel]
 
-        
         for i in 0..<timeIntervalString.count{
             let getCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.coffeeURLSwitch[state])/\(timeIntervalString[i])?forceUpdate=true"
             let getTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.teaURLSwitch[state])/\(timeIntervalString[i])?forceUpdate=true"
         
-            callCoffeeTotalAlamo(url: getCoffeeURL, labelToSet: coffeeLabelArray[i])
-            callTeaTotalAlamo(url: getTeaURL, labelToSet: teaLabelArray[i])
+            callTotalAlamo(url: getCoffeeURL, labelToSet: coffeeLabelArray[i])
+            callTotalAlamo(url: getTeaURL, labelToSet: teaLabelArray[i])
             
         }
         
@@ -64,26 +59,15 @@ class StatisticsViewController: UIViewController {
     }
     
     
-    func callCoffeeTotalAlamo(url: String, labelToSet:UILabel){
+    func callTotalAlamo(url: String, labelToSet:UILabel){
         Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
-            if let thetotalammount = Coffee.parseTotalData(JSONData: response.data!)
-            //self.coffeeOverTimeLabel.text = String(Coffee.sharedInstance.cupsOverTimeCounter)
+            if let theTotalAmmount = DataFile.parseTotalData(JSONData: response.data!)
             {
-                labelToSet.text = String(thetotalammount)
+                labelToSet.text = String(theTotalAmmount)
             }
          
         })
     }
 
-    func callTeaTotalAlamo(url: String, labelToSet:UILabel){
-        Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
-            if let theTotalAmmount = Tea.parseTotalData(JSONData: response.data!){
-            
-                labelToSet.text = String(theTotalAmmount)
-            }
-            
-        })
-    }
- 
 
 }

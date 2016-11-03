@@ -54,61 +54,41 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var unhappy = UIImage(named: "group-2")
     var happy = UIImage(named: "group")
     var inLove = UIImage(named: "group-1")
-    var stats = UIImage(named: "group-12")
     var failedPutURLStrings: [String] = []
     var employee: Employee!
     
     var circleButtons: [UIButton] = []
     
+    var sortingForEmployees = SortingForEmployees()
+    
     var state = Singleton.sharedInstance.urlState
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
  
-        callCoffeeAlamo(url: Coffee.sharedInstance.getCoffeeURL)
-        callTeaAlamo(url: Tea.sharedInstance.getTeaURL)
-        
+        callAlamo(url: Coffee.sharedInstance.getCoffeeURL, labelToSet: coffeeCounter)
+        callAlamo(url: Tea.sharedInstance.getTeaURL, labelToSet: teaCountLabel)
         
         circleButtons = [coffeeCreator, minusOne, plusOne, plusTwo]
    
         
         //MARK: Buttondesigns
-      
-    
+     
         for button in circleButtons{
             button.layer.cornerRadius = button.bounds.size.width * 0.5
         }
-        
-        
+
         coffeeButtonAnimationView.layer.cornerRadius = coffeeButtonAnimationView.bounds.size.width * 0.5
         teaButtonAnimationView.layer.cornerRadius = teaButtonAnimationView.bounds.size.width * 0.5
         
-        
-       
         //MARK: Employees
-        
         DataFile.getData(completion: { (employeeData) in
             Singleton.sharedInstance.employees = employeeData
             
-            Singleton.sharedInstance.sort()
-            Singleton.sharedInstance.compareIfMultipleStudentHaveTheHighestScore()
-        
-        
-        
+            self.sortingForEmployees.sort()
+            self.sortingForEmployees.compareIfMultipleStudentHaveTheHighestScore()
         
         })
-        
-        /*for name in Singleton.sharedInstance.employeeNames{
-            employee = Employee(name: name)
-            Singleton.sharedInstance.employees.append(employee)
-        }
-        Singleton.sharedInstance.sort()
-        Singleton.sharedInstance.compareIfMultipleStudentHaveTheHighestScore()
-        print(Singleton.sharedInstance.employees)*/
-        
-      print("VIEW LOADED")
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -116,19 +96,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: Layout Functions
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        
-        if UIDevice.current.orientation.isLandscape{
-            
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("VIEW APPEARD")
         pictureImageView.image = Singleton.sharedInstance.myImage
-        
+
+        //When someone has brewed coffee this becomes true
         if Singleton.sharedInstance.nameOnCreator != ""{
         quoteLabel.text = "\(Singleton.sharedInstance.nameOnCreator) - latest hero, making Coffee."
             minusOne.isHidden = false
@@ -141,45 +113,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             pictureImageView.clipsToBounds = true
             
         }
+        
+        //This functions updates the data from the internet
         updateGetData()
         self.getDataTimer = Timer.scheduledTimer(timeInterval: 60, target:self, selector: #selector(self.updateGetData), userInfo: nil, repeats: true)
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         getDataTimer.invalidate()
-        print("VIEW DISSAPURRD")
     }
     
     //MARK: Functions
     func updateGetData(){
         print("updateGetData")
-        callCoffeeAlamo(url: Coffee.sharedInstance.getCoffeeURL)
-        callTeaAlamo(url: Tea.sharedInstance.getTeaURL)
+        callAlamo(url: Coffee.sharedInstance.getCoffeeURL, labelToSet: coffeeCounter)
+        callAlamo(url: Tea.sharedInstance.getTeaURL, labelToSet: teaCountLabel)
     }
     
-    func callCoffeeAlamo(url: String){
+    func callAlamo(url: String, labelToSet: UILabel){
         Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
-            switch response.result{
-            case .success(let data):
-                Coffee.parseData(JSONData: response.data!)
-                self.coffeeCounter.text = String(Coffee.sharedInstance.cupCounter)
-            case .failure(let error):
-                print("Request failed with error: \(error)")
-            }
-        
-        })
-    }
-    
-    func callTeaAlamo(url: String){
-        Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
-            Tea.parseData(JSONData: response.data!)
-            self.teaCountLabel.text = String(Tea.sharedInstance.cupCounter)
             
+            if let theTotalAmmount = DataFile.parseTotalData(JSONData: response.data!){
+                
+                    labelToSet.text = String(theTotalAmmount)
+               
+            }
         })
     }
- 
+
     func putAlamo(url: String){
         print("putAlamo START")
 
@@ -199,8 +161,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 self.failedPutURLStrings.append(url)
             }
         })
-        
-
     }
     
     func dismissFullscreenImage(sender: UITapGestureRecognizer) {

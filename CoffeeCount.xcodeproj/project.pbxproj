@@ -29,6 +29,7 @@
 		93A2162F1DC8A8D100844CFC /* KenyanCoffeeRg-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216271DC8A8D100844CFC /* KenyanCoffeeRg-BoldItalic.ttf */; };
 		93A216301DC8A8D100844CFC /* KenyanCoffeeRg-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216281DC8A8D100844CFC /* KenyanCoffeeRg-Italic.ttf */; };
 		93A216311DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216291DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf */; };
+		93A216331DCB7C8D00844CFC /* SortingForEmployees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A216321DCB7C8D00844CFC /* SortingForEmployees.swift */; };
 		93EE35BF1DBF7CC700C9B380 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE35BE1DBF7CC700C9B380 /* CameraViewController.swift */; };
 		93EE9A4C1DA7C40B00C2D605 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */; };
 		93EE9A4E1DA7C40B00C2D605 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4D1DA7C40B00C2D605 /* ViewController.swift */; };
@@ -59,6 +60,7 @@
 		93A216271DC8A8D100844CFC /* KenyanCoffeeRg-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KenyanCoffeeRg-BoldItalic.ttf"; sourceTree = "<group>"; };
 		93A216281DC8A8D100844CFC /* KenyanCoffeeRg-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KenyanCoffeeRg-Italic.ttf"; sourceTree = "<group>"; };
 		93A216291DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KenyanCoffeeRg-Regular.ttf"; sourceTree = "<group>"; };
+		93A216321DCB7C8D00844CFC /* SortingForEmployees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortingForEmployees.swift; sourceTree = "<group>"; };
 		93EE35BE1DBF7CC700C9B380 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		93EE9A481DA7C40B00C2D605 /* CoffeeCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				935C676F1DAF7E32009F77E8 /* Coffee.swift */,
 				935C67711DAF7E3A009F77E8 /* Tea.swift */,
 				93954D2F1DBA3E560074D63C /* Singleton.swift */,
+				93A216321DCB7C8D00844CFC /* SortingForEmployees.swift */,
 				934179ED1DC22FC6003BA784 /* DataFile.swift */,
 				9315439B1DC88ED600E5E750 /* Employees.json */,
 				934179EB1DC22725003BA784 /* Employee.swift */,
@@ -314,6 +317,7 @@
 				934179F01DC239EA003BA784 /* HighscoreCell.swift in Sources */,
 				93EE9A4C1DA7C40B00C2D605 /* AppDelegate.swift in Sources */,
 				934179EC1DC22725003BA784 /* Employee.swift in Sources */,
+				93A216331DCB7C8D00844CFC /* SortingForEmployees.swift in Sources */,
 				9330DC421DC1F91700EB92AB /* CreatorTableViewController.swift in Sources */,
 				939768631DC23DD800E3EAD1 /* TieCell.swift in Sources */,
 				934179F21DC23AC5003BA784 /* HighscoreViewController.swift in Sources */,

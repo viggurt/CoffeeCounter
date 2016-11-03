@@ -80,9 +80,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                     timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
                     
                     captureSession?.startRunning()
-                    
-                    
-
                 }
                 
             }

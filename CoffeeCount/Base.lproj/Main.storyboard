@@ -39,7 +39,7 @@
         <!--Highscore View Controller-->
         <scene sceneID="2vJ-By-Twx">
             <objects>
-                <viewController id="2hE-Cc-taK" customClass="HighscoreViewController" customModule="CoffeeCount" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2hE-Cc-taK" customClass="HighscoreViewController" customModule="CoffeeCount" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FeH-pH-qfS"/>
                         <viewControllerLayoutGuide type="bottom" id="Kap-0w-Kwv"/>
@@ -52,7 +52,7 @@
                                 <color key="backgroundColor" red="0.4549019608" green="0.29803921570000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="59" id="coi-My-VNS" customClass="HighscoreCell" customModule="CoffeeCount" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="59"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="coi-My-VNS" id="1jn-oP-EDQ">
                                             <frame key="frameInset" width="375" height="58"/>
@@ -153,8 +153,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.4549019608" green="0.29803921570000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ozb-6q-c1z" firstAttribute="height" secondItem="2we-wq-NEn" secondAttribute="height" multiplier="0.5" id="2ou-U5-A5u"/>
                             <constraint firstItem="YIe-fc-ybu" firstAttribute="height" secondItem="2we-wq-NEn" secondAttribute="height" multiplier="0.28" id="4Jb-Iw-NVN"/>
-                            <constraint firstItem="ozb-6q-c1z" firstAttribute="height" secondItem="2we-wq-NEn" secondAttribute="height" multiplier="0.508" constant="76.163999999999987" id="FkM-Jp-VVx"/>
                             <constraint firstItem="tUo-w0-6A7" firstAttribute="top" secondItem="NLe-tV-xOe" secondAttribute="bottom" constant="48" id="G7X-Fp-KdJ"/>
                             <constraint firstItem="ZYc-ZH-Mtc" firstAttribute="height" secondItem="2we-wq-NEn" secondAttribute="height" multiplier="0.149" id="GZF-bx-kRY"/>
                             <constraint firstItem="NLe-tV-xOe" firstAttribute="trailing" secondItem="2we-wq-NEn" secondAttribute="trailingMargin" id="HMb-Lg-NdY"/>

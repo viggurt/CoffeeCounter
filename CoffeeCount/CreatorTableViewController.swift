@@ -22,9 +22,6 @@ class CreatorTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("Creator Did Appur")
-        
-        print(Singleton.sharedInstance.imageSet)
         
         if Singleton.sharedInstance.imageSet == true{
             self.navigationController?.popViewController(animated: true)
@@ -57,7 +54,6 @@ class CreatorTableViewController: UITableViewController {
         
         let cellName = Singleton.sharedInstance.employees[indexPath.row]
 
-        
         Singleton.sharedInstance.nameOnCreator = cellName.name
         print(Singleton.sharedInstance.nameOnCreator)
         //present(vc, animated: true, completion: { _ in })

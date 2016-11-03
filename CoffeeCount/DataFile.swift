@@ -51,6 +51,27 @@ class DataFile{
         
     }
     
+    static func parseTotalData(JSONData: Data) -> Int?{
+        do{
+            let readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! [[String: AnyObject]]
+            
+            for dict in readableJSON{
+                let sum = dict["sum"] as? Int
+                
+                return sum
+                
+            }
+            
+        } catch{
+            print(error)
+            return nil
+        }
+        
+        
+        return nil
+    }
+
+    
 }
 
 extension DataFile{

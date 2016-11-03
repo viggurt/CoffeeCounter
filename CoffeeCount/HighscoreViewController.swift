@@ -20,6 +20,8 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
 
     var state = Singleton.sharedInstance.urlState
     
+    var sortingForEmployees = SortingForEmployees()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +38,8 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
             self.tieScoreBoard.dataSource = self
             self.tieScoreBoard.delegate = self
             
-            Singleton.sharedInstance.sort()
-            Singleton.sharedInstance.compareIfMultipleStudentHaveTheHighestScore()
+            self.sortingForEmployees.sort()
+            self.sortingForEmployees.compareIfMultipleStudentHaveTheHighestScore()
             
             print(Singleton.sharedInstance.highestPoint)
             if Singleton.sharedInstance.tieList.count > 1{
