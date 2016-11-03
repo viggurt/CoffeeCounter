@@ -13,8 +13,6 @@ import Alamofire
 class Singleton {
  static var sharedInstance = Singleton()
     
-    var segmentState = 55
-    
     var myImage = UIImage()
     
     var imageSet = false
@@ -23,7 +21,7 @@ class Singleton {
         
     var employees = [Employee]()
     
-    var putPointsURL =  "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffee-count-stats-%d/%d"
+    var putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/coffee-count-stats-%d/%d"
     
     var point = 0
     
@@ -38,7 +36,7 @@ class Singleton {
     
     var statURLSwitch: [String] = ["coffee-count-stats","viggurt-coffee-count-stats"]
     
-    let statURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffee-count-stats-%d/1200w?forceUpdate=true"
+    let statURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/coffee-count-stats-%d/1200w?forceUpdate=true"
     
     func urlForEmployee(empl:Employee) -> String
     {

@@ -44,6 +44,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.viewDidAppear(animated)
         cameraCount = 3
         previewLayer?.frame = cameraView.bounds
+        
     }
     
 
@@ -51,7 +52,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.viewWillAppear(animated)
         
         captureSession = AVCaptureSession()
-        captureSession?.sessionPreset = AVCaptureSessionPresetHigh
+        captureSession?.sessionPreset = AVCaptureSessionPresetPhoto
         let cameraDevice = AVCaptureDevice.defaultDevice(withDeviceType: AVCaptureDeviceType.builtInWideAngleCamera , mediaType: AVMediaTypeVideo, position: AVCaptureDevicePosition.front)
        print(cameraDevice!)
         
