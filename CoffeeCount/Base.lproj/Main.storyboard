@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="KenyanCoffeeRg-Regular.ttf">
+        <array key="kenyan coffee rg.otf">
             <string>KenyanCoffeeRg-Regular</string>
         </array>
     </customFonts>
@@ -380,7 +380,7 @@
                                         </state>
                                         <connections>
                                             <action selector="coffeeCreatorButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kds-D5-zbj"/>
-                                            <segue destination="v9Y-LR-Fg4" kind="show" id="Gru-sw-O7t"/>
+                                            <segue destination="tAG-zq-vPE" kind="show" id="Gru-sw-O7t"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kaffepanna" translatesAutoresizingMaskIntoConstraints="NO" id="hCY-Y5-ZIE">
@@ -550,22 +550,22 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="Zqv-l6-anN"/>
-                                <exclude reference="mGU-ju-qom"/>
                                 <exclude reference="L44-9d-gBp"/>
                                 <exclude reference="Oxi-Ad-uwd"/>
+                                <exclude reference="Zqv-l6-anN"/>
+                                <exclude reference="mGU-ju-qom"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
-                                <exclude reference="4nG-xe-cag"/>
-                                <exclude reference="PZB-0q-2XU"/>
-                                <include reference="Zqv-l6-anN"/>
-                                <include reference="mGU-ju-qom"/>
                                 <exclude reference="3vk-uE-uwX"/>
                                 <include reference="L44-9d-gBp"/>
                                 <exclude reference="N2o-Xy-JRu"/>
                                 <include reference="Oxi-Ad-uwd"/>
+                                <exclude reference="4nG-xe-cag"/>
+                                <exclude reference="PZB-0q-2XU"/>
+                                <include reference="Zqv-l6-anN"/>
+                                <include reference="mGU-ju-qom"/>
                             </mask>
                         </variation>
                     </view>
@@ -818,10 +818,63 @@
                             <outlet property="delegate" destination="v9Y-LR-Fg4" id="5TY-G1-SFE"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="GVj-9G-SVf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="oSQ-DD-LwR">
+                            <connections>
+                                <segue destination="DUh-E8-lci" kind="show" id="weo-kf-4PY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSL-pW-5QJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-362.39999999999998" y="706.59670164917543"/>
+            <point key="canvasLocation" x="576.79999999999995" y="706.59670164917543"/>
+        </scene>
+        <!--New User View Controller-->
+        <scene sceneID="Lw4-ae-wId">
+            <objects>
+                <viewController id="DUh-E8-lci" customClass="NewUserViewController" customModule="CoffeeCount" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x4B-89-AeZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Veh-s3-RZ7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HpT-xT-H4x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G8f-75-fs1">
+                                <frame key="frameInset" minX="16" minY="318" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvH-VD-M3d">
+                                <frame key="frameInset" minX="164" minY="422" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="DUh-E8-lci" eventType="touchUpInside" id="eQQ-FN-elp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkn-C7-bhC">
+                                <frame key="frameInset" minX="165" minY="289" width="45" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="JvH-VD-M3d" id="nAg-fj-7vE"/>
+                        <outlet property="nameTextField" destination="G8f-75-fs1" id="Mjb-UD-6Qg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kJj-Yx-TVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1640.8" y="494.30284857571218"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="8M2-5T-6x1">
@@ -892,7 +945,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfX-jQ-gPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="373.60000000000002" y="707.49625187406298"/>
+            <point key="canvasLocation" x="1348" y="1174"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wUt-GU-ezq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tAG-zq-vPE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Uqr-Ax-XuI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="v9Y-LR-Fg4" kind="relationship" relationship="rootViewController" id="7nI-p4-LPS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HnU-dq-0mW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-362.39999999999998" y="706.59670164917543"/>
         </scene>
     </scenes>
     <resources>

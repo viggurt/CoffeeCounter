@@ -7,8 +7,17 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+
+struct postStruct {
+    let name : String!
+    //let point : Int!
+}
 
 class CreatorTableViewController: UITableViewController {
+    
+    var posts = [postStruct]()
 
     //let vc = CameraViewController()
     
@@ -16,6 +25,18 @@ class CreatorTableViewController: UITableViewController {
         super.viewDidLoad()
         
         print(Singleton.sharedInstance.employees)
+        
+        let databaseRef = FIRDatabase.database().reference()
+
+        databaseRef.child("Posts").queryOrderedByKey().observe(.childAdded, with: {
+            snapshot in
+            
+                let name = (snapshot.value as? NSDictionary)?["name"] as! String
+                //let point = (snapshot.value as? NSDictionary)?["point"] as! Int
+            
+            self.posts.insert(postStruct(name: name), at: 0)
+            
+        })
         
         tableView.reloadData()
     }
@@ -59,6 +80,5 @@ class CreatorTableViewController: UITableViewController {
         //present(vc, animated: true, completion: { _ in })
     }
 
-   
 
 }

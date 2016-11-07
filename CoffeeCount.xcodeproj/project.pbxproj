@@ -31,6 +31,7 @@
 		93A216311DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216291DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf */; };
 		93A216331DCB7C8D00844CFC /* SortingForEmployees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A216321DCB7C8D00844CFC /* SortingForEmployees.swift */; };
 		93A216351DCB8B6C00844CFC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A216341DCB8B6C00844CFC /* GoogleService-Info.plist */; };
+		93D3F7271DD08BEE00D28D76 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D3F7261DD08BEE00D28D76 /* NewUserViewController.swift */; };
 		93EE35BF1DBF7CC700C9B380 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE35BE1DBF7CC700C9B380 /* CameraViewController.swift */; };
 		93EE9A4C1DA7C40B00C2D605 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */; };
 		93EE9A4E1DA7C40B00C2D605 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4D1DA7C40B00C2D605 /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 		93A216291DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KenyanCoffeeRg-Regular.ttf"; sourceTree = "<group>"; };
 		93A216321DCB7C8D00844CFC /* SortingForEmployees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortingForEmployees.swift; sourceTree = "<group>"; };
 		93A216341DCB8B6C00844CFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		93D3F7261DD08BEE00D28D76 /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		93EE35BE1DBF7CC700C9B380 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		93EE9A481DA7C40B00C2D605 /* CoffeeCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				93EE35BE1DBF7CC700C9B380 /* CameraViewController.swift */,
 				93954D341DBE00D70074D63C /* StatisticsViewController.swift */,
 				934179F11DC23AC5003BA784 /* HighscoreViewController.swift */,
+				93D3F7261DD08BEE00D28D76 /* NewUserViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				935C67701DAF7E32009F77E8 /* Coffee.swift in Sources */,
 				934179EE1DC22FC6003BA784 /* DataFile.swift in Sources */,
 				93954D351DBE00D70074D63C /* StatisticsViewController.swift in Sources */,
+				93D3F7271DD08BEE00D28D76 /* NewUserViewController.swift in Sources */,
 				9330DC441DC1FDFF00EB92AB /* EmployeeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
