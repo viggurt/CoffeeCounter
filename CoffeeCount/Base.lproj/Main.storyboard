@@ -869,6 +869,7 @@
                     </view>
                     <connections>
                         <outlet property="doneButton" destination="JvH-VD-M3d" id="nAg-fj-7vE"/>
+                        <outlet property="nameLabel" destination="Rkn-C7-bhC" id="c5d-Ia-sMu"/>
                         <outlet property="nameTextField" destination="G8f-75-fs1" id="Mjb-UD-6Qg"/>
                     </connections>
                 </viewController>

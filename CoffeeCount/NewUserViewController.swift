@@ -13,8 +13,10 @@ import FirebaseDatabase
 class NewUserViewController: UIViewController {
     
     
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var doneButton: UIButton!
+    var nameFromField: String!
     var vc = CreatorTableViewController()
 
     override func viewDidLoad() {
@@ -40,20 +42,19 @@ class NewUserViewController: UIViewController {
     */
     
     func post(){
-        let name = nameTextField.text
-      
-        let post : [String: AnyObject] = ["name" : name as AnyObject]
+        
+        let post : [String: AnyObject] = ["name" : nameFromField as AnyObject]
         
         let databaseRef = FIRDatabase.database().reference()
         
-        databaseRef.child("Posts").childByAutoId().setValue(post)
+        databaseRef.child("Employees").childByAutoId().setValue(post)
         
     }
     
 
     @IBAction func doneButtonPressed(_ sender: AnyObject) {
-        
+        nameFromField = nameTextField.text
           post()
-        navigationController?.popToViewController(vc, animated: true)
+        //navigationController?.popToViewController(vc, animated: true)
     }
 }

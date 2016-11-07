@@ -8,6 +8,9 @@
 
 import UIKit
 import Alamofire
+import Firebase
+import FirebaseDatabase
+
 
 class HighscoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -17,16 +20,32 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tieScoreBoard: UITableView!
     @IBOutlet weak var coffeebrewersLabel: UILabel!
     
-
     var state = Singleton.sharedInstance.urlState
     
     var sortingForEmployees = SortingForEmployees()
+    
+    var posts = [postStruct]()
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let databaseRef = FIRDatabase.database().reference()
+        
+        databaseRef.child("Employees").queryOrderedByKey().observe(.childAdded, with: {
+            snapshot in
+            
+            let name = (snapshot.value as? NSDictionary)?["name"] as! String
+            //let point = (snapshot.value as? NSDictionary)?["point"] as! Int
+            
+            self.posts.insert(postStruct(name: name), at: 0)
+            
+            self.scoreBoard.reloadData()
+            self.tieScoreBoard.reloadData()
+        })
         
         Singleton.sharedInstance.callScoreAlamo(completion: { (pointData) in
             

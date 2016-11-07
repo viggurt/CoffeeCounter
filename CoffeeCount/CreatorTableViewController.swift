@@ -28,7 +28,7 @@ class CreatorTableViewController: UITableViewController {
         
         let databaseRef = FIRDatabase.database().reference()
 
-        databaseRef.child("Posts").queryOrderedByKey().observe(.childAdded, with: {
+        databaseRef.child("Employees").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
             
                 let name = (snapshot.value as? NSDictionary)?["name"] as! String
@@ -36,14 +36,15 @@ class CreatorTableViewController: UITableViewController {
             
             self.posts.insert(postStruct(name: name), at: 0)
             
+            self.tableView.reloadData()
+
         })
         
-        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        tableView.reloadData()
         if Singleton.sharedInstance.imageSet == true{
             self.navigationController?.popViewController(animated: true)
             Singleton.sharedInstance.imageSet = false
@@ -58,24 +59,24 @@ class CreatorTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Singleton.sharedInstance.employees.count
+        return posts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "employeeCell", for: indexPath) as! EmployeeCell
         
-        let cellName = Singleton.sharedInstance.employees[indexPath.row]
+        let cellName = posts[indexPath.row].name
         
-        cell.nameLabel.text = cellName.name
+        cell.nameLabel.text = cellName
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cellName = Singleton.sharedInstance.employees[indexPath.row]
+        let cellName = posts[indexPath.row].name
 
-        Singleton.sharedInstance.nameOnCreator = cellName.name
+        Singleton.sharedInstance.nameOnCreator = cellName!
         print(Singleton.sharedInstance.nameOnCreator)
         //present(vc, animated: true, completion: { _ in })
     }
