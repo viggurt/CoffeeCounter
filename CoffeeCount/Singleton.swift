@@ -26,7 +26,7 @@ class Singleton {
     var tieList = [Employee]()
     
     //if urlState == "1" it gets data from my personal json. else if urlState is "0" it is from the main json
-    var urlState: Int = 0
+    var urlState: Int = 1
     
     var coffeeURLSwitch: [String] = ["coffee-count","viggurt-coffe-count"]
     

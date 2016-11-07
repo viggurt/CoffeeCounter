@@ -30,6 +30,7 @@
 		93A216301DC8A8D100844CFC /* KenyanCoffeeRg-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216281DC8A8D100844CFC /* KenyanCoffeeRg-Italic.ttf */; };
 		93A216311DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93A216291DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf */; };
 		93A216331DCB7C8D00844CFC /* SortingForEmployees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A216321DCB7C8D00844CFC /* SortingForEmployees.swift */; };
+		93A216351DCB8B6C00844CFC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A216341DCB8B6C00844CFC /* GoogleService-Info.plist */; };
 		93EE35BF1DBF7CC700C9B380 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE35BE1DBF7CC700C9B380 /* CameraViewController.swift */; };
 		93EE9A4C1DA7C40B00C2D605 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */; };
 		93EE9A4E1DA7C40B00C2D605 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4D1DA7C40B00C2D605 /* ViewController.swift */; };
@@ -61,6 +62,7 @@
 		93A216281DC8A8D100844CFC /* KenyanCoffeeRg-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KenyanCoffeeRg-Italic.ttf"; sourceTree = "<group>"; };
 		93A216291DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KenyanCoffeeRg-Regular.ttf"; sourceTree = "<group>"; };
 		93A216321DCB7C8D00844CFC /* SortingForEmployees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortingForEmployees.swift; sourceTree = "<group>"; };
+		93A216341DCB8B6C00844CFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		93EE35BE1DBF7CC700C9B380 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		93EE9A481DA7C40B00C2D605 /* CoffeeCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93EE9A4B1DA7C40B00C2D605 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				93954D311DBDE8440074D63C /* Main.storyboard */,
 				93EE9A541DA7C40B00C2D605 /* LaunchScreen.storyboard */,
 				93EE9A571DA7C40B00C2D605 /* Info.plist */,
+				93A216341DCB8B6C00844CFC /* GoogleService-Info.plist */,
 			);
 			path = CoffeeCount;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93A216351DCB8B6C00844CFC /* GoogleService-Info.plist in Resources */,
 				93A216311DC8A8D100844CFC /* KenyanCoffeeRg-Regular.ttf in Resources */,
 				93A2162E1DC8A8D100844CFC /* KenyanCoffeeRg-Bold.ttf in Resources */,
 				93A2162C1DC8A8D100844CFC /* kenyan coffee rg it.otf in Resources */,

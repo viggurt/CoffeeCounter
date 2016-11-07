@@ -127,6 +127,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //MARK: Functions
     func updateGetData(){
         print("updateGetData")
+/* callAlamo(url: String, labelToSet: UILabel) { (points) in
+ 
+ }*/
         callAlamo(url: Coffee.sharedInstance.getCoffeeURL, labelToSet: coffeeCounter)
         callAlamo(url: Tea.sharedInstance.getTeaURL, labelToSet: teaCountLabel)
     }
@@ -135,6 +138,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         Alamofire.request(url, method: .get).responseJSON(completionHandler: { response in
             
             if let theTotalAmmount = DataFile.parseTotalData(JSONData: response.data!){
+                
+                if url == Coffee.sharedInstance.getCoffeeURL{
+                    Coffee.sharedInstance.cupCounter = theTotalAmmount
+                }else if url == Tea.sharedInstance.getTeaURL{
+                    Tea.sharedInstance.cupCounter = theTotalAmmount
+                }else{
+                    print("You got error in callAlamo")
+                }
                 
                     labelToSet.text = String(theTotalAmmount)
                
