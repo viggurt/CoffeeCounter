@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 import Canvas
 import AVFoundation
+import Firebase
+import FirebaseDatabase
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
     
@@ -56,12 +58,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var inLove = UIImage(named: "group-1")
     var failedPutURLStrings: [String] = []
     var employee: Employee!
+    var databaseRef : FIRDatabaseReference!
     
     var circleButtons: [UIButton] = []
     
     var sortingForEmployees = SortingForEmployees()
     
     var state = Singleton.sharedInstance.urlState
+    
+    //var posts = [postStruct]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +76,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         circleButtons = [coffeeCreator, minusOne, plusOne, plusTwo]
    
+        databaseRef = FIRDatabase.database().reference()
+        
+        databaseRef.child("Employees").queryOrderedByKey().observe(.childAdded, with: {
+            snapshot in
+            
+            let name = (snapshot.value as? NSDictionary)?["name"] as! String
+            let point = (snapshot.value as? NSDictionary)?["point"] as! Int
+            
+            Singleton.sharedInstance.posts.insert(postStruct(name: name, point: point), at: 0)
+            
+            let itemRef = FIRDatabase.database().reference(withPath: "Employees")
+            
+            itemRef.observeSingleEvent(of: .value, with: { snapshot in
+                for task in snapshot.children {
+                    guard let taskSnapshot = task as? FIRDataSnapshot else {
+                        continue
+                    }
+                    
+                    let id = taskSnapshot.key
+                    // do other things
+                    print(id)
+                }
+            })
+            
+        })
         
         //MARK: Buttondesigns
      
@@ -82,13 +112,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         teaButtonAnimationView.layer.cornerRadius = teaButtonAnimationView.bounds.size.width * 0.5
         
         //MARK: Employees
-        DataFile.getData(completion: { (employeeData) in
+       /* DataFile.getData(completion: { (employeeData) in
             Singleton.sharedInstance.employees = employeeData
             
             self.sortingForEmployees.sort()
             self.sortingForEmployees.compareIfMultipleStudentHaveTheHighestScore()
         
-        })
+        })*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,6 +130,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         pictureImageView.image = Singleton.sharedInstance.myImage
 
+        
         //When someone has brewed coffee this becomes true
         if Singleton.sharedInstance.nameOnCreator != ""{
         quoteLabel.text = "\(Singleton.sharedInstance.nameOnCreator) - latest hero, making Coffee."
@@ -122,6 +153,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         getDataTimer.invalidate()
+        
+        
+       /* let key = databaseRef.child("Employees").childByAutoId().key
+        let postUpdate = ["/Employees/\(key)": "point"]
+        
+        databaseRef.updateChildValues(postUpdate)*/
     }
     
     //MARK: Functions
@@ -223,11 +260,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func minusOneButton(_ sender: AnyObject) {
-        for employee in Singleton.sharedInstance.employees{
+        for employee in Singleton.sharedInstance.posts{
             if employee.name == Singleton.sharedInstance.nameOnCreator{
-                Singleton.sharedInstance.putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.statURLSwitch[state])-\(employee.id)/-1"
-                putAlamo(url: Singleton.sharedInstance.putPointsURL)
-                //employee.totalPoints = employee.totalPoints - 1
+                
+                var currentPoint = employee.point
+                currentPoint = currentPoint! - 1
+                
+                let post = ["point" : currentPoint]
+              
+                let key = databaseRef.child("Employees").childByAutoId().key
+                let postUpdate = ["/Employees/\(key)": post]
+                
+                databaseRef.updateChildValues(postUpdate)
             }
             
         }

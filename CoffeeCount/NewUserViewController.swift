@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class NewUserViewController: UIViewController {
+class NewUserViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -23,6 +23,8 @@ class NewUserViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        nameTextField.delegate = self
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,9 +43,21 @@ class NewUserViewController: UIViewController {
     }
     */
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let text = nameTextField.text
+        if !(text?.isEmpty)!{//Checking if the input field is not empty
+            doneButton.isEnabled = true //Enabling the button
+        } else {
+            doneButton.isEnabled = false //Disabling the button
+        }
+        return true
+    }
+    
     func post(){
         
-        let post : [String: AnyObject] = ["name" : nameFromField as AnyObject]
+        let post : [String: AnyObject] = ["name" : nameFromField as AnyObject,
+                                          "point" : 0 as AnyObject]
+        
         
         let databaseRef = FIRDatabase.database().reference()
         
@@ -55,6 +69,6 @@ class NewUserViewController: UIViewController {
     @IBAction func doneButtonPressed(_ sender: AnyObject) {
         nameFromField = nameTextField.text
           post()
-        //navigationController?.popToViewController(vc, animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }

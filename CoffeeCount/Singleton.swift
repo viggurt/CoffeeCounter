@@ -21,9 +21,11 @@ class Singleton {
         
     var employees = [Employee]()
     
-    var putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/coffee-count-stats-%d/%d"
+    var putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffee-count-stats-%d/%d"
 
-    var tieList = [Employee]()
+    var tieList = [postStruct]()
+    
+    var posts = [postStruct]()
     
     //if urlState == "1" it gets data from my personal json. else if urlState is "0" it is from the main json
     var urlState: Int = 1
@@ -34,7 +36,7 @@ class Singleton {
     
     var statURLSwitch: [String] = ["coffee-count-stats","viggurt-coffee-count-stats"]
     
-    let statURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/coffee-count-stats-%d/1200w?forceUpdate=true"
+    let statURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffee-count-stats-%d/1200w?forceUpdate=true"
     
     func urlForEmployee(empl:Employee) -> String
     {

@@ -22,34 +22,26 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var state = Singleton.sharedInstance.urlState
     
+    let databaseRef: FIRDatabaseReference! = nil
+    
     var sortingForEmployees = SortingForEmployees()
     
-    var posts = [postStruct]()
-    
-    
-    
+    //var posts = [postStruct]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        let databaseRef = FIRDatabase.database().reference()
+        /*databaseRef.observe(.value, with: { snapshot in
+            for childSnap in  snapshot.children.allObjects {
+                let snap = childSnap as! FIRDataSnapshot
+                if let snapshotValue = snapshot.value as? NSDictionary, let snapVal = snapshotValue[snap.key] as? AnyObject {
+                    print("val" , snapVal)
+                }
+            }
+        })*/
         
-        databaseRef.child("Employees").queryOrderedByKey().observe(.childAdded, with: {
-            snapshot in
-            
-            let name = (snapshot.value as? NSDictionary)?["name"] as! String
-            //let point = (snapshot.value as? NSDictionary)?["point"] as! Int
-            
-            self.posts.insert(postStruct(name: name), at: 0)
-            
-            self.scoreBoard.reloadData()
-            self.tieScoreBoard.reloadData()
-        })
-        
-        Singleton.sharedInstance.callScoreAlamo(completion: { (pointData) in
-            
-            
             self.tieScoreBoard.isHidden = true
             self.scoreBoard.dataSource = self
             self.scoreBoard.delegate = self
@@ -66,15 +58,45 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.tieScoreBoard.isHidden = false
                 self.coffeebrewersLabel.text = "The best coffeebrewers!"
             }else{
-                self.topScoreName.text = Singleton.sharedInstance.employees[0].name
+                self.topScoreName.text = Singleton.sharedInstance.posts[0].name
             }
             
-            self.topScoreName.text = Singleton.sharedInstance.employees[0].name
+            self.topScoreName.text = Singleton.sharedInstance.posts[0].name
             
-            self.topScorePoint.text = "\(Singleton.sharedInstance.employees[0].totalPoints) points!"
+            self.topScorePoint.text = "\(Singleton.sharedInstance.posts[0].point!) points!"
             
             self.scoreBoard.reloadData()
             self.tieScoreBoard.reloadData()
+       
+        
+        Singleton.sharedInstance.callScoreAlamo(completion: { (pointData) in
+            
+            
+            /*self.tieScoreBoard.isHidden = true
+             self.scoreBoard.dataSource = self
+             self.scoreBoard.delegate = self
+             
+             self.tieScoreBoard.dataSource = self
+             self.tieScoreBoard.delegate = self
+             
+             self.sortingForEmployees.sort()
+             self.sortingForEmployees.compareIfMultipleStudentHaveTheHighestScore()
+             
+             print(Singleton.sharedInstance.highestPoint)
+             if Singleton.sharedInstance.tieList.count > 1{
+             print("number in tie list \(Singleton.sharedInstance.tieList.count)")
+             self.tieScoreBoard.isHidden = false
+             self.coffeebrewersLabel.text = "The best coffeebrewers!"
+             }else{
+             self.topScoreName.text = Singleton.sharedInstance.employees[0].name
+             }
+             
+             self.topScoreName.text = Singleton.sharedInstance.employees[0].name
+             
+             self.topScorePoint.text = "\(Singleton.sharedInstance.employees[0].totalPoints) points!"
+             
+             self.scoreBoard.reloadData()
+             self.tieScoreBoard.reloadData()*/
             
             
             
@@ -99,7 +121,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
         var cellCount: Int!
         
         if tableView == scoreBoard{
-            cellCount = Singleton.sharedInstance.employees.count
+            cellCount = Singleton.sharedInstance.posts.count
         }
         
         if tableView == tieScoreBoard{
@@ -117,10 +139,10 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
             let mCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HighscoreCell
             cell = mCell
             
-            let content = Singleton.sharedInstance.employees[indexPath.row]
+            let content = Singleton.sharedInstance.posts[indexPath.row]
             mCell.nameLabel.text = content.name
             
-            mCell.pointLabel.text = String(content.totalPoints)
+            mCell.pointLabel.text = String(content.point!)
             
         }
         

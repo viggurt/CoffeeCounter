@@ -380,7 +380,7 @@
                                         </state>
                                         <connections>
                                             <action selector="coffeeCreatorButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kds-D5-zbj"/>
-                                            <segue destination="tAG-zq-vPE" kind="show" id="Gru-sw-O7t"/>
+                                            <segue destination="v9Y-LR-Fg4" kind="show" id="cw2-Or-b3P"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kaffepanna" translatesAutoresizingMaskIntoConstraints="NO" id="hCY-Y5-ZIE">
@@ -828,7 +828,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSL-pW-5QJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="576.79999999999995" y="706.59670164917543"/>
+            <point key="canvasLocation" x="313" y="841"/>
         </scene>
         <!--New User View Controller-->
         <scene sceneID="Lw4-ae-wId">
@@ -847,9 +847,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <connections>
+                                    <outlet property="delegate" destination="DUh-E8-lci" id="1FU-VG-DdY"/>
+                                </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvH-VD-M3d">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvH-VD-M3d">
                                 <frame key="frameInset" minX="164" minY="422" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Done"/>
@@ -947,24 +950,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfX-jQ-gPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1348" y="1174"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="wUt-GU-ezq">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tAG-zq-vPE" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Uqr-Ax-XuI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="v9Y-LR-Fg4" kind="relationship" relationship="rootViewController" id="7nI-p4-LPS"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HnU-dq-0mW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-362.39999999999998" y="706.59670164917543"/>
         </scene>
     </scenes>
     <resources>

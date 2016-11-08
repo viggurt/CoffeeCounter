@@ -7,15 +7,22 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseDatabase
+
 class SortingForEmployees{
     
     var point = 0
     
+    //var posts = [postStruct]()
+    let databaseRef = FIRDatabase.database().reference()
+    
+    
     func sort(){
-        for employee in Singleton.sharedInstance.employees{
+        for employee in Singleton.sharedInstance.posts{
             
             Singleton.sharedInstance.highestPoint.removeAll()
-            point = point + employee.totalPoints
+            point = point + employee.point
             
             if !Singleton.sharedInstance.highestPoint.contains(point){
                 Singleton.sharedInstance.highestPoint.append(point)
@@ -30,15 +37,15 @@ class SortingForEmployees{
             Singleton.sharedInstance.highestPoint = sortedPoints
         }
         
-        print(Singleton.sharedInstance.employees[0].name)
-        let sortedStudents = Singleton.sharedInstance.employees.sorted(by: { (stud1, stud2) -> Bool in
-            return stud1.totalPoints > stud2.totalPoints
+        print(Singleton.sharedInstance.posts[0].name)
+        let sortedStudents = Singleton.sharedInstance.posts.sorted(by: { (stud1, stud2) -> Bool in
+            return stud1.point > stud2.point
         })
-        Singleton.sharedInstance.employees = sortedStudents
-        print(Singleton.sharedInstance.employees[0].name)
+        Singleton.sharedInstance.posts = sortedStudents
+        print(Singleton.sharedInstance.posts[0].name)
         Singleton.sharedInstance.tieList.removeAll()
-        if !Singleton.sharedInstance.employees.isEmpty{
-            Singleton.sharedInstance.tieList.append(Singleton.sharedInstance.employees[0])
+        if !Singleton.sharedInstance.posts.isEmpty{
+            Singleton.sharedInstance.tieList.append(Singleton.sharedInstance.posts[0])
         }
         
     }
@@ -48,8 +55,8 @@ class SortingForEmployees{
         
         //If multiple students have the highest score, they all will be visable in the top
         if !Singleton.sharedInstance.tieList.isEmpty{
-            for employee in Singleton.sharedInstance.employees{
-                if employee.totalPoints == Singleton.sharedInstance.tieList[0].totalPoints{
+            for employee in Singleton.sharedInstance.posts{
+                if employee.point == Singleton.sharedInstance.tieList[0].point{
                     if !Singleton.sharedInstance.tieList.contains(where: { (studInArr) -> Bool in
                         return studInArr.name == employee.name
                     }){

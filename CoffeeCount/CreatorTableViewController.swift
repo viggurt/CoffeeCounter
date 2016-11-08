@@ -12,33 +12,33 @@ import FirebaseDatabase
 
 struct postStruct {
     let name : String!
-    //let point : Int!
+    let point : Int!
 }
 
 class CreatorTableViewController: UITableViewController {
     
-    var posts = [postStruct]()
-
     //let vc = CameraViewController()
+    
+    //var posts = [postStruct]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(Singleton.sharedInstance.employees)
         
-        let databaseRef = FIRDatabase.database().reference()
+       /* let databaseRef = FIRDatabase.database().reference()
 
         databaseRef.child("Employees").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
             
                 let name = (snapshot.value as? NSDictionary)?["name"] as! String
-                //let point = (snapshot.value as? NSDictionary)?["point"] as! Int
+                let point = (snapshot.value as? NSDictionary)?["point"] as! Int
             
-            self.posts.insert(postStruct(name: name), at: 0)
+            self.posts.insert(postStruct(name: name, point: point), at: 0)
             
             self.tableView.reloadData()
 
-        })
+        })*/
         
     }
     
@@ -59,13 +59,13 @@ class CreatorTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return Singleton.sharedInstance.posts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "employeeCell", for: indexPath) as! EmployeeCell
         
-        let cellName = posts[indexPath.row].name
+        let cellName = Singleton.sharedInstance.posts[indexPath.row].name
         
         cell.nameLabel.text = cellName
         
@@ -74,8 +74,9 @@ class CreatorTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cellName = posts[indexPath.row].name
-
+        let cellName = Singleton.sharedInstance.posts[indexPath.row].name
+        
+        
         Singleton.sharedInstance.nameOnCreator = cellName!
         print(Singleton.sharedInstance.nameOnCreator)
         //present(vc, animated: true, completion: { _ in })
