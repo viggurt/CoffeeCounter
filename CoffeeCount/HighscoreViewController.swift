@@ -48,6 +48,8 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
             
             self.tieScoreBoard.dataSource = self
             self.tieScoreBoard.delegate = self
+        
+        if Singleton.sharedInstance.posts.count >= 1 {
             
             self.sortingForEmployees.sort()
             self.sortingForEmployees.compareIfMultipleStudentHaveTheHighestScore()
@@ -65,6 +67,8 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
             
             self.topScorePoint.text = "\(Singleton.sharedInstance.posts[0].point!) points!"
             
+        }
+        
             self.scoreBoard.reloadData()
             self.tieScoreBoard.reloadData()
        

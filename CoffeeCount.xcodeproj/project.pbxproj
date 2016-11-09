@@ -37,6 +37,7 @@
 		93EE9A4E1DA7C40B00C2D605 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EE9A4D1DA7C40B00C2D605 /* ViewController.swift */; };
 		93EE9A531DA7C40B00C2D605 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93EE9A521DA7C40B00C2D605 /* Assets.xcassets */; };
 		93EE9A561DA7C40B00C2D605 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93EE9A541DA7C40B00C2D605 /* LaunchScreen.storyboard */; };
+		93F862041DD31E6A000B0834 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F862031DD31E6A000B0834 /* PasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		93EE9A521DA7C40B00C2D605 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93EE9A551DA7C40B00C2D605 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93EE9A571DA7C40B00C2D605 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93F862031DD31E6A000B0834 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		97DA986C3BAC2F62FB91184A /* Pods-CoffeeCount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeCount.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeeCount/Pods-CoffeeCount.release.xcconfig"; sourceTree = "<group>"; };
 		F9AE46EE6CE694B08AC9895B /* Pods-CoffeeCount.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeCount.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoffeeCount/Pods-CoffeeCount.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 				93954D341DBE00D70074D63C /* StatisticsViewController.swift */,
 				934179F11DC23AC5003BA784 /* HighscoreViewController.swift */,
 				93D3F7261DD08BEE00D28D76 /* NewUserViewController.swift */,
+				93F862031DD31E6A000B0834 /* PasswordViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				934179F01DC239EA003BA784 /* HighscoreCell.swift in Sources */,
 				93EE9A4C1DA7C40B00C2D605 /* AppDelegate.swift in Sources */,
 				934179EC1DC22725003BA784 /* Employee.swift in Sources */,
+				93F862041DD31E6A000B0834 /* PasswordViewController.swift in Sources */,
 				93A216331DCB7C8D00844CFC /* SortingForEmployees.swift in Sources */,
 				9330DC421DC1F91700EB92AB /* CreatorTableViewController.swift in Sources */,
 				939768631DC23DD800E3EAD1 /* TieCell.swift in Sources */,

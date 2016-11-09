@@ -47,6 +47,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var cameraCount = 3
     var imagePicker = UIImagePickerController()
     var getDataTimer = Timer()
+    var disabledButtonsTimer = Timer()
     
     var putCoffeeURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.coffeeURLSwitch[Singleton.sharedInstance.urlState])/1"
     var putTeaURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.teaURLSwitch[Singleton.sharedInstance.urlState])/1"
@@ -82,10 +83,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             snapshot in
             
             let name = (snapshot.value as? NSDictionary)?["name"] as! String
+            let password = (snapshot.value as? NSDictionary)?["password"] as! String
             let point = (snapshot.value as? NSDictionary)?["point"] as! Int
             //snapshot.ref.removeValue()
             let postStruct = PostStruct()
             postStruct.name = name
+            postStruct.password = password
             postStruct.point = point
             postStruct.ref = snapshot.ref
             
@@ -168,6 +171,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     //MARK: Functions
+    func likeStop(){
+        minusOne.isEnabled = true
+        plusOne.isEnabled = true
+        plusTwo.isEnabled = true
+    }
+    
+    func disableTheRateButtons(){
+        //Stop the cheating
+        minusOne.isEnabled = false
+        plusOne.isEnabled = false
+        plusTwo.isEnabled = false
+    }
+    
     func updateGetData(){
         print("updateGetData")
 /* callAlamo(url: String, labelToSet: UILabel) { (points) in
@@ -266,29 +282,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func minusOneButton(_ sender: AnyObject) {
-        for employee in Singleton.sharedInstance.posts{
+        //Invalidate the present timer
+        disabledButtonsTimer.invalidate()
+        
+        /*for employee in Singleton.sharedInstance.posts{
             if employee.name == Singleton.sharedInstance.nameOnCreator{
                 
                 var currentPoint = employee.point
                 currentPoint = currentPoint! - 1
                 
-                let post = ["point" : currentPoint]
-              
-                let key = databaseRef.child("Employees").childByAutoId().key
-                let postUpdate = ["/Employees/\(key)": post]
                 
-                databaseRef.updateChildValues(postUpdate)
-            }
+                let prntRef  = FIRDatabase.database().reference().child("komal_kyz").child(your_AuroID)
+                prntRef.updateChildValues(["point": currentPoint])*/
+                
+                Singleton.sharedInstance.putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.statURLSwitch[state])-\(employee.id)/-1"
+                putAlamo(url: Singleton.sharedInstance.putPointsURL)
+                
+            //}
             
-        }
+        
         plusOneAnimationView.backgroundColor = nil
 
         plusOneImage.image = unhappy
         myView.bringSubview(toFront: plusOneAnimationView)
         plusOneAnimationView.startCanvasAnimation()
+        
+        //Stop the cheating
+        disableTheRateButtons()
+        disabledButtonsTimer = Timer.scheduledTimer(timeInterval: 15, target:self, selector: #selector(likeStop), userInfo: nil, repeats: true)
     }
     
     @IBAction func plusOneButton(_ sender: AnyObject) {
+        //Invalidate the present timer
+        disabledButtonsTimer.invalidate()
+        
         for employee in Singleton.sharedInstance.employees{
             if employee.name == Singleton.sharedInstance.nameOnCreator{
                 Singleton.sharedInstance.putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.statURLSwitch[state])-\(employee.id)/1"
@@ -302,9 +329,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         plusOneImage.image = happy
         myView.bringSubview(toFront: plusOneAnimationView)
         plusOneAnimationView.startCanvasAnimation()
+        
+        //Stop the cheating
+        disableTheRateButtons()
+        disabledButtonsTimer = Timer.scheduledTimer(timeInterval: 15, target:self, selector: #selector(likeStop), userInfo: nil, repeats: true)
     }
     
     @IBAction func plusTwoButton(_ sender: AnyObject) {
+        //Invalidate the present timer
+        disabledButtonsTimer.invalidate()
+        
         for employee in Singleton.sharedInstance.employees{
             if employee.name == Singleton.sharedInstance.nameOnCreator{
                 Singleton.sharedInstance.putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.statURLSwitch[state])-\(employee.id)/2"
@@ -318,6 +352,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         plusOneImage.image = inLove
         myView.bringSubview(toFront: plusOneAnimationView)
         plusOneAnimationView.startCanvasAnimation()
+        
+        //Stop the cheating
+        disableTheRateButtons()
+        disabledButtonsTimer = Timer.scheduledTimer(timeInterval: 15, target:self, selector: #selector(likeStop), userInfo: nil, repeats: true)
         
     }
     

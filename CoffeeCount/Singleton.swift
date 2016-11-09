@@ -18,6 +18,8 @@ class Singleton {
     var imageSet = false
     
     var nameOnCreator = ""
+    
+    var currentPasswordInput = ""
         
     var employees = [Employee]()
     

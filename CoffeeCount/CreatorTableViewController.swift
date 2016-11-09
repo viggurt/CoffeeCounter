@@ -17,6 +17,7 @@ class PostStruct {
     }
     
     var name : String!
+    var password : String!
     var point : Int!
     
     
@@ -100,11 +101,26 @@ class CreatorTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             
-                let employeePosts = Singleton.sharedInstance.posts[indexPath.row]
+            let cellPassword = Singleton.sharedInstance.posts[indexPath.row].password
+            
+            if Singleton.sharedInstance.currentPasswordInput == cellPassword{
+                print("Det här är rätt")
+                
+                /* let employeePosts = Singleton.sharedInstance.posts[indexPath.row]
+                 
+                 employeePosts.ref.removeValue()
+                 Singleton.sharedInstance.posts.remove(at: indexPath.row)
+                 self.tableView.deleteRows(at: [indexPath], with: .automatic)*/
+                
+            }
+            
+              let employeePosts = Singleton.sharedInstance.posts[indexPath.row]
             
                 employeePosts.ref.removeValue()
             Singleton.sharedInstance.posts.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            
                 /*
                 FIRDatabase.database().reference().child("Employees").child(key).removeValue(completionBlock: { (error, ref) in
                 
@@ -112,7 +128,7 @@ class CreatorTableViewController: UITableViewController {
                         print("Failed to delete message: ", error)
                         return
                     }
-                    
+             
                     Singleton.sharedInstance.posts.remove(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .automatic)
                     

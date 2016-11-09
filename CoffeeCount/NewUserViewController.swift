@@ -17,13 +17,18 @@ class NewUserViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var doneButton: UIButton!
     var nameFromField: String!
+    var passwordFromField : String!
     var vc = CreatorTableViewController()
 
+    @IBOutlet weak var errrorMessageLabel: UILabel!
+    @IBOutlet weak var passwordTextField: UITextField!
+    var existsState = false
+    var databaseRef = FIRDatabase.database().reference()
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         nameTextField.delegate = self
+        passwordTextField.delegate = self
 
     }
 
@@ -42,24 +47,16 @@ class NewUserViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let text = nameTextField.text
-        if !(text?.isEmpty)!{//Checking if the input field is not empty
-            doneButton.isEnabled = true //Enabling the button
-        } else {
-            doneButton.isEnabled = false //Disabling the button
-        }
-        return true
-    }
+  
     
     func post(){
         
         let post : [String: AnyObject] = ["name" : nameFromField as AnyObject,
+                                          "password" : passwordFromField as AnyObject,
                                           "point" : 0 as AnyObject]
         
         
-        let databaseRef = FIRDatabase.database().reference()
+        
         
         databaseRef.child("Employees").childByAutoId().setValue(post)
         
@@ -67,8 +64,33 @@ class NewUserViewController: UIViewController, UITextFieldDelegate {
     
 
     @IBAction func doneButtonPressed(_ sender: AnyObject) {
-        nameFromField = nameTextField.text
-          post()
-        navigationController?.popViewController(animated: true)
+        
+        let text = nameTextField.text
+        let passwordText = passwordTextField.text
+        
+        if (text?.characters.count)! >= 2 && (passwordText?.characters.count)! >= 2 {//Checking if the input field is not empty
+            
+            
+            if Singleton.sharedInstance.posts.contains(where: { (emp1) in
+                emp1.name == text
+            }) {
+                    print("found")
+                    
+                    self.errrorMessageLabel.isHidden = false
+                    self.errrorMessageLabel.text = "That name already exist. Please choose another one!"
+                }
+                else{
+                    
+                    self.nameFromField = self.nameTextField.text
+                    self.passwordFromField = self.passwordTextField.text
+                    self.post()
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+            
+        }else{
+            errrorMessageLabel.isHidden = false
+        }
+        
     }
 }

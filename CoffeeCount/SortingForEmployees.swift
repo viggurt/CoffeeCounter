@@ -19,33 +19,36 @@ class SortingForEmployees{
     
     
     func sort(){
-        for employee in Singleton.sharedInstance.posts{
-            
-            Singleton.sharedInstance.highestPoint.removeAll()
-            point = point + employee.point
-            
-            if !Singleton.sharedInstance.highestPoint.contains(point){
-                Singleton.sharedInstance.highestPoint.append(point)
+        
+        if Singleton.sharedInstance.posts.isEmpty == false{
+            for employee in Singleton.sharedInstance.posts{
+                
+                Singleton.sharedInstance.highestPoint.removeAll()
+                point = point + employee.point
+                
+                if !Singleton.sharedInstance.highestPoint.contains(point){
+                    Singleton.sharedInstance.highestPoint.append(point)
+                }
+                point = 0
             }
-            point = 0
-        }
-        
-        if Singleton.sharedInstance.highestPoint.count > 1{
-            let sortedPoints = Singleton.sharedInstance.highestPoint.sorted(by: { (num1, num2) -> Bool in
-                return num1 > num2
+            
+            if Singleton.sharedInstance.highestPoint.count > 1{
+                let sortedPoints = Singleton.sharedInstance.highestPoint.sorted(by: { (num1, num2) -> Bool in
+                    return num1 > num2
+                })
+                Singleton.sharedInstance.highestPoint = sortedPoints
+            }
+            
+            print(Singleton.sharedInstance.posts[0].name)
+            let sortedStudents = Singleton.sharedInstance.posts.sorted(by: { (stud1, stud2) -> Bool in
+                return stud1.point > stud2.point
             })
-            Singleton.sharedInstance.highestPoint = sortedPoints
-        }
-        
-        print(Singleton.sharedInstance.posts[0].name)
-        let sortedStudents = Singleton.sharedInstance.posts.sorted(by: { (stud1, stud2) -> Bool in
-            return stud1.point > stud2.point
-        })
-        Singleton.sharedInstance.posts = sortedStudents
-        print(Singleton.sharedInstance.posts[0].name)
-        Singleton.sharedInstance.tieList.removeAll()
-        if !Singleton.sharedInstance.posts.isEmpty{
-            Singleton.sharedInstance.tieList.append(Singleton.sharedInstance.posts[0])
+            Singleton.sharedInstance.posts = sortedStudents
+            print(Singleton.sharedInstance.posts[0].name)
+            Singleton.sharedInstance.tieList.removeAll()
+            if !Singleton.sharedInstance.posts.isEmpty{
+                Singleton.sharedInstance.tieList.append(Singleton.sharedInstance.posts[0])
+            }
         }
         
     }
