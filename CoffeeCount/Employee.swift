@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Employee{
+class Employee {
     var name: String
     var id: Int
     

@@ -825,6 +825,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="employeeTableView" destination="sK3-bI-4v5" id="xif-yw-84A"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSL-pW-5QJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -954,7 +957,7 @@
     </scenes>
     <resources>
         <image name="base" width="458" height="458"/>
-        <image name="camera" width="512" height="512"/>
+        <image name="camera" width="291" height="279"/>
         <image name="coffeeStats2" width="2046" height="2046"/>
         <image name="filter2" width="3333" height="3333"/>
         <image name="group" width="42" height="42"/>

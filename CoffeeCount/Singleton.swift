@@ -23,9 +23,9 @@ class Singleton {
     
     var putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/viggurt-coffee-count-stats-%d/%d"
 
-    var tieList = [postStruct]()
+    var tieList = [PostStruct]()
     
-    var posts = [postStruct]()
+    var posts = [PostStruct]()
     
     //if urlState == "1" it gets data from my personal json. else if urlState is "0" it is from the main json
     var urlState: Int = 1

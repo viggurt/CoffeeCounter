@@ -83,18 +83,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             let name = (snapshot.value as? NSDictionary)?["name"] as! String
             let point = (snapshot.value as? NSDictionary)?["point"] as! Int
+            //snapshot.ref.removeValue()
+            let postStruct = PostStruct()
+            postStruct.name = name
+            postStruct.point = point
+            postStruct.ref = snapshot.ref
             
-            Singleton.sharedInstance.posts.insert(postStruct(name: name, point: point), at: 0)
+            Singleton.sharedInstance.posts.insert(postStruct, at: 0)
             
             let itemRef = FIRDatabase.database().reference(withPath: "Employees")
             
-            itemRef.observeSingleEvent(of: .value, with: { snapshot in
+            itemRef.observe(.value, with: { snapshot in
+                print("Snapshot key \(snapshot.key)")
                 for task in snapshot.children {
                     guard let taskSnapshot = task as? FIRDataSnapshot else {
                         continue
                     }
                     
-                    let id = taskSnapshot.key
+                    let id = task
                     // do other things
                     print(id)
                 }
