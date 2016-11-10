@@ -12,10 +12,7 @@ import UIKit
 class DataFile{
     
     static func getData(completion: @escaping (_ employee: [Employee]) ->()){
-        
-        let postEndPoint: String = ""
-        let url = NSURL(string: postEndPoint)!
-        let session = URLSession.shared
+                
         var employeeArr = [Employee]()
         
 /*session.dataTask(with: (url as URL?)!, completionHandler: { ( data: Data?, response: URLResponse?, error: Error? ) -> Void in

@@ -96,19 +96,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             print(postStruct.ref.key)
             
             Singleton.sharedInstance.posts.insert(postStruct, at: 0)
-            
-            let itemRef = FIRDatabase.database().reference(withPath: "Employees")
-            
-            itemRef.observe(.value, with: { snapshot in
-                for task in snapshot.children {
-                    guard let taskSnapshot = task as? FIRDataSnapshot else {
-                        continue
-                    }
-                    
-                    let id = task
-                    // do other things
-                }
-            })
+           
             
         })
         
@@ -155,7 +143,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             pictureImageView.clipsToBounds = true
             
             //Date
-            var currentTime = Date()
+            let currentTime = Date()
             let formatter = DateFormatter()
             
             formatter.dateFormat = "HH:mm"
@@ -225,7 +213,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func putAlamo(url: String){
         print("putAlamo START")
 
-        let putRequest = Alamofire.request(url, method: .put).validate().responseJSON(completionHandler: { response in
+        Alamofire.request(url, method: .put).validate().responseJSON(completionHandler: { response in
             
             switch response.result {
             case .success:

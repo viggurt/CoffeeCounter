@@ -195,39 +195,6 @@
             </objects>
             <point key="canvasLocation" x="-618.39999999999998" y="-645.42728635682158"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ffc-xe-zap">
-            <objects>
-                <viewController id="ewe-A1-Zpx" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kJe-Nh-AWz"/>
-                        <viewControllerLayoutGuide type="bottom" id="z3u-dY-kEL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="nry-qx-Onf">
-                        <rect key="frame" x="0.0" y="0.0" width="700" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxt-Po-Jsz">
-                                <frame key="frameInset" height="659" maxX="302" maxY="8"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L1U-VF-fIv">
-                                <frame key="frameInset" minX="399" height="667"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="2hE-Cc-taK" kind="embed" id="Rae-j3-4lR"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="700" height="667"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DiK-gt-GST" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1108.8" y="-1101.4992503748126"/>
-        </scene>
         <!--Coffee/Tea Counter latest 12 h-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -691,10 +658,9 @@
                                 <constraints>
                                     <constraint firstItem="mgw-oE-ssc" firstAttribute="top" secondItem="9ga-8R-U2y" secondAttribute="top" constant="8" id="74j-Yb-5xn"/>
                                     <constraint firstItem="Ii1-Qs-LXB" firstAttribute="centerX" secondItem="9ga-8R-U2y" secondAttribute="centerX" id="CMA-1V-Wbc"/>
-                                    <constraint firstItem="mgw-oE-ssc" firstAttribute="leading" secondItem="9ga-8R-U2y" secondAttribute="leading" constant="23" id="GmZ-JK-cZu"/>
                                     <constraint firstItem="Ii1-Qs-LXB" firstAttribute="top" secondItem="mgw-oE-ssc" secondAttribute="bottom" constant="56" id="Ywf-wz-Hc9"/>
+                                    <constraint firstItem="mgw-oE-ssc" firstAttribute="centerX" secondItem="9ga-8R-U2y" secondAttribute="centerX" id="dfT-UF-hin"/>
                                     <constraint firstAttribute="bottom" secondItem="Ii1-Qs-LXB" secondAttribute="bottom" constant="57" id="gPc-8k-dDE"/>
-                                    <constraint firstAttribute="trailing" secondItem="mgw-oE-ssc" secondAttribute="trailing" constant="25" id="oRR-0F-2y4"/>
                                     <constraint firstItem="mgw-oE-ssc" firstAttribute="height" secondItem="9ga-8R-U2y" secondAttribute="height" multiplier="0.232" id="tVp-fm-5Pi"/>
                                 </constraints>
                             </view>
@@ -765,9 +731,8 @@
                                     <constraint firstItem="XcU-Ae-rzS" firstAttribute="centerX" secondItem="PPl-b5-5bR" secondAttribute="centerX" id="8hr-oW-iQc"/>
                                     <constraint firstAttribute="bottom" secondItem="XcU-Ae-rzS" secondAttribute="bottom" constant="57" id="RU4-LR-iVM"/>
                                     <constraint firstItem="hNk-oo-8te" firstAttribute="height" secondItem="PPl-b5-5bR" secondAttribute="height" multiplier="0.232" id="Xe7-X6-fhv"/>
-                                    <constraint firstAttribute="trailing" secondItem="hNk-oo-8te" secondAttribute="trailing" constant="25" id="aMo-eD-MoV"/>
                                     <constraint firstItem="XcU-Ae-rzS" firstAttribute="top" secondItem="hNk-oo-8te" secondAttribute="bottom" constant="34" id="juo-Kh-Pdl"/>
-                                    <constraint firstItem="hNk-oo-8te" firstAttribute="leading" secondItem="PPl-b5-5bR" secondAttribute="leading" constant="23" id="qpW-b2-eq7"/>
+                                    <constraint firstItem="hNk-oo-8te" firstAttribute="centerX" secondItem="PPl-b5-5bR" secondAttribute="centerX" id="rnn-eU-gt9"/>
                                     <constraint firstItem="270-B1-fKn" firstAttribute="top" secondItem="hNk-oo-8te" secondAttribute="bottom" constant="20" id="tNS-IV-Dvx"/>
                                     <constraint firstItem="hNk-oo-8te" firstAttribute="top" secondItem="PPl-b5-5bR" secondAttribute="top" constant="31" id="tY5-97-dBu"/>
                                 </constraints>
@@ -1108,7 +1073,4 @@
         <image name="path-23" width="19" height="22"/>
         <image name="shadow" width="2065" height="2065"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="aUB-bs-4NP"/>
-    </inferredMetricsTieBreakers>
 </document>
