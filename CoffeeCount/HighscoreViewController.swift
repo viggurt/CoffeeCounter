@@ -50,7 +50,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
             self.tieScoreBoard.delegate = self
         
         if Singleton.sharedInstance.posts.count >= 1 {
-            noDataLabel.isHidden = false
+            noDataLabel.isHidden = true
             self.sortingForEmployees.sort()
             self.sortingForEmployees.compareIfMultipleStudentHaveTheHighestScore()
             
@@ -69,14 +69,14 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
             
         }
         else{
-            noDataLabel.isHidden = true
+            noDataLabel.isHidden = false
         }
         
             self.scoreBoard.reloadData()
             self.tieScoreBoard.reloadData()
        
         
-        Singleton.sharedInstance.callScoreAlamo(completion: { (pointData) in
+        //Singleton.sharedInstance.callScoreAlamo(completion: { (pointData) in
             
             
             /*self.tieScoreBoard.isHidden = true
@@ -108,7 +108,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
             
             
             
-        })
+        //})
         
             //Singleton.sharedInstance.sort()
             //Singleton.sharedInstance.compareIfMultipleStudentHaveTheHighestScore()

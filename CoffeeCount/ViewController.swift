@@ -40,9 +40,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var statisticBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var highscoreBarButtonItem: UIBarButtonItem!
-    
-    
-    
+
+    @IBOutlet weak var timeStampLabel: UILabel!
+   
     //MARK: Variables
     var cameraCount = 3
     var imagePicker = UIImagePickerController()
@@ -67,11 +67,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var state = Singleton.sharedInstance.urlState
     
+    
+    
     //var posts = [postStruct]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
- 
         callAlamo(url: Coffee.sharedInstance.getCoffeeURL, labelToSet: coffeeCounter)
         callAlamo(url: Tea.sharedInstance.getTeaURL, labelToSet: teaCountLabel)
         
@@ -143,6 +144,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //When someone has brewed coffee this becomes true
         if Singleton.sharedInstance.nameOnCreator != ""{
         quoteLabel.text = "\(Singleton.sharedInstance.nameOnCreator) - latest hero, making Coffee."
+            timeStampLabel.isHidden = false
             minusOne.isHidden = false
             plusOne.isHidden = false
             plusTwo.isHidden = false
@@ -151,6 +153,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.quoteLabel.isHidden = false
             pictureImageView.layer.cornerRadius = pictureImageView.bounds.size.width * 0.5
             pictureImageView.clipsToBounds = true
+            
+            //Date
+            var currentTime = Date()
+            let formatter = DateFormatter()
+            
+            formatter.dateFormat = "HH:mm"
+            formatter.locale = Locale(identifier: "sv_SE")
+            timeStampLabel.text = formatter.string(from: currentTime)
             
         }
         

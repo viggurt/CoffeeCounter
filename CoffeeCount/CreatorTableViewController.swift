@@ -27,7 +27,9 @@ class PostStruct {
 
 class CreatorTableViewController: UITableViewController {
     
-    //let vc = CameraViewController()
+    let vc = PasswordViewController()
+    
+    var selectedCell: PostStruct?
     
     //var posts = [postStruct]()
     
@@ -54,12 +56,19 @@ class CreatorTableViewController: UITableViewController {
 
         })*/
         
+        Singleton.sharedInstance.posts.sort(by: { (emp1, emp2) in
+            emp1.name < emp2.name
+        })
         employeeTableView.allowsMultipleSelectionDuringEditing = true
-        
+        employeeTableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        Singleton.sharedInstance.posts.sort(by: { (emp1, emp2) in
+            emp1.name < emp2.name
+        })
         tableView.reloadData()
         if Singleton.sharedInstance.imageSet == true{
             self.navigationController?.popViewController(animated: true)
@@ -70,6 +79,29 @@ class CreatorTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func unwindToMenu(segue: UIStoryboardSegue){
+
+        
+        let cellPassword = selectedCell?.password
+        
+        if Singleton.sharedInstance.currentPasswordInput == cellPassword{
+            print("Det här är rätt")
+            
+            /* let employeePosts = Singleton.sharedInstance.posts[indexPath.row]
+             
+             employeePosts.ref.removeValue()
+             Singleton.sharedInstance.posts.remove(at: indexPath.row)
+             self.tableView.deleteRows(at: [indexPath], with: .automatic)*/
+            selectedCell?.ref.removeValue()
+            let filterCells = Singleton.sharedInstance.posts.filter({ $0.name != selectedCell?.name})
+            Singleton.sharedInstance.posts = filterCells
+            employeeTableView.reloadData()
+        }
+        
+        
+        //self.tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 
     // MARK: - Table view data source
@@ -101,25 +133,11 @@ class CreatorTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             
-            let cellPassword = Singleton.sharedInstance.posts[indexPath.row].password
+            selectedCell = Singleton.sharedInstance.posts[indexPath.row]
             
-            if Singleton.sharedInstance.currentPasswordInput == cellPassword{
-                print("Det här är rätt")
-                
-                /* let employeePosts = Singleton.sharedInstance.posts[indexPath.row]
-                 
-                 employeePosts.ref.removeValue()
-                 Singleton.sharedInstance.posts.remove(at: indexPath.row)
-                 self.tableView.deleteRows(at: [indexPath], with: .automatic)*/
-                
-            }
             
-              let employeePosts = Singleton.sharedInstance.posts[indexPath.row]
-            
-                employeePosts.ref.removeValue()
-            Singleton.sharedInstance.posts.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            
+            performSegue(withIdentifier: "asdf", sender: selectedCell)
+        
             
                 /*
                 FIRDatabase.database().reference().child("Employees").child(key).removeValue(completionBlock: { (error, ref) in
@@ -137,6 +155,9 @@ class CreatorTableViewController: UITableViewController {
                 
         }
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
 
 }

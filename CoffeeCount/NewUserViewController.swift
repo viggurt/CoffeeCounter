@@ -9,26 +9,27 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import TextFieldEffects
 
 class NewUserViewController: UIViewController, UITextFieldDelegate {
     
     
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var doneButton: UIButton!
+    
+    @IBOutlet weak var errorMessageLabel: UILabel!
     var nameFromField: String!
     var passwordFromField : String!
     var vc = CreatorTableViewController()
+    
+    var masterPassword = "admin"
 
-    @IBOutlet weak var errrorMessageLabel: UILabel!
-    @IBOutlet weak var passwordTextField: UITextField!
     var existsState = false
     var databaseRef = FIRDatabase.database().reference()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         nameTextField.delegate = self
-        passwordTextField.delegate = self
 
     }
 
@@ -52,7 +53,7 @@ class NewUserViewController: UIViewController, UITextFieldDelegate {
     func post(){
         
         let post : [String: AnyObject] = ["name" : nameFromField as AnyObject,
-                                          "password" : passwordFromField as AnyObject,
+                                          "password" : masterPassword as AnyObject,
                                           "point" : 0 as AnyObject]
         
         
@@ -66,30 +67,32 @@ class NewUserViewController: UIViewController, UITextFieldDelegate {
     @IBAction func doneButtonPressed(_ sender: AnyObject) {
         
         let text = nameTextField.text
-        let passwordText = passwordTextField.text
         
-        if (text?.characters.count)! >= 2 && (passwordText?.characters.count)! >= 2 {//Checking if the input field is not empty
+        if (text?.characters.count)! >= 2 {//Checking if the input field is not empty
             
             
             if Singleton.sharedInstance.posts.contains(where: { (emp1) in
-                emp1.name == text
+                let name = emp1.name
+                let compareStrings = name?.caseInsensitiveCompare(text!) == .orderedSame
+                
+                return compareStrings
+                
             }) {
                     print("found")
                     
-                    self.errrorMessageLabel.isHidden = false
-                    self.errrorMessageLabel.text = "That name already exist. Please choose another one!"
+                    self.errorMessageLabel.isHidden = false
+                    self.errorMessageLabel.text = "That name already exist. Please choose another one!"
                 }
                 else{
                     
                     self.nameFromField = self.nameTextField.text
-                    self.passwordFromField = self.passwordTextField.text
                     self.post()
                     self.navigationController?.popViewController(animated: true)
                 }
                 
             
         }else{
-            errrorMessageLabel.isHidden = false
+            errorMessageLabel.isHidden = false
         }
         
     }

@@ -7,4 +7,5 @@ pod 'Alamofire', '~> 4.0'
 pod 'Canvas'
 pod 'Firebase/Core'
 pod ’Firebase/Database’
+pod ’TextFieldEffects’
 end

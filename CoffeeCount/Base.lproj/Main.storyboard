@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="kenyan coffee rg.otf">
+        <array key="KenyanCoffeeRg-Regular.ttf">
             <string>KenyanCoffeeRg-Regular</string>
         </array>
     </customFonts>
@@ -271,11 +271,6 @@
                                             <outletCollection property="gestureRecognizers" destination="Jui-0c-eLy" appends="YES" id="ezD-bD-qzQ"/>
                                         </connections>
                                     </imageView>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Madagaskar - latest hero, making Coffee." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ua-Cr-A0y">
-                                        <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="40"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please, rate the coffee." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zZm-Hl-i6q">
                                         <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="40"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -310,20 +305,33 @@
                                             <constraint firstAttribute="width" secondItem="SWy-Ir-GER" secondAttribute="height" multiplier="80:21" id="ed6-Qb-qrr"/>
                                         </constraints>
                                     </stackView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="gBC-qy-T73">
+                                        <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Madagaskar - latest hero, making Coffee." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ua-Cr-A0y">
+                                        <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.85088747740000004" green="0.85103398559999999" blue="0.85087817909999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="gBC-qy-T73" firstAttribute="leading" secondItem="AH9-qO-Gbq" secondAttribute="leading" constant="33" id="6xc-Ck-359"/>
+                                    <constraint firstAttribute="trailing" secondItem="gBC-qy-T73" secondAttribute="trailing" constant="34" id="786-cx-axE"/>
                                     <constraint firstItem="2HP-rv-0Fz" firstAttribute="centerX" secondItem="AH9-qO-Gbq" secondAttribute="centerX" id="7oO-mK-YsH"/>
+                                    <constraint firstItem="gBC-qy-T73" firstAttribute="top" secondItem="AH9-qO-Gbq" secondAttribute="top" constant="8" id="DZR-w6-ioQ"/>
                                     <constraint firstItem="2HP-rv-0Fz" firstAttribute="height" secondItem="AH9-qO-Gbq" secondAttribute="height" multiplier="0.4" id="I5r-JM-TBt"/>
-                                    <constraint firstItem="0ua-Cr-A0y" firstAttribute="top" secondItem="AH9-qO-Gbq" secondAttribute="top" constant="24" id="KJf-mU-dMt"/>
                                     <constraint firstItem="SWy-Ir-GER" firstAttribute="centerX" secondItem="AH9-qO-Gbq" secondAttribute="centerX" id="MVt-ht-EAa"/>
                                     <constraint firstItem="zZm-Hl-i6q" firstAttribute="height" secondItem="AH9-qO-Gbq" secondAttribute="height" multiplier="0.12" id="O6g-lv-Mfd"/>
+                                    <constraint firstItem="0ua-Cr-A0y" firstAttribute="top" secondItem="gBC-qy-T73" secondAttribute="bottom" id="PDt-sD-qoO"/>
                                     <constraint firstItem="zZm-Hl-i6q" firstAttribute="top" secondItem="2HP-rv-0Fz" secondAttribute="bottom" constant="9" id="QYW-HV-IPS"/>
-                                    <constraint firstItem="0ua-Cr-A0y" firstAttribute="leading" secondItem="AH9-qO-Gbq" secondAttribute="leading" constant="33" id="UeA-bm-3F5"/>
+                                    <constraint firstItem="0ua-Cr-A0y" firstAttribute="leading" secondItem="AH9-qO-Gbq" secondAttribute="leading" constant="34" id="UeA-bm-3F5"/>
                                     <constraint firstItem="SWy-Ir-GER" firstAttribute="height" secondItem="AH9-qO-Gbq" secondAttribute="height" multiplier="0.14" id="ZCR-ve-YGi"/>
                                     <constraint firstAttribute="trailing" secondItem="zZm-Hl-i6q" secondAttribute="trailing" constant="23.5" id="aNB-jv-hQ5"/>
-                                    <constraint firstItem="2HP-rv-0Fz" firstAttribute="top" secondItem="0ua-Cr-A0y" secondAttribute="bottom" constant="14" id="du8-LI-2ON"/>
-                                    <constraint firstAttribute="trailing" secondItem="0ua-Cr-A0y" secondAttribute="trailing" constant="34.5" id="nrk-jJ-dd1"/>
+                                    <constraint firstItem="2HP-rv-0Fz" firstAttribute="top" secondItem="0ua-Cr-A0y" secondAttribute="bottom" constant="8" id="du8-LI-2ON"/>
+                                    <constraint firstAttribute="trailing" secondItem="0ua-Cr-A0y" secondAttribute="trailing" constant="32.5" id="nrk-jJ-dd1"/>
                                     <constraint firstItem="zZm-Hl-i6q" firstAttribute="leading" secondItem="AH9-qO-Gbq" secondAttribute="leading" constant="23" id="pc7-XA-hTx"/>
                                     <constraint firstAttribute="bottom" secondItem="SWy-Ir-GER" secondAttribute="bottom" constant="8" id="vxJ-Zu-i2N"/>
                                     <constraint firstItem="2HP-rv-0Fz" firstAttribute="centerY" secondItem="AH9-qO-Gbq" secondAttribute="centerY" id="wl8-zM-lkj"/>
@@ -512,7 +520,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.4549019608" green="0.29803921570000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Wn-rv-bbO" secondAttribute="bottom" id="2ZI-u7-hmx"/>
                             <constraint firstItem="vFT-hb-cdX" firstAttribute="height" secondItem="AH9-qO-Gbq" secondAttribute="height" id="3kw-jO-L70"/>
@@ -611,6 +619,7 @@
                         <outlet property="teaButton" destination="axM-82-aHU" id="ien-Ad-0fD"/>
                         <outlet property="teaButtonAnimationView" destination="IDR-M1-M4f" id="Onc-Ys-yMf"/>
                         <outlet property="teaCountLabel" destination="5kb-HR-cju" id="XqT-SE-D3g"/>
+                        <outlet property="timeStampLabel" destination="gBC-qy-T73" id="obS-LG-jxx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -620,7 +629,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-12.5" y="35.15625"/>
+            <point key="canvasLocation" x="-15.199999999999999" y="33.733133433283363"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="ROr-K5-kpc">
@@ -721,26 +730,30 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="270-B1-fKn">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="270-B1-fKn">
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAL-Bc-iaf">
+                                                <color key="backgroundColor" red="0.4549019608" green="0.29803921570000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="30"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6my-NK-38Y">
+                                                <color key="backgroundColor" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="30"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.4549019608" green="0.29803921570000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iad-d5-ksN">
+                                                <color key="backgroundColor" red="0.4549019608" green="0.29803921570000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="30"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntu-jh-rE9">
+                                                <color key="backgroundColor" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="30"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.4549019608" green="0.29803921570000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -748,19 +761,19 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="270-B1-fKn" secondAttribute="bottom" constant="57" id="4eu-Sd-g16"/>
+                                    <constraint firstAttribute="bottom" secondItem="270-B1-fKn" secondAttribute="bottom" constant="40" id="4eu-Sd-g16"/>
                                     <constraint firstItem="XcU-Ae-rzS" firstAttribute="centerX" secondItem="PPl-b5-5bR" secondAttribute="centerX" id="8hr-oW-iQc"/>
                                     <constraint firstAttribute="bottom" secondItem="XcU-Ae-rzS" secondAttribute="bottom" constant="57" id="RU4-LR-iVM"/>
                                     <constraint firstItem="hNk-oo-8te" firstAttribute="height" secondItem="PPl-b5-5bR" secondAttribute="height" multiplier="0.232" id="Xe7-X6-fhv"/>
                                     <constraint firstAttribute="trailing" secondItem="hNk-oo-8te" secondAttribute="trailing" constant="25" id="aMo-eD-MoV"/>
                                     <constraint firstItem="XcU-Ae-rzS" firstAttribute="top" secondItem="hNk-oo-8te" secondAttribute="bottom" constant="34" id="juo-Kh-Pdl"/>
                                     <constraint firstItem="hNk-oo-8te" firstAttribute="leading" secondItem="PPl-b5-5bR" secondAttribute="leading" constant="23" id="qpW-b2-eq7"/>
-                                    <constraint firstItem="270-B1-fKn" firstAttribute="top" secondItem="hNk-oo-8te" secondAttribute="bottom" constant="34" id="tNS-IV-Dvx"/>
+                                    <constraint firstItem="270-B1-fKn" firstAttribute="top" secondItem="hNk-oo-8te" secondAttribute="bottom" constant="20" id="tNS-IV-Dvx"/>
                                     <constraint firstItem="hNk-oo-8te" firstAttribute="top" secondItem="PPl-b5-5bR" secondAttribute="top" constant="31" id="tY5-97-dBu"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.4549019608" green="0.29803921570000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9ga-8R-U2y" firstAttribute="leading" secondItem="3GV-DA-VVb" secondAttribute="leading" id="5zB-f0-VPY"/>
                             <constraint firstItem="PPl-b5-5bR" firstAttribute="top" secondItem="gYi-Z7-VMm" secondAttribute="bottom" id="MBS-RW-gaU"/>
@@ -776,6 +789,7 @@
                     <connections>
                         <outlet property="dayCoffeeLabel" destination="LqG-Lh-5wD" id="JIf-DB-BkV"/>
                         <outlet property="dayTeaLabel" destination="SUt-06-04R" id="0eM-UU-7jO"/>
+                        <outlet property="labelStackView" destination="270-B1-fKn" id="cr4-6B-1mz"/>
                         <outlet property="monthCoffeeLabel" destination="WR8-cV-zRq" id="eCX-7P-ueq"/>
                         <outlet property="monthTeaLabel" destination="5OU-yf-b8g" id="tdn-fP-6Fe"/>
                         <outlet property="weekCoffeeLabel" destination="YbM-JY-cnP" id="nx6-cG-eMz"/>
@@ -838,6 +852,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="employeeTableView" destination="sK3-bI-4v5" id="xif-yw-84A"/>
+                        <segue destination="3pP-SZ-eoJ" kind="show" identifier="asdf" id="JXF-Zi-wEg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSL-pW-5QJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -856,64 +871,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G8f-75-fs1">
-                                <frame key="frameInset" minX="16" minY="318" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Required 2 characters atleast!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="5p0-dj-ieJ">
+                                <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="24"/>
+                                <color key="textColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G8f-75-fs1" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                <color key="textColor" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
+                                        <color key="value" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="delegate" destination="DUh-E8-lci" id="1FU-VG-DdY"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkn-C7-bhC">
-                                <frame key="frameInset" minX="165" minY="289" width="45" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mvm-nY-Lug">
-                                <frame key="frameInset" minX="16" minY="385" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="DUh-E8-lci" id="JYG-Ou-nzR"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7o1-QA-6ud">
-                                <frame key="frameInset" minX="150" minY="356" width="74" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvH-VD-M3d">
-                                <frame key="frameInset" minX="165" minY="225" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvH-VD-M3d">
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="20"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.4549019608" green="0.29803921570000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="doneButtonPressed:" destination="DUh-E8-lci" eventType="touchUpInside" id="eQQ-FN-elp"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required 2 characters atleast!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5p0-dj-ieJ">
-                                <frame key="frameInset" minX="73" minY="196" width="230" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.4549019608" green="0.29803921570000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5p0-dj-ieJ" firstAttribute="centerX" secondItem="HpT-xT-H4x" secondAttribute="centerX" id="9ZP-U8-2Px"/>
+                            <constraint firstItem="5p0-dj-ieJ" firstAttribute="top" secondItem="x4B-89-AeZ" secondAttribute="bottom" constant="113" id="BH2-rB-xJy"/>
+                            <constraint firstItem="JvH-VD-M3d" firstAttribute="centerX" secondItem="HpT-xT-H4x" secondAttribute="centerX" id="DmZ-bI-Bhb"/>
+                            <constraint firstItem="G8f-75-fs1" firstAttribute="width" secondItem="HpT-xT-H4x" secondAttribute="width" multiplier="0.914" id="PPN-Jf-7dD"/>
+                            <constraint firstItem="G8f-75-fs1" firstAttribute="height" secondItem="HpT-xT-H4x" secondAttribute="height" multiplier="0.0914" id="TgY-nt-3Mm"/>
+                            <constraint firstItem="JvH-VD-M3d" firstAttribute="top" secondItem="G8f-75-fs1" secondAttribute="bottom" constant="8" id="Uo3-3A-Yej"/>
+                            <constraint firstItem="5p0-dj-ieJ" firstAttribute="height" secondItem="HpT-xT-H4x" secondAttribute="height" multiplier="0.043" id="Wbj-Lw-o6a"/>
+                            <constraint firstItem="5p0-dj-ieJ" firstAttribute="width" secondItem="HpT-xT-H4x" secondAttribute="width" multiplier="0.914" id="ab3-Qc-kCU"/>
+                            <constraint firstItem="G8f-75-fs1" firstAttribute="centerY" secondItem="HpT-xT-H4x" secondAttribute="centerY" id="bPO-ws-bZN"/>
+                            <constraint firstItem="G8f-75-fs1" firstAttribute="centerX" secondItem="HpT-xT-H4x" secondAttribute="centerX" id="cNq-nG-Axs"/>
+                            <constraint firstItem="JvH-VD-M3d" firstAttribute="width" secondItem="HpT-xT-H4x" secondAttribute="width" id="whF-mb-se6"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="doneButton" destination="JvH-VD-M3d" id="nAg-fj-7vE"/>
-                        <outlet property="errrorMessageLabel" destination="5p0-dj-ieJ" id="lHc-FZ-ZwE"/>
-                        <outlet property="nameLabel" destination="Rkn-C7-bhC" id="c5d-Ia-sMu"/>
+                        <outlet property="errorMessageLabel" destination="5p0-dj-ieJ" id="iwx-LE-neF"/>
                         <outlet property="nameTextField" destination="G8f-75-fs1" id="Mjb-UD-6Qg"/>
-                        <outlet property="passwordTextField" destination="mvm-nY-Lug" id="Wph-zv-uhr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJj-Yx-TVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -932,35 +949,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AR0-U1-WYd">
-                                <frame key="frameInset" minX="16" minY="197" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AR0-U1-WYd" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                <color key="textColor" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
+                                        <color key="value" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="3pP-SZ-eoJ" id="edt-ZQ-kBd"/>
+                                </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDi-cY-Ou5">
-                                <frame key="frameInset" minX="169" minY="235" width="37" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDi-cY-Ou5">
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.56078431370000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="UoY-iJ-VCQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="20"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.4549019608" green="0.29803921570000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="3pP-SZ-eoJ" eventType="touchUpInside" id="Tcf-Xh-u16"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAP-jt-mDr">
-                                <frame key="frameInset" minX="150" minY="168" width="74" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wrong password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFt-4B-Ikz">
+                                <fontDescription key="fontDescription" name="KenyanCoffeeRg-Regular" family="Kenyan Coffee" pointSize="24"/>
+                                <color key="textColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.4549019608" green="0.29803921570000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="nFt-4B-Ikz" firstAttribute="width" secondItem="KPI-BG-k8n" secondAttribute="width" multiplier="0.914" id="1qa-nO-Plf"/>
+                            <constraint firstItem="AR0-U1-WYd" firstAttribute="width" secondItem="KPI-BG-k8n" secondAttribute="width" multiplier="0.914" id="4oD-t1-8AF"/>
+                            <constraint firstItem="FDi-cY-Ou5" firstAttribute="top" secondItem="AR0-U1-WYd" secondAttribute="bottom" constant="8" id="635-T0-Hqa"/>
+                            <constraint firstItem="AR0-U1-WYd" firstAttribute="top" secondItem="p56-ie-esT" secondAttribute="bottom" constant="237" id="ctq-xC-lsk"/>
+                            <constraint firstItem="AR0-U1-WYd" firstAttribute="centerX" secondItem="KPI-BG-k8n" secondAttribute="centerX" id="d6V-99-ZSG"/>
+                            <constraint firstItem="AR0-U1-WYd" firstAttribute="height" secondItem="KPI-BG-k8n" secondAttribute="height" multiplier="0.0964" id="diN-4B-wnd"/>
+                            <constraint firstItem="FDi-cY-Ou5" firstAttribute="centerX" secondItem="KPI-BG-k8n" secondAttribute="centerX" id="oty-CH-qFO"/>
+                            <constraint firstItem="nFt-4B-Ikz" firstAttribute="top" secondItem="p56-ie-esT" secondAttribute="bottom" constant="113" id="pqf-bG-B06"/>
+                            <constraint firstItem="nFt-4B-Ikz" firstAttribute="height" secondItem="KPI-BG-k8n" secondAttribute="height" multiplier="0.043" id="rtO-Cw-3Hq"/>
+                            <constraint firstItem="nFt-4B-Ikz" firstAttribute="centerX" secondItem="KPI-BG-k8n" secondAttribute="centerX" id="wjb-en-Kvj"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="passwordTextField" destination="AR0-U1-WYd" id="CzA-Cb-SnV"/>
+                        <outlet property="doneButton" destination="FDi-cY-Ou5" id="LuV-Jl-1wC"/>
+                        <outlet property="errorMessageLabel" destination="nFt-4B-Ikz" id="rIl-xM-Edn"/>
+                        <outlet property="passwordTextField" destination="AR0-U1-WYd" id="xe7-HG-qAh"/>
+                        <segue destination="lCw-1M-VMS" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMenuWithSegue:" id="fAV-Sb-XAI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d1z-XR-ouE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="lCw-1M-VMS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="488.80000000000001" y="1521.5892053973014"/>
+            <point key="canvasLocation" x="392.80000000000001" y="1562.9685157421291"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="8M2-5T-6x1">

@@ -52,7 +52,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.viewWillAppear(animated)
         
         captureSession = AVCaptureSession()
-        captureSession?.sessionPreset = AVCaptureSessionPresetPhoto
+        captureSession?.sessionPreset = AVCaptureSessionPresetHigh
         let cameraDevice = AVCaptureDevice.defaultDevice(withDeviceType: AVCaptureDeviceType.builtInWideAngleCamera , mediaType: AVMediaTypeVideo, position: AVCaptureDevicePosition.front)
        print(cameraDevice!)
         

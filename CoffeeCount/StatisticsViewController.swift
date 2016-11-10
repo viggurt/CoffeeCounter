@@ -25,6 +25,9 @@ class StatisticsViewController: UIViewController {
     @IBOutlet weak var yearCoffeeLabel: UILabel!
     @IBOutlet weak var yearTeaLabel: UILabel!
     
+    @IBOutlet weak var labelStackView: UIStackView!
+    
+    
     //MARK: Variables
     
     var timeIntervalString: [String] = []
@@ -36,6 +39,11 @@ class StatisticsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for label in labelStackView.arrangedSubviews{
+            label.layer.cornerRadius = label.bounds.size.width * 0.5
+        
+        }
     
         timeIntervalString = ["24h","1w","4w","52w"]
         
