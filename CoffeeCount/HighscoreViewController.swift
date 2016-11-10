@@ -19,7 +19,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var topScorePoint: UILabel!
     @IBOutlet weak var tieScoreBoard: UITableView!
     @IBOutlet weak var coffeebrewersLabel: UILabel!
-    
+    @IBOutlet weak var noDataLabel: UILabel!
     var state = Singleton.sharedInstance.urlState
     
     let databaseRef: FIRDatabaseReference! = nil
@@ -50,7 +50,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
             self.tieScoreBoard.delegate = self
         
         if Singleton.sharedInstance.posts.count >= 1 {
-            
+            noDataLabel.isHidden = false
             self.sortingForEmployees.sort()
             self.sortingForEmployees.compareIfMultipleStudentHaveTheHighestScore()
             
@@ -67,6 +67,9 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
             
             self.topScorePoint.text = "\(Singleton.sharedInstance.posts[0].point!) points!"
             
+        }
+        else{
+            noDataLabel.isHidden = true
         }
         
             self.scoreBoard.reloadData()

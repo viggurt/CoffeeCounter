@@ -92,12 +92,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             postStruct.point = point
             postStruct.ref = snapshot.ref
             
+            print(postStruct.ref.key)
+            
             Singleton.sharedInstance.posts.insert(postStruct, at: 0)
             
             let itemRef = FIRDatabase.database().reference(withPath: "Employees")
             
             itemRef.observe(.value, with: { snapshot in
-                print("Snapshot key \(snapshot.key)")
                 for task in snapshot.children {
                     guard let taskSnapshot = task as? FIRDataSnapshot else {
                         continue
@@ -105,7 +106,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     
                     let id = task
                     // do other things
-                    print(id)
                 }
             })
             
@@ -285,20 +285,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Invalidate the present timer
         disabledButtonsTimer.invalidate()
         
-        /*for employee in Singleton.sharedInstance.posts{
+        for employee in Singleton.sharedInstance.posts{
             if employee.name == Singleton.sharedInstance.nameOnCreator{
                 
-                var currentPoint = employee.point
-                currentPoint = currentPoint! - 1
+                employee.point = employee.point - 1
                 
+                let key = employee.ref.key
+                let post = ["name" : employee.name,
+                            "password" : employee.password,
+                            "point" : employee.point] as [String : Any]
                 
-                let prntRef  = FIRDatabase.database().reference().child("komal_kyz").child(your_AuroID)
-                prntRef.updateChildValues(["point": currentPoint])*/
-                
-                Singleton.sharedInstance.putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.statURLSwitch[state])-\(employee.id)/-1"
-                putAlamo(url: Singleton.sharedInstance.putPointsURL)
-                
-            //}
+                let childUpdates = ["/Employees/\(key)" : post]
+                databaseRef.updateChildValues(childUpdates)
+            }
+        }
+        
+                //Singleton.sharedInstance.putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.statURLSwitch[state])-\(employee.id)/-1"
+                //putAlamo(url: Singleton.sharedInstance.putPointsURL)
+        
             
         
         plusOneAnimationView.backgroundColor = nil
@@ -316,11 +320,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Invalidate the present timer
         disabledButtonsTimer.invalidate()
         
-        for employee in Singleton.sharedInstance.employees{
+        for employee in Singleton.sharedInstance.posts{
             if employee.name == Singleton.sharedInstance.nameOnCreator{
-                Singleton.sharedInstance.putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.statURLSwitch[state])-\(employee.id)/1"
-                putAlamo(url: Singleton.sharedInstance.putPointsURL)
+                //Singleton.sharedInstance.putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.statURLSwitch[state])-\(employee.id)/1"
+                //putAlamo(url: Singleton.sharedInstance.putPointsURL)
+                
+                employee.point = employee.point + 1
 
+                let key = employee.ref.key
+                let post = ["name" : employee.name,
+                            "password" : employee.password,
+                            "point" : employee.point] as [String : Any]
+                
+                let childUpdates = ["/Employees/\(key)" : post]
+                databaseRef.updateChildValues(childUpdates)
                 //employee.totalPoints = employee.totalPoints + 1
             }
         }
@@ -339,12 +352,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Invalidate the present timer
         disabledButtonsTimer.invalidate()
         
-        for employee in Singleton.sharedInstance.employees{
+        for employee in Singleton.sharedInstance.posts{
             if employee.name == Singleton.sharedInstance.nameOnCreator{
-                Singleton.sharedInstance.putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.statURLSwitch[state])-\(employee.id)/2"
-                putAlamo(url: Singleton.sharedInstance.putPointsURL)
+                //Singleton.sharedInstance.putPointsURL = "https://appserver.mobileinteraction.se/officeapi/rest/counter/\(Singleton.sharedInstance.statURLSwitch[state])-\(employee.id)/2"
+                //putAlamo(url: Singleton.sharedInstance.putPointsURL)
+                
+                employee.point = employee.point + 2
+                
+                let key = employee.ref.key
+                let post = ["name" : employee.name,
+                            "password" : employee.password,
+                            "point" : employee.point] as [String : Any]
+                
+                let childUpdates = ["/Employees/\(key)" : post]
+                databaseRef.updateChildValues(childUpdates)
 
-                //employee.totalPoints = employee.totalPoints + 2
             }
         }
         plusOneAnimationView.backgroundColor = nil
